@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life in Warsaw</title>
     <link rel="icon" type="image/x-icon" href="liw-content/liw_waskieshort.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -14,13 +14,14 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Open Sans', 'sans-serif'],
+                        sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        wtpRed: '#d91e18',
-                        wtpRedHover: '#b51813',
-                        wtpDark: '#1b1b1b',
-                        wtpBg: '#f9f9f9',
+                        brandRed: '#ff334b',
+                        brandRedHover: '#e61e38',
+                        brandDark: '#0a0b10',
+                        brandCard: '#13151f',
+                        brandBorder: 'rgba(255, 255, 255, 0.08)',
                     }
                 }
             }
@@ -28,404 +29,369 @@
     </script>
     <style>
         body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        .wtp-btn {
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 51, 75, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 51, 75, 0.12);
+        }
+
+        .cyber-button {
             position: relative;
-            background-color: #d91e18;
+            background: linear-gradient(135deg, #ff334b 0%, #c91830 100%);
             color: #ffffff;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 0px;
+            font-weight: 600;
+            border-radius: 14px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 28px;
-            font-size: 14px;
+            padding: 14px 32px;
+            font-size: 15px;
             text-decoration: none;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
             overflow: hidden;
-            z-index: 1;
-            transition: color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 12px rgba(217, 30, 24, 0.25);
+            box-shadow: 0 10px 25px rgba(255, 51, 75, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .wtp-btn::before {
-            content: '';
+        .cyber-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 51, 75, 0.5);
+        }
+
+        .discord-button {
+            background: linear-gradient(135deg, #5865F2 0%, #404eed 100%);
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
+        }
+        .discord-button:hover {
+            box-shadow: 0 15px 35px rgba(88, 101, 242, 0.5);
+        }
+
+        .glow-orb {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background-color: #b51813;
-            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            z-index: -1;
-        }
-
-        .wtp-btn:hover::before {
-            transform: translateX(100%);
-        }
-
-        .wtp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(217, 30, 24, 0.4);
-        }
-
-        .wtp-btn-discord {
-            background-color: #5865F2;
-            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.25);
-        }
-        .wtp-btn-discord::before {
-            background-color: #4752C4;
-        }
-        .wtp-btn-discord:hover {
-            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
-        }
-
-        .wtp-circle-icon {
-            width: 110px;
-            height: 110px;
-            background-color: #d91e18;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            position: relative;
-            box-shadow: 0 6px 18px rgba(217, 30, 24, 0.25);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .wtp-circle-item:hover .wtp-circle-icon {
-            transform: scale(1.1) rotate(6deg);
-            background-color: #b51813;
-            box-shadow: 0 12px 28px rgba(217, 30, 24, 0.45);
-        }
-
-        .wtp-circle-icon svg {
-            width: 58px;
-            height: 58px;
-            transition: transform 0.3s ease;
-        }
-
-        .wtp-circle-item:hover .wtp-circle-icon svg {
-            transform: scale(1.05);
-        }
-
-        .i-bg {
-            fill: #d91e18;
-            transition: fill 0.3s ease;
-        }
-        .wtp-circle-item:hover .i-bg {
-            fill: #b51813;
-        }
-        .i-fg {
-            fill: #ffffff;
-        }
-
-        .wtp-shadow {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .wtp-shadow:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 51, 75, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            transition: background 0.4s ease;
         }
 
         #bus-overlay {
             position: fixed;
             inset: 0;
             z-index: 99999;
-            background-color: #ffffff;
+            background-color: #f8fafc;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 2rem;
-            transition: opacity 0.8s ease;
+            transition: opacity 0.8s ease, background-color 0.4s ease;
         }
         #bus-overlay.fade-out {
             opacity: 0;
             pointer-events: none;
         }
 
-        .loader-bars {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            height: 40px;
+        .loader-rings {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #ff334b;
+            border-radius: 50%;
+            animation: spinRing 1s linear infinite;
         }
-        .loader-bar {
-            width: 6px;
-            height: 100%;
-            background-color: #d91e18;
-            border-radius: 4px;
-            animation: bounceBar 1.2s infinite ease-in-out both;
-        }
-        .loader-bar:nth-child(1) { animation-delay: -0.4s; }
-        .loader-bar:nth-child(2) { animation-delay: -0.3s; }
-        .loader-bar:nth-child(3) { animation-delay: -0.2s; }
-        .loader-bar:nth-child(4) { animation-delay: -0.1s; }
-        .loader-bar:nth-child(5) { animation-delay: 0s; }
 
-        @keyframes bounceBar {
-            0%, 40%, 100% {
-                transform: scaleY(0.4);
-            }
-            20% {
-                transform: scaleY(1.1);
-                background-color: #b51813;
-            }
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .partner-card {
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .partner-card:hover {
-            transform: translateY(-5px);
-            border-color: #d91e18 !important;
-            box-shadow: 0 10px 25px rgba(217, 30, 24, 0.15);
+        .hero-badge {
+            background: rgba(255, 51, 75, 0.12);
+            border: 1px solid rgba(255, 51, 75, 0.3);
+            color: #ff334b;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
-<body class="bg-[#f9f9f9] text-[#222222] min-h-screen flex flex-col justify-between selection:bg-wtpRed selection:text-white">
+<body class="min-h-screen flex flex-col justify-between selection:bg-brandRed selection:text-white">
 
     <div id="bus-overlay">
-        <img src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
+        <img id="overlay-logo" src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
              alt="Life in Warsaw Logo" 
-             class="h-16 w-auto filter drop-shadow-sm brightness-0"
-             onerror="this.src='https://placehold.co/220x60/d91e18/ffffff?text=Life+in+Warsaw'">
-        <div class="loader-bars">
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-        </div>
-        <div class="text-xs font-bold uppercase tracking-widest text-zinc-500 animate-pulse">Ładowanie...</div>
+             class="h-16 w-auto filter brightness-0 contrast-200 transition duration-300"
+             onerror="this.src='https://placehold.co/220x60/000000/ffffff?text=Life+in+Warsaw'">
+        <div class="loader-rings"></div>
+        <div class="text-xs font-semibold uppercase tracking-widest text-zinc-500 animate-pulse">Ładowanie...</div>
     </div>
 
-    <header class="w-full bg-wtpRed text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-[1300px] mx-auto px-4 py-4 flex justify-center items-center">
-            <a href="#" class="nav-link flex items-center justify-center group">
-                <img src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
+    <header class="w-full sticky top-0 z-50 bg-gradient-to-r from-red-600 via-brandRed to-rose-600 shadow-lg border-b border-red-500/30">
+        <div class="max-w-[1300px] mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="nav-link flex items-center group">
+                <img id="nav-logo" src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
                      alt="Life in Warsaw Logo" 
-                     class="h-16 md:h-20 w-auto transition-transform duration-300 group-hover:scale-105">
+                     class="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105 filter brightness-200">
             </a>
+            <div class="flex items-center gap-3 md:gap-4">
+                <a href="https://www.roblox.com" target="_blank" class="nav-link text-xs md:text-sm font-semibold text-white/90 hover:text-white transition py-2 px-4 rounded-lg hover:bg-white/15">Roblox</a>
+                <a href="discord.html" target="_blank" class="nav-link text-xs md:text-sm font-semibold text-white/90 hover:text-white transition py-2 px-4 rounded-lg hover:bg-white/15">Discord</a>
+            </div>
         </div>
     </header>
 
     <main class="flex-grow" id="features">
-        <section class="relative bg-zinc-900 text-white overflow-hidden reveal-on-scroll">
-            <div class="absolute inset-0 opacity-40 bg-cover bg-center transform hover:scale-105 transition-transform duration-1000" style="background-image: url('https://raw.githubusercontent.com/o5k4rsolutions/liw/e148f091442cabfabb6d8b17fab3d5882b9e8543/liw-content/warsawpanorama.png');"></div>
+        
+        <section class="relative bg-white text-slate-900 overflow-hidden py-24 md:py-36 reveal-on-scroll transition-colors duration-500">
+            <div class="glow-orb -top-20 -left-20"></div>
+            <div class="glow-orb bottom-0 right-0"></div>
             
-            <div class="max-w-[1300px] mx-auto px-4 py-20 md:py-32 relative z-10 text-center">
-                <h1 class="text-3xl md:text-6xl font-extrabold tracking-tight mb-6 drop-shadow-md">Wirtualny Transport Publiczny w Warszawie</h1>
+            <div class="absolute inset-0 opacity-10 bg-cover bg-center mix-blend-luminosity transform scale-105" style="background-image: url('https://raw.githubusercontent.com/o5k4rsolutions/liw/e148f091442cabfabb6d8b17fab3d5882b9e8543/liw-content/warsawpanorama.png');"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/80 to-slate-50" id="hero-gradient-overlay"></div>
+            
+            <div class="max-w-[1300px] mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+                <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 max-w-4xl leading-tight text-slate-900 transition-colors">
+                    Wirtualny Transport Publiczny <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandRed to-rose-500">w Warszawie</span>
+                </h1>
                 <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="https://www.roblox.com" target="_blank" class="nav-link wtp-btn group">
-                        <span class="flex items-center gap-2">Zagraj na Roblox <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+                    <a href="https://www.roblox.com" target="_blank" class="nav-link cyber-button group">
+                        <span class="flex items-center gap-3">Zagraj na Roblox <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1.5"></i></span>
                     </a>
-                    <a href="discord.html" target="_blank" class="nav-link wtp-btn wtp-btn-discord group">
-                        <span class="flex items-center gap-2"><i class="fa-brands fa-discord"></i> Serwer Discord <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+                    <a href="discord.html" target="_blank" class="nav-link cyber-button discord-button group">
+                        <span class="flex items-center gap-3"><i class="fa-brands fa-discord text-lg"></i> Serwer Discord <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1.5"></i></span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="max-w-[1300px] mx-auto px-4 -mt-10 relative z-20 mb-20 reveal-on-scroll">
-            <div class="bg-white rounded-none wtp-shadow p-8 md:p-12 grid grid-cols-1 sm:grid-cols-2 gap-8 text-center max-w-2xl mx-auto border border-zinc-200">
+        <section class="max-w-[1300px] mx-auto px-6 -mt-12 relative z-20 mb-24 reveal-on-scroll">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 
-                <a href="rozklad-jazdy.html" class="nav-link wtp-circle-item flex flex-col items-center group">
-                    <div class="wtp-circle-icon mb-4 mx-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" role="img" aria-label="Rozkłady jazdy">
-                            <path class="i-bg" d="M42,0c23.195,0,42,18.805,42,42c0,23.195-18.805,42-42,42C18.806,84,0,65.195,0,42 C0,18.805,18.806,0,42,0"></path>
-                            <path class="i-fg" d="M59.119,54.492h3.293v5.195c0,1.104-0.907,2.016-2.014,2.016h-2.016c0.014,1.602,0.016,2.691,0.016,4.293 c-2.953,0-5.904,0-8.856,0v-4.293h-16.01c0,1.602,0,2.691,0,4.293h-8.869c0-1.613,0.015-2.688,0.025-4.293h-2.014 c-1.105,0-2.014-0.908-2.014-2.016v-5.195h3.293c0.299,1.484,1.613,2.57,3.144,2.57c1.531,0,2.845-1.088,3.144-2.57h22.593 c0.297,1.484,1.611,2.57,3.141,2.57C57.507,57.063,58.82,55.977,59.119,54.492z M73.813,25.125c0,7.179-5.82,13-13,13 c-7.179,0-13-5.821-13-13s5.821-13,13-13C67.992,12.125,73.813,17.946,73.813,25.125z M67.293,29.833L62,25.25l-0.479-10.332 h-0.979l-0.5,11.458l6.583,4.374L67.293,29.833z M59.096,40.764c-0.004-0.001-0.008-0.001-0.012-0.001l-0.453,5.687 c-11.398,0.002-22.788,0.002-34.188,0l-1.338-17.447h22.446c-0.109-0.417-0.203-0.84-0.279-1.27c-7.271,0-14.894,0-22.165,0V21.98 h22.228c0.005-0.025,0.015-0.05,0.021-0.076c0.16-0.848,0.396-1.667,0.685-2.462H22.62c-1.075,0-1.957,0.962-1.957,2.014v7.547 c-1.586,0-3.174,0-4.762,0c0,2.979,0,5.961,0,8.939c1.588,0,3.176,0,4.762,0v15.281h3.293c0.299-1.486,1.613-2.572,3.144-2.572 c1.532,0,2.845,1.086,3.144,2.572h22.591c0.297-1.486,1.613-2.572,3.142-2.572c1.533,0,2.848,1.086,3.145,2.572h3.295V40.828 c-0.445,0.037-0.895,0.068-1.35,0.068C60.396,40.896,59.742,40.843,59.096,40.764z"></path>
+                <a href="rozklad-jazdy.html" class="nav-link glass-card p-8 rounded-2xl flex items-center gap-6 group">
+                    <div class="w-20 h-20 bg-brandRed/10 rounded-2xl border border-brandRed/30 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-brandRed/20 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" role="img" aria-label="Rozkłady jazdy" class="w-10 h-10">
+                            <path class="i-bg" d="M42,0c23.195,0,42,18.805,42,42c0,23.195-18.805,42-42,42C18.806,84,0,65.195,0,42 C0,18.805,18.806,0,42,0" fill="#ff334b"></path>
+                            <path class="i-fg" d="M59.119,54.492h3.293v5.195c0,1.104-0.907,2.016-2.014,2.016h-2.016c0.014,1.602,0.016,2.691,0.016,4.293 c-2.953,0-5.904,0-8.856,0v-4.293h-16.01c0,1.602,0,2.691,0,4.293h-8.869c0-1.613,0.015-2.688,0.025-4.293h-2.014 c-1.105,0-2.014-0.908-2.014-2.016v-5.195h3.293c0.299,1.484,1.613,2.57,3.144,2.57c1.531,0,2.845-1.088,3.144-2.57h22.593 c0.297,1.484,1.611,2.57,3.141,2.57C57.507,57.063,58.82,55.977,59.119,54.492z M73.813,25.125c0,7.179-5.82,13-13,13 c-7.179,0-13-5.821-13-13s5.821-13,13-13C67.992,12.125,73.813,17.946,73.813,25.125z M67.293,29.833L62,25.25l-0.479-10.332 h-0.979l-0.5,11.458l6.583,4.374L67.293,29.833z M59.096,40.764c-0.004-0.001-0.008-0.001-0.012-0.001l-0.453,5.687 c-11.398,0.002-22.788,0.002-34.188,0l-1.338-17.447h22.446c-0.109-0.417-0.203-0.84-0.279-1.27c-7.271,0-14.894,0-22.165,0V21.98 h22.228c0.005-0.025,0.015-0.05,0.021-0.076c0.16-0.848,0.396-1.667,0.685-2.462H22.62c-1.075,0-1.957,0.962-1.957,2.014v7.547 c-1.586,0-3.174,0-4.762,0c0,2.979,0,5.961,0,8.939c1.588,0,3.176,0,4.762,0v15.281h3.293c0.299-1.486,1.613-2.572,3.144-2.572 c1.532,0,2.845,1.086,3.144,2.572h22.591c0.297-1.486,1.613-2.572,3.142-2.572c1.533,0,2.848,1.086,3.145,2.572h3.295V40.828 c-0.445,0.037-0.895,0.068-1.35,0.068C60.396,40.896,59.742,40.843,59.096,40.764z" fill="#ffffff"></path>
                         </svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-zinc-800 group-hover:text-wtpRed transition">Rozkłady jazdy</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-brandRed transition mb-1">Rozkłady jazdy</h3>
+                        <p class="text-zinc-600 text-sm">Sprawdź aktualne trasy linii autobusowych oraz tramwajowych.</p>
+                    </div>
                 </a>
 
-                <a href="bilety.html" class="nav-link wtp-circle-item flex flex-col items-center group">
-                    <div class="wtp-circle-icon mb-4 mx-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" role="img" aria-label="Ceny i rodzaje biletów">
-                            <path class="i-bg" d="M42,0.16c23.107,0,41.84,18.733,41.84,41.84c0,23.106-18.732,41.84-41.84,41.84 C18.895,83.84,0.16,65.106,0.16,42C0.16,18.893,18.895,0.16,42,0.16"></path>
-                            <path class="i-fg" d="M66.334,35.921l0.106,1.186l4.056,0.32l-1.928,25.348l-51.846-3.674l0.46-5.091l1.149-0.162l1.195-0.168 l7.895-1.11l-3.707-26.367l-14.9,2.094l3.705,26.369l3.469-0.487l-0.536,6.041l54.204,3.841l2.108-27.75L66.334,35.921z M12.534,35.915c-0.38-2.687,1.495-5.174,4.185-5.552c2.689-0.378,5.176,1.495,5.554,4.184c0.378,2.69-1.495,5.175-4.185,5.555 C15.398,40.478,12.912,38.606,12.534,35.915z M14.957,51.06l-0.418-2.968l9.161-1.29l0.417,2.972L14.957,51.06z"></path>
-                            <circle class="i-fg" cx="40.311" cy="42.218" r="1.318"></circle>
-                            <path class="i-fg" d="M52.167,30.314l-14.87,2.091l1.527,6.963c4.598-0.646,9.196-1.293,13.794-1.938L52.167,30.314z"></path>
-                            <path class="i-fg" d="M63.004,20.583l-38.096,5.452l3.705,26.367l38.098-5.451L63.004,20.583z M54.525,39.948L54.525,39.948 l0.071,0.513h0.002l0.294,2.097c0.063,0.444-0.248,0.864-0.696,0.928l-0.813,0.115c0.098,0.644,0.159,1.082,0.251,1.73 c-1.191,0.167-2.382,0.335-3.575,0.503l-0.244-1.732l-6.457,0.907c0.09,0.646,0.151,1.084,0.242,1.732l-3.58,0.504 c-0.092-0.654-0.145-1.087-0.233-1.734l-0.812,0.114c-0.447,0.063-0.863-0.25-0.928-0.699l-0.294-2.097l0.005-0.002l-0.072-0.51 h-0.004l-0.865-6.166c-0.641,0.09-1.285,0.18-1.924,0.27c-0.168-1.203-0.337-2.405-0.506-3.61c0.638-0.088,1.281-0.18,1.922-0.27 L35.88,29.5c-0.06-0.428,0.241-0.864,0.673-0.924l15.248-2.143c0.446-0.064,0.871,0.253,0.925,0.706l0.431,3.064 c0.658-0.092,1.313-0.186,1.965-0.277c0.17,1.197,0.336,2.385,0.505,3.582c-0.653,0.093-1.31,0.184-1.967,0.276L54.525,39.948z"></path>
-                            <path class="i-fg" d="M51.805,39.271c-0.721,0.101-1.224,0.77-1.121,1.49c0.101,0.719,0.768,1.223,1.488,1.119 c0.721-0.1,1.224-0.766,1.122-1.486S52.524,39.17,51.805,39.271z"></path>
+                <a href="bilety.html" class="nav-link glass-card p-8 rounded-2xl flex items-center gap-6 group">
+                    <div class="w-20 h-20 bg-brandRed/10 rounded-2xl border border-brandRed/30 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-brandRed/20 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" role="img" aria-label="Ceny i rodzaje biletów" class="w-10 h-10">
+                            <path class="i-bg" d="M42,0.16c23.107,0,41.84,18.733,41.84,41.84c0,23.106-18.732,41.84-41.84,41.84 C18.895,83.84,0.16,65.106,0.16,42C0.16,18.893,18.895,0.16,42,0.16" fill="#ff334b"></path>
+                            <path class="i-fg" d="M66.334,35.921l0.106,1.186l4.056,0.32l-1.928,25.348l-51.846-3.674l0.46-5.091l1.149-0.162l1.195-0.168 l7.895-1.11l-3.707-26.367l-14.9,2.094l3.705,26.369l3.469-0.487l-0.536,6.041l54.204,3.841l2.108-27.75L66.334,35.921z M12.534,35.915c-0.38-2.687,1.495-5.174,4.185-5.552c2.689-0.378,5.176,1.495,5.554,4.184c0.378,2.69-1.495,5.175-4.185,5.555 C15.398,40.478,12.912,38.606,12.534,35.915z M14.957,51.06l-0.418-2.968l9.161-1.29l0.417,2.972L14.957,51.06z" fill="#ffffff"></path>
+                            <circle class="i-fg" cx="40.311" cy="42.218" r="1.318" fill="#ffffff"></circle>
+                            <path class="i-fg" d="M52.167,30.314l-14.87,2.091l1.527,6.963c4.598-0.646,9.196-1.293,13.794-1.938L52.167,30.314z" fill="#ffffff"></path>
+                            <path class="i-fg" d="M63.004,20.583l-38.096,5.452l3.705,26.367l38.098-5.451L63.004,20.583z M54.525,39.948L54.525,39.948 l0.071,0.513h0.002l0.294,2.097c0.063,0.444-0.248,0.864-0.696,0.928l-0.813,0.115c0.098,0.644,0.159,1.082,0.251,1.73 c-1.191,0.167-2.382,0.335-3.575,0.503l-0.244-1.732l-6.457,0.907c0.09,0.646,0.151,1.084,0.242,1.732l-3.58,0.504 c-0.092-0.654-0.145-1.087-0.233-1.734l-0.812,0.114c-0.447,0.063-0.863-0.25-0.928-0.699l-0.294-2.097l0.005-0.002l-0.072-0.51 h-0.004l-0.865-6.166c-0.641,0.09-1.285,0.18-1.924,0.27c-0.168-1.203-0.337-2.405-0.506-3.61c0.638-0.088,1.281-0.18,1.922-0.27 L35.88,29.5c-0.06-0.428,0.241-0.864,0.673-0.924l15.248-2.143c0.446-0.064,0.871,0.253,0.925,0.706l0.431,3.064 c0.658-0.092,1.313-0.186,1.965-0.277c0.17,1.197,0.336,2.385,0.505,3.582c-0.653,0.093-1.31,0.184-1.967,0.276L54.525,39.948z" fill="#ffffff"></path>
+                            <path class="i-fg" d="M51.805,39.271c-0.721,0.101-1.224,0.77-1.121,1.49c0.101,0.719,0.768,1.223,1.488,1.119 c0.721-0.1,1.224-0.766,1.122-1.486S52.524,39.17,51.805,39.271z" fill="#ffffff"></path>
                         </svg>
                     </div>
-                    <span class="text-sm md:text-base font-bold text-zinc-800 group-hover:text-wtpRed transition">Ceny i rodzaje biletów</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-brandRed transition mb-1">Ceny i rodzaje biletów</h3>
+                        <p class="text-zinc-600 text-sm">Poznaj taryfę biletową obowiązującą w naszej grze.</p>
+                    </div>
                 </a>
 
             </div>
         </section>
 
-        <section class="max-w-[1300px] mx-auto px-4 mb-20 reveal-on-scroll">
-            <div class="bg-white border border-zinc-200 wtp-shadow p-8 md:p-12 text-center max-w-3xl mx-auto rounded-none">
-                <div class="w-16 h-16 bg-[#5865F2] text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-md">
+        <section class="max-w-[1300px] mx-auto px-6 mb-24 reveal-on-scroll">
+            <div class="glass-card border border-[#5865F2]/30 p-10 md:p-14 text-center max-w-4xl mx-auto rounded-3xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-[#5865F2]/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="w-16 h-16 bg-[#5865F2] text-white rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-lg shadow-[#5865F2]/30">
                     <i class="fa-brands fa-discord"></i>
                 </div>
-                <h2 class="text-xl md:text-2xl font-bold text-zinc-900 mb-3">Wszystko na naszym serwerze Discord!</h2>
-                <p class="text-zinc-600 text-sm md:text-base mb-8 leading-relaxed">
-                    Dołącz do społeczności Life in Warsaw. Znajdziesz tam aktualne zmiay, rekrutację oraz informacje o grze.
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Wszystko na naszym serwerze Discord!</h2>
+                <p class="text-zinc-600 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+                    Dołącz do społeczności Life in Warsaw. Znajdziesz tam aktualne zmiany, rekrutację oraz informacje o grze.
                 </p>
-                <a href="https://discord.gg/jrpxW8W7Qa" target="_blank" class="nav-link wtp-btn wtp-btn-discord group">
-                    <span class="flex items-center gap-2"><i class="fa-brands fa-discord"></i> Dołącz na Discord <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+                <a href="https://discord.gg/jrpxW8W7Qa" target="_blank" class="nav-link cyber-button discord-button group inline-flex">
+                    <span class="flex items-center gap-3"><i class="fa-brands fa-discord"></i> Dołącz na Discord <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1.5"></i></span>
                 </a>
             </div>
         </section>
 
-        <section class="max-w-[1300px] mx-auto px-4 mb-20 reveal-on-scroll">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Partnerzy naszej gry</h2>
+        <section class="max-w-[1300px] mx-auto px-6 mb-24 reveal-on-scroll">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Partnerzy naszej gry</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <a href="https://wszystko-o-tramsporcie.vercel.app/" target="_blank" class="partner-card bg-white border border-zinc-200 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 group">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/" target="_blank" class="glass-card p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 group border border-black/5 hover:border-brandRed/40 transition">
                     <div class="flex items-center gap-4">
                         <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" 
                              alt="Wszystko o TRAMsporcie" 
-                             class="h-12 w-auto filter brightness-0 object-contain">
+                             class="h-12 w-auto object-contain filter brightness-0 transition">
                     </div>
                     <div class="text-center sm:text-right">
-                        <span class="block font-bold text-zinc-900 group-hover:text-wtpRed transition">Wszystko o TRAMsporcie</span>
-                        <span class="text-xs text-zinc-500 flex items-center justify-center sm:justify-end gap-1 mt-1">Odwiedź stronę <i class="fa-solid fa-external-link-alt text-[10px]"></i></span>
+                        <span class="block font-bold text-slate-900 group-hover:text-brandRed transition">Wszystko o TRAMsporcie</span>
+                        <span class="text-xs text-zinc-500 flex items-center justify-center sm:justify-end gap-1.5 mt-1">Odwiedź stronę <i class="fa-solid fa-external-link-alt text-[10px]"></i></span>
                     </div>
                 </a>
 
-                <div class="partner-card bg-white border border-zinc-200 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="glass-card p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-black/5">
                     <div class="flex items-center gap-4">
                         <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_rakso_szerokie.svg" 
                              alt="RAKSO Web Development" 
-                             class="h-10 w-auto object-contain">
+                             class="h-10 w-auto object-contain transition">
                     </div>
                     <div class="text-center sm:text-right">
-                        <span class="block font-bold text-zinc-900">RAKSO Web Development</span>
+                        <span class="block font-bold text-slate-900">RAKSO Web Development</span>
+                        <span class="text-xs text-zinc-500 mt-1 block">Partner Technologiczny</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-   <div class="bg-white border-t border-b border-zinc-200 py-6 reveal-on-scroll">
-        <div class="max-w-[1300px] mx-auto px-4 flex flex-col lg:flex-row items-stretch bg-white shadow-sm border border-zinc-200 overflow-hidden">
-            <div class="bg-white px-8 py-6 flex items-center justify-start lg:w-1/3 border-b lg:border-b-0 lg:border-r border-zinc-200">
-                <img src="liw-content/liw_zakoch_black-2.png" 
+    <div class="glass-panel border-t border-black/10 py-8 reveal-on-scroll">
+        <div class="max-w-[1300px] mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="flex items-center">
+                <img id="footer-logo" src="liw-content/liw_zakoch_black-2.png" 
                      alt="Logo LiW" 
-                     class="h-14 w-auto object-contain">
+                     class="h-12 w-auto object-contain transition">
             </div>
             
-            <div class="bg-wtpRed text-white flex-grow px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-3 text-sm font-semibold">
-                    <a href="regulamin.html" class="nav-link hover:underline">Regulamin gry i Serwera</a>
-                    <a href="kontakt.html" class="nav-link hover:underline">Kontakt</a>
-                </div>
+            <div class="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm font-semibold text-zinc-600">
+                <a href="regulamin.html" class="nav-link hover:text-brandRed transition">Regulamin gry i Serwera</a>
+                <a href="kontakt.html" class="nav-link hover:text-brandRed transition">Kontakt</a>
+            </div>
 
-                <div class="flex items-center shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 34" role="img" aria-label="Informacja Warszawa 19 115" class="h-10 w-auto fill-white">
-                        <path d="M51.838,10.073l0.228-0.009l0.227-0.026l0.429-1.453h2.395l0.438,1.453l0.222,0.026l0.232,0.009
-                            l0.256-0.009l0.235-0.026L54.456,3.74l-0.253-0.027l-0.252-0.008l-0.275,0.008L53.433,3.74l-2.051,6.299l0.212,0.026L51.838,10.073z
-                            M53.916,4.589l0.963,3.217h-1.921L53.916,4.589z M85.301,10.073l0.229-0.009l0.229-0.026l0.428-1.453h2.393l0.437,1.453
-                            l0.227,0.026l0.229,0.009l0.254-0.009l0.238-0.026L87.918,3.74l-0.252-0.027l-0.253-0.008L87.14,3.713L86.897,3.74l-2.053,6.299
-                            l0.215,0.026L85.301,10.073z M87.377,4.589l0.966,3.217h-1.921L87.377,4.589z M62.641,9.987l-0.359-0.115l0.081-0.394l0.129-0.393
-                            c0.193,0.07,0.396,0.128,0.605,0.182c0.211,0.055,0.469,0.081,0.771,0.081c0.479,0,0.837-0.098,1.071-0.294
-                            c0.239-0.196,0.355-0.46,0.355-0.79c0-0.169-0.023-0.306-0.072-0.423l-0.225-0.301l-0.371-0.233
-                            c-0.149-0.072-0.324-0.147-0.521-0.229l-0.501-0.201c-0.169-0.071-0.324-0.15-0.464-0.233l-0.364-0.313l-0.241-0.423
-                            c-0.058-0.162-0.085-0.353-0.085-0.574c0-0.532,0.179-0.95,0.541-1.249c0.363-0.302,0.871-0.452,1.525-0.452
-                            c0.281,0,0.545,0.024,0.798,0.072c0.25,0.045,0.473,0.105,0.663,0.175c-0.027,0.244-0.091,0.486-0.19,0.725
-                            c-0.158-0.056-0.341-0.109-0.547-0.157c-0.209-0.045-0.442-0.071-0.708-0.071c-0.365,0-0.648,0.075-0.85,0.224
-                            c-0.196,0.148-0.297,0.373-0.297,0.669L63.461,5.6l0.196,0.255l0.291,0.197l0.351,0.159l0.489,0.193
-                            c0.233,0.091,0.442,0.19,0.623,0.293c0.179,0.103,0.336,0.222,0.464,0.359c0.128,0.136,0.227,0.3,0.295,0.487
-                            c0.065,0.187,0.099,0.406,0.099,0.657c0,0.602-0.209,1.075-0.621,1.424c-0.415,0.346-0.997,0.52-1.744,0.52
-                            c-0.179,0-0.342-0.006-0.489-0.018l-0.409-0.053L62.641,9.987z M66.864,9.962l3.171-5.444h-2.778l-0.023-0.183l-0.01-0.203
-                            l0.01-0.203l0.023-0.19h4.096l0.059,0.078L68.23,9.26h2.953l0.029,0.186l0.006,0.208l-0.006,0.202l-0.029,0.183h-4.269L66.864,9.962
-                            z M78.579,10.039L77.063,3.74l0.24-0.027l0.27-0.008l0.249,0.008l0.232,0.027l1.077,5.248L80.43,3.74l0.229-0.027l0.244-0.008
-                            l0.236,0.008l0.228,0.027l1.304,5.3l1.097-5.3l0.205-0.027l0.216-0.008l0.248,0.008L84.66,3.74l-1.514,6.299l-0.248,0.026
-                            l-0.251,0.009l-0.275-0.009l-0.268-0.026L80.86,5.107l-1.265,4.932l-0.266,0.026l-0.269,0.009l-0.24-0.009L78.579,10.039z
-                            M90,25.654c0,1.213-0.206,2.276-0.617,3.196c-0.409,0.919-1.003,1.689-1.773,2.316s-1.709,1.095-2.8,1.407
-                            c-1.093,0.313-2.317,0.469-3.666,0.469c-0.258,0-0.572-0.019-0.956-0.056c-0.379-0.039-0.806-0.096-1.273-0.163
-                            c-0.471-0.066-0.964-0.165-1.479-0.291c-0.521-0.128-1.024-0.281-1.512-0.456c0.02-0.371,0.07-0.759,0.163-1.158
-                            c0.086-0.4,0.187-0.792,0.305-1.174c0.117-0.381,0.237-0.743,0.367-1.085c0.124-0.344,0.26-0.65,0.397-0.924
-                            c0.763,0.273,1.455,0.483,2.08,0.631c0.627,0.147,1.232,0.221,1.818,0.221c0.704,0,1.302-0.079,1.789-0.236s0.881-0.355,1.174-0.6
-                            c0.291-0.246,0.503-0.528,0.629-0.854c0.128-0.32,0.19-0.656,0.19-1.01c0-0.743-0.263-1.341-0.792-1.791
-                            c-0.527-0.446-1.366-0.673-2.522-0.673c-0.468,0-0.969,0.055-1.508,0.161c-0.541,0.108-1.101,0.297-1.688,0.572l-0.763-0.499
-                            l0.439-11.673h10.705c0.178,0.824,0.266,1.534,0.266,2.142c0,0.684-0.088,1.437-0.266,2.259h-6.187l-0.06,3.05
-                            c0.178-0.041,0.343-0.058,0.5-0.058h0.556c0.96,0,1.839,0.136,2.641,0.41c0.801,0.272,1.484,0.675,2.053,1.204
-                            c0.566,0.524,1.005,1.182,1.317,1.964C89.845,23.737,90,24.636,90,25.654z M74.543,26.739c0.179,0.763,0.264,1.486,0.264,2.171
-                            c0,0.722-0.085,1.467-0.264,2.229H61.992c-0.177-0.763-0.264-1.508-0.264-2.229c0-0.685,0.087-1.408,0.264-2.171h3.813V18.41
-                            l-3.168,1.232c-0.177-0.254-0.354-0.547-0.528-0.879c-0.173-0.334-0.34-0.675-0.498-1.028c-0.157-0.352-0.295-0.708-0.41-1.07
-                            c-0.118-0.363-0.205-0.708-0.264-1.042l8.594-3.665h1.26v14.78H74.543z M19.366,24.612c0.25,1.083,0.375,2.111,0.375,3.087
-                            c0,1.028-0.126,2.088-0.375,3.171H1.501c-0.25-1.083-0.375-2.143-0.375-3.171c0-0.976,0.125-2.004,0.375-3.087h5.428V12.758
-                            L2.42,14.509c-0.25-0.36-0.5-0.777-0.752-1.249c-0.247-0.475-0.485-0.962-0.708-1.464c-0.222-0.499-0.418-1.008-0.585-1.521
-                            C0.209,9.759,0.084,9.265,0,8.793l12.229-5.22h1.792v21.039H19.366z M61.179,10.064l-0.475-0.026l-2.015-2.917V7.087l0.07-0.019
-                            c0.159-0.042,0.32-0.096,0.502-0.166c0.173-0.07,0.334-0.165,0.481-0.276l0.375-0.412c0.099-0.161,0.149-0.354,0.149-0.583
-                            c0-0.42-0.125-0.734-0.375-0.938c-0.246-0.204-0.58-0.306-1.001-0.306l-0.277,0.01l-0.287,0.024v5.617l-0.21,0.018l-0.224,0.008
-                            l-0.227-0.003l-0.23-0.023V3.73l0.351-0.034l0.311-0.032l0.32-0.021l0.368-0.01c0.294,0,0.591,0.029,0.884,0.087
-                            c0.293,0.061,0.551,0.163,0.779,0.308c0.228,0.148,0.414,0.342,0.556,0.594c0.146,0.248,0.217,0.561,0.217,0.942
-                            c0,0.226-0.039,0.434-0.114,0.621c-0.076,0.188-0.173,0.353-0.291,0.498l-0.397,0.382l-0.434,0.266l-0.104,0.054l1.832,2.654
-                            C61.554,10.057,61.379,10.064,61.179,10.064z M76.147,10.064l0.232,0.009l0.255-0.009l0.236-0.026L74.828,3.74l-0.254-0.027
-                            l-0.253-0.008L74.05,3.713L73.806,3.74l-2.05,6.299l0.214,0.026l0.242,0.009l0.226-0.009l0.229-0.026l0.431-1.453h2.391l0.438,1.453
-                            L76.147,10.064z M73.332,7.806l0.954-3.217l0.965,3.217H73.332z M31.175,3.201c-1.444,0-2.808,0.223-4.088,0.667
-                            c-1.282,0.445-2.4,1.106-3.362,1.98c-0.957,0.879-1.717,1.962-2.273,3.257c-0.556,1.292-0.836,2.788-0.836,4.487
-                            c0,1.695,0.231,3.143,0.69,4.34c0.458,1.196,1.085,2.178,1.879,2.942c0.792,0.767,1.711,1.327,2.754,1.69
-                            c1.042,0.362,2.162,0.541,3.359,0.541c1.169,0,2.165-0.165,2.983-0.499c0.821-0.335,1.386-0.694,1.691-1.086l0.125,0.083
-                            c-0.305,0.865-0.758,1.649-1.357,2.359c-0.596,0.709-1.3,1.321-2.106,1.836c-0.808,0.515-1.697,0.934-2.672,1.252
-                            c-0.973,0.319-2.001,0.521-3.088,0.605c-0.138,0.335-0.252,0.764-0.334,1.294c-0.083,0.531-0.125,1.127-0.125,1.795
-                            c0,0.809,0.099,1.494,0.293,2.064c0.196,0.57,0.404,0.968,0.627,1.189c2.894-0.248,5.391-0.932,7.493-2.045
-                            c2.098-1.112,3.825-2.511,5.173-4.193c1.35-1.683,2.346-3.598,2.983-5.738c0.641-2.143,0.961-4.383,0.961-6.719
-                            c0-4.064-0.919-7.095-2.755-9.099S34.68,3.201,31.175,3.201z M33.721,16.515c-0.667,0.695-1.532,1.043-2.587,1.043
-                            c-0.973,0-1.786-0.343-2.44-1.023c-0.655-0.683-0.982-1.774-0.982-3.276c0-1.447,0.346-2.517,1.043-3.212
-                            C29.451,9.348,30.3,9.001,31.3,9.001c1.004,0,1.824,0.377,2.464,1.128c0.638,0.75,0.958,1.863,0.958,3.338
-                            C34.723,14.802,34.391,15.819,33.721,16.515z M58.827,26.739c0.175,0.763,0.262,1.486,0.262,2.171
-                            c0,0.722-0.087,1.467-0.262,2.229H46.273c-0.177-0.763-0.266-1.508-0.266-2.229c0-0.685,0.089-1.408,0.266-2.171h3.813V18.41
-                            l-3.169,1.232c-0.175-0.254-0.35-0.547-0.529-0.879c-0.174-0.334-0.34-0.675-0.497-1.028c-0.154-0.352-0.293-0.708-0.41-1.07
-                            c-0.117-0.363-0.203-0.708-0.263-1.042l8.592-3.665h1.263v14.78H58.827z M45.356,10.064l-0.24-0.026L43.599,3.74l0.242-0.027
-                            l0.269-0.008l0.248,0.008L44.59,3.74l1.08,5.248l1.294-5.248l0.232-0.027l0.241-0.008l0.236,0.008l0.228,0.027l1.308,5.3l1.094-5.3
-                            l0.206-0.027l0.214-0.008l0.25,0.008l0.227,0.027l-1.519,6.299l-0.243,0.026l-0.254,0.009l-0.273-0.009l-0.271-0.026l-1.244-4.932
-                            l-1.264,4.932l-0.266,0.026l-0.268,0.009L45.356,10.064z"/>
-                    </svg>
-                </div>
+            <div class="flex items-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 34" role="img" aria-label="Informacja Warszawa 19 115" class="h-9 w-auto fill-slate-800 transition-colors">
+                    <path d="M51.838,10.073l0.228-0.009l0.227-0.026l0.429-1.453h2.395l0.438,1.453l0.222,0.026l0.232,0.009
+                        l0.256-0.009l0.235-0.026L54.456,3.74l-0.253-0.027l-0.252-0.008l-0.275,0.008L53.433,3.74l-2.051,6.299l0.212,0.026L51.838,10.073z
+                        M53.916,4.589l0.963,3.217h-1.921L53.916,4.589z M85.301,10.073l0.229-0.009l0.229-0.026l0.428-1.453h2.393l0.437,1.453
+                        l0.227,0.026l0.229,0.009l0.254-0.009l0.238-0.026L87.918,3.74l-0.252-0.027l-0.253-0.008L87.14,3.713L86.897,3.74l-2.053,6.299
+                        l0.215,0.026L85.301,10.073z M87.377,4.589l0.966,3.217h-1.921L87.377,4.589z M62.641,9.987l-0.359-0.115l0.081-0.394l0.129-0.393
+                        c0.193,0.07,0.396,0.128,0.605,0.182c0.211,0.055,0.469,0.081,0.771,0.081c0.479,0,0.837-0.098,1.071-0.294
+                        c0.239-0.196,0.355-0.46,0.355-0.79c0-0.169-0.023-0.306-0.072-0.423l-0.225-0.301l-0.371-0.233
+                        c-0.149-0.072-0.324-0.147-0.521-0.229l-0.501-0.201c-0.169-0.071-0.324-0.15-0.464-0.233l-0.364-0.313l-0.241-0.423
+                        c-0.058-0.162-0.085-0.353-0.085-0.574c0-0.532,0.179-0.95,0.541-1.249c0.363-0.302,0.871-0.452,1.525-0.452
+                        c0.281,0,0.545,0.024,0.798,0.072c0.25,0.045,0.473,0.105,0.663,0.175c-0.027,0.244-0.091,0.486-0.19,0.725
+                        c-0.158-0.056-0.341-0.109-0.547-0.157c-0.209-0.045-0.442-0.071-0.708-0.071c-0.365,0-0.648,0.075-0.85,0.224
+                        c-0.196,0.148-0.297,0.373-0.297,0.669L63.461,5.6l0.196,0.255l0.291,0.197l0.351,0.159l0.489,0.193
+                        c0.233,0.091,0.442,0.19,0.623,0.293c0.179,0.103,0.336,0.222,0.464,0.359c0.128,0.136,0.227,0.3,0.295,0.487
+                        c0.065,0.187,0.099,0.406,0.099,0.657c0,0.602-0.209,1.075-0.621,1.424c-0.415,0.346-0.997,0.52-1.744,0.52
+                        c-0.179,0-0.342-0.006-0.489-0.018l-0.409-0.053L62.641,9.987z M66.864,9.962l3.171-5.444h-2.778l-0.023-0.183l-0.01-0.203
+                        l0.01-0.203l0.023-0.19h4.096l0.059,0.078L68.23,9.26h2.953l0.029,0.186l0.006,0.208l-0.006,0.202l-0.029,0.183h-4.269L66.864,9.962
+                        z M78.579,10.039L77.063,3.74l0.24-0.027l0.27-0.008l0.249,0.008l0.232,0.027l1.077,5.248L80.43,3.74l0.229-0.027l0.244-0.008
+                        l0.236,0.008l0.228,0.027l1.304,5.3l1.097-5.3l0.205-0.027l0.216-0.008l0.248,0.008L84.66,3.74l-1.514,6.299l-0.248,0.026
+                        l-0.251,0.009l-0.275-0.009l-0.268-0.026L80.86,5.107l-1.265,4.932l-0.266,0.026l-0.269,0.009l-0.24-0.009L78.579,10.039z
+                        M90,25.654c0,1.213-0.206,2.276-0.617,3.196c-0.409,0.919-1.003,1.689-1.773,2.316s-1.709,1.095-2.8,1.407
+                        c-1.093,0.313-2.317,0.469-3.666,0.469c-0.258,0-0.572-0.019-0.956-0.056c-0.379-0.039-0.806-0.096-1.273-0.163
+                        c-0.471-0.066-0.964-0.165-1.479-0.291c-0.521-0.128-1.024-0.281-1.512-0.456c0.02-0.371,0.07-0.759,0.163-1.158
+                        c0.086-0.4,0.187-0.792,0.305-1.174c0.117-0.381,0.237-0.743,0.367-1.085c0.124-0.344,0.26-0.65,0.397-0.924
+                        c0.763,0.273,1.455,0.483,2.08,0.631c0.627,0.147,1.232,0.221,1.818,0.221c0.704,0,1.302-0.079,1.789-0.236s0.881-0.355,1.174-0.6
+                        c0.291-0.246,0.503-0.528,0.629-0.854c0.128-0.32,0.19-0.656,0.19-1.01c0-0.743-0.263-1.341-0.792-1.791
+                        c-0.527-0.446-1.366-0.673-2.522-0.673c-0.468,0-0.969,0.055-1.508,0.161c-0.541,0.108-1.101,0.297-1.688,0.572l-0.763-0.499
+                        l0.439-11.673h10.705c0.178,0.824,0.266,1.534,0.266,2.142c0,0.684-0.088,1.437-0.266,2.259h-6.187l-0.06,3.05
+                        c0.178-0.041,0.343-0.058,0.5-0.058h0.556c0.96,0,1.839,0.136,2.641,0.41c0.801,0.272,1.484,0.675,2.053,1.204
+                        c0.566,0.524,1.005,1.182,1.317,1.964C89.845,23.737,90,24.636,90,25.654z M74.543,26.739c0.179,0.763,0.264,1.486,0.264,2.171
+                        c0,0.722-0.085,1.467-0.264,2.229H61.992c-0.177-0.763-0.264-1.508-0.264-2.229c0-0.685,0.087-1.408,0.264-2.171h3.813V18.41
+                        l-3.168,1.232c-0.177-0.254-0.354-0.547-0.528-0.879c-0.173-0.334-0.34-0.675-0.498-1.028c-0.157-0.352-0.295-0.708-0.41-1.07
+                        c-0.118-0.363-0.205-0.708-0.264-1.042l8.594-3.665h1.26v14.78H74.543z M19.366,24.612c0.25,1.083,0.375,2.111,0.375,3.087
+                        c0,1.028-0.126,2.088-0.375,3.171H1.501c-0.25-1.083-0.375-2.143-0.375-3.171c0-0.976,0.125-2.004,0.375-3.087h5.428V12.758
+                        L2.42,14.509c-0.25-0.36-0.5-0.777-0.752-1.249c-0.247-0.475-0.485-0.962-0.708-1.464c-0.222-0.499-0.418-1.008-0.585-1.521
+                        C0.209,9.759,0.084,9.265,0,8.793l12.229-5.22h1.792v21.039H19.366z M61.179,10.064l-0.475-0.026l-2.015-2.917V7.087l0.07-0.019
+                        c0.159-0.042,0.32-0.096,0.502-0.166c0.173-0.07,0.334-0.165,0.481-0.276l0.375-0.412c0.099-0.161,0.149-0.354,0.149-0.583
+                        c0-0.42-0.125-0.734-0.375-0.938c-0.246-0.204-0.58-0.306-1.001-0.306l-0.277,0.01l-0.287,0.024v5.617l-0.21,0.018l-0.224,0.008
+                        l-0.227-0.003l-0.23-0.023V3.73l0.351-0.034l0.311-0.032l0.32-0.021l0.368-0.01c0.294,0,0.591,0.029,0.884,0.087
+                        c0.293,0.061,0.551,0.163,0.779,0.308c0.228,0.148,0.414,0.342,0.556,0.594c0.146,0.248,0.217,0.561,0.217,0.942
+                        c0,0.226-0.039,0.434-0.114,0.621c-0.076,0.188-0.173,0.353-0.291,0.498l-0.397,0.382l-0.434,0.266l-0.104,0.054l1.832,2.654
+                        C61.554,10.057,61.379,10.064,61.179,10.064z M76.147,10.064l0.232,0.009l0.255-0.009l0.236-0.026L74.828,3.74l-0.254-0.027
+                        l-0.253-0.008L74.05,3.713L73.806,3.74l-2.05,6.299l0.214,0.026l0.242,0.009l0.226-0.009l0.229-0.026l0.431-1.453h2.391l0.438,1.453
+                        L76.147,10.064z M73.332,7.806l0.954-3.217l0.965,3.217H73.332z M31.175,3.201c-1.444,0-2.808,0.223-4.088,0.667
+                        c-1.282,0.445-2.4,1.106-3.362,1.98c-0.957,0.879-1.717,1.962-2.273,3.257c-0.556,1.292-0.836,2.788-0.836,4.487
+                        c0,1.695,0.231,3.143,0.69,4.34c0.458,1.196,1.085,2.178,1.879,2.942c0.792,0.767,1.711,1.327,2.754,1.69
+                        c1.042,0.362,2.162,0.541,3.359,0.541c1.169,0,2.165-0.165,2.983-0.499c0.821-0.335,1.386-0.694,1.691-1.086l0.125,0.083
+                        c-0.305,0.865-0.758,1.649-1.357,2.359c-0.596,0.709-1.3,1.321-2.106,1.836c-0.808,0.515-1.697,0.934-2.672,1.252
+                        c-0.973,0.319-2.001,0.521-3.088,0.605c-0.138,0.335-0.252,0.764-0.334,1.294c-0.083,0.531-0.125,1.127-0.125,1.795
+                        c0,0.809,0.099,1.494,0.293,2.064c0.196,0.57,0.404,0.968,0.627,1.189c2.894-0.248,5.391-0.932,7.493-2.045
+                        c2.098-1.112,3.825-2.511,5.173-4.193c1.35-1.683,2.346-3.598,2.983-5.738c0.641-2.143,0.961-4.383,0.961-6.719
+                        c0-4.064-0.919-7.095-2.755-9.099S34.68,3.201,31.175,3.201z M33.721,16.515c-0.667,0.695-1.532,1.043-2.587,1.043
+                        c-0.973,0-1.786-0.343-2.44-1.023c-0.655-0.683-0.982-1.774-0.982-3.276c0-1.447,0.346-2.517,1.043-3.212
+                        C29.451,9.348,30.3,9.001,31.3,9.001c1.004,0,1.824,0.377,2.464,1.128c0.638,0.75,0.958,1.863,0.958,3.338
+                        C34.723,14.802,34.391,15.819,33.721,16.515z M58.827,26.739c0.175,0.763,0.262,1.486,0.262,2.171
+                        c0,0.722-0.087,1.467-0.262,2.229H46.273c-0.177-0.763-0.266-1.508-0.266-2.229c0-0.685,0.089-1.408,0.266-2.171h3.813V18.41
+                        l-3.169,1.232c-0.175-0.254-0.35-0.547-0.529-0.879c-0.174-0.334-0.34-0.675-0.497-1.028c-0.154-0.352-0.293-0.708-0.41-1.07
+                        c-0.117-0.363-0.203-0.708-0.263-1.042l8.592-3.665h1.263v14.78H58.827z M45.356,10.064l-0.24-0.026L43.599,3.74l0.242-0.027
+                        l0.269-0.008l0.248,0.008L44.59,3.74l1.08,5.248l1.294-5.248l0.232-0.027l0.241-0.008l0.236,0.008l0.228,0.027l1.308,5.3l1.094-5.3
+                        l0.206-0.027l0.214-0.008l0.25,0.008l0.227,0.027l-1.519,6.299l-0.243,0.026l-0.254,0.009l-0.273-0.009l-0.271-0.026l-1.244-4.932
+                        l-1.264,4.932l-0.266,0.026l-0.268,0.009L45.356,10.064z"/>
+                </svg>
             </div>
         </div>
     </div>
 
-    <footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-800 py-8 text-xs reveal-on-scroll">
-        <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
-            <p>&copy; 2026 Life in Warsaw</p>
-            <p class="text-zinc-500">UWAGA! Ta strona nie jest oficjalną stroną WTP ani ZTM.</p>
+    <footer class="bg-slate-100 text-zinc-500 py-6 text-xs border-t border-black/5 transition-colors">
+        <div class="max-w-[1300px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
+            <p>&copy; 2026 Life in Warsaw. Wszelkie prawa zastrzeżone.</p>
+            <p class="text-zinc-600">UWAGA! Ta strona nie jest oficjalną stroną WTP ani ZTM.</p>
         </div>
     </footer>
 
-    <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md bg-white border border-zinc-200 shadow-2xl z-[99999] p-6 rounded-none transition-all duration-500 translate-y-32 opacity-0">
+    <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md glass-card z-[99999] p-6 rounded-2xl transition-all duration-500 translate-y-32 opacity-0 border border-black/10 shadow-2xl">
         <div class="flex items-start gap-4">
-            <div class="text-wtpRed text-2xl mt-1">
+            <div class="text-brandRed text-2xl mt-1">
                 <i class="fa-solid fa-cookie-bite"></i>
             </div>
             <div>
-                <h3 class="font-bold text-zinc-900 text-base mb-1">Dbamy o Twoją prywatność</h3>
+                <h3 class="font-bold text-slate-900 text-base mb-1">Dbamy o Twoją prywatność</h3>
                 <p class="text-xs text-zinc-600 leading-relaxed mb-4">
                     Nasza strona korzysta z plików cookies w celu zapewnienia prawidłowego działania oraz poprawy jakości usług. Korzystając ze strony, wyrażasz na to zgodę.
                 </p>
                 <div class="flex gap-3">
-                    <button id="accept-cookies" class="wtp-btn !py-2 !px-4 !text-xs">Akceptuję</button>
-                    <button id="decline-cookies" class="bg-zinc-200 hover:bg-zinc-300 text-zinc-800 font-semibold text-xs py-2 px-4 transition">Odrzuć</button>
+                    <button id="accept-cookies" class="cyber-button !py-2 !px-4 !text-xs !rounded-lg">Akceptuję</button>
+                    <button id="decline-cookies" class="bg-black/5 hover:bg-black/10 text-zinc-700 font-semibold text-xs py-2 px-4 rounded-lg transition">Odrzuć</button>
                 </div>
             </div>
         </div>
@@ -438,13 +404,13 @@
                 if (overlay) {
                     overlay.classList.add('fade-out');
                 }
-            }, 1800);
+            }, 1200);
 
             const cookieBanner = document.getElementById('cookie-banner');
             if (!localStorage.getItem('cookies_accepted')) {
                 setTimeout(() => {
                     cookieBanner.classList.remove('translate-y-32', 'opacity-0');
-                }, 2200);
+                }, 1800);
             }
 
             document.getElementById('accept-cookies').addEventListener('click', () => {
@@ -496,7 +462,7 @@
                             } else {
                                 window.location.href = href;
                             }
-                        }, 1600);
+                        }, 1200);
                     }
                 });
             });
