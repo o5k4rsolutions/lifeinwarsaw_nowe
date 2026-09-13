@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl" id="html-root">
+<html lang="pl" id="html-root" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life in Warsaw</title>
-    <link rel="icon" type="image/svg+xml" href="https://liw-roblox.vercel.app/liw-content/liw_zakoch.svg">
+    <link rel="icon" type="image/x-icon" href="liw-content/liw_waskieshort.svg">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,7 +20,7 @@
                         wtpRed: '#d91e18',
                         wtpRedHover: '#b51813',
                         wtpDark: '#1b1b1b',
-                        wtpBg: '#f4f4f4',
+                        wtpBg: '#f9f9f9',
                     }
                 }
             }
@@ -31,224 +31,236 @@
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #222222;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        .dark body {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
 
-        #bus-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
+        .wtp-btn {
+            position: relative;
+            background-color: #d91e18;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 0px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-        .dark #bus-overlay {
-            background-color: #121212;
-        }
-        #bus-overlay.fade-out {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .jump-bars {
-            display: flex;
-            gap: 6px;
-            margin-top: 24px;
-        }
-        .jump-bars span {
-            display: inline-block;
-            width: 6px;
-            height: 28px;
-            background-color: #d91e18;
-            animation: jumpBar 1.2s infinite ease-in-out;
-        }
-        .jump-bars span:nth-child(2) { animation-delay: 0.15s; }
-        .jump-bars span:nth-child(3) { animation-delay: 0.3s; }
-        .jump-bars span:nth-child(4) { animation-delay: 0.45s; }
-        .jump-bars span:nth-child(5) { animation-delay: 0.6s; }
-
-        @keyframes jumpBar {
-            0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
-            50% { transform: scaleY(1.2); opacity: 1; background-color: #b51813; }
-        }
-
-        .btn-fill-hover {
-            position: relative;
+            padding: 12px 28px;
+            font-size: 14px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
             overflow: hidden;
             z-index: 1;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(217, 30, 24, 0.25);
         }
-        .btn-fill-hover::before {
+
+        .wtp-btn::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background-color: #ffffff;
-            z-index: -1;
+            background-color: #b51813;
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: -1;
         }
-        .btn-fill-hover:hover::before {
+
+        .wtp-btn:hover::before {
             transform: translateX(100%);
         }
-        .btn-fill-hover:hover {
-            color: #d91e18 !important;
+
+        .wtp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(217, 30, 24, 0.4);
+        }
+
+        .wtp-btn-discord {
+            background-color: #5865F2;
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.25);
+        }
+        .wtp-btn-discord::before {
+            background-color: #4752C4;
+        }
+        .wtp-btn-discord:hover {
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
         }
 
         .wtp-circle-icon {
-            width: 90px;
-            height: 90px;
+            width: 110px;
+            height: 110px;
             background-color: #d91e18;
             border-radius: 9999px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+            position: relative;
+            box-shadow: 0 6px 18px rgba(217, 30, 24, 0.25);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .wtp-circle-item:hover .wtp-circle-icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1) rotate(6deg);
             background-color: #b51813;
+            box-shadow: 0 12px 28px rgba(217, 30, 24, 0.45);
         }
+
         .wtp-circle-icon svg {
-            width: 48px;
-            height: 48px;
+            width: 58px;
+            height: 58px;
+            transition: transform 0.3s ease;
         }
-        .i-bg { fill: #d91e18; transition: fill 0.3s ease; }
-        .wtp-circle-item:hover .i-bg { fill: #b51813; }
-        .i-fg { fill: #ffffff; }
+
+        .wtp-circle-item:hover .wtp-circle-icon svg {
+            transform: scale(1.05);
+        }
+
+        .i-bg {
+            fill: #d91e18;
+            transition: fill 0.3s ease;
+        }
+        .wtp-circle-item:hover .i-bg {
+            fill: #b51813;
+        }
+        .i-fg {
+            fill: #ffffff;
+        }
+
+        .wtp-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .wtp-shadow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        #bus-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: opacity 0.8s ease;
+        }
+        #bus-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-bars {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            height: 40px;
+        }
+        .loader-bar {
+            width: 6px;
+            height: 100%;
+            background-color: #d91e18;
+            border-radius: 4px;
+            animation: bounceBar 1.2s infinite ease-in-out both;
+        }
+        .loader-bar:nth-child(1) { animation-delay: -0.4s; }
+        .loader-bar:nth-child(2) { animation-delay: -0.3s; }
+        .loader-bar:nth-child(3) { animation-delay: -0.2s; }
+        .loader-bar:nth-child(4) { animation-delay: -0.1s; }
+        .loader-bar:nth-child(5) { animation-delay: 0s; }
+
+        @keyframes bounceBar {
+            0%, 40%, 100% {
+                transform: scaleY(0.4);
+            }
+            20% {
+                transform: scaleY(1.1);
+                background-color: #b51813;
+            }
+        }
 
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal-visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        .partner-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .partner-card:hover {
+            transform: translateY(-5px);
+            border-color: #d91e18 !important;
+            box-shadow: 0 10px 25px rgba(217, 30, 24, 0.15);
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="bg-[#f9f9f9] text-[#222222] min-h-screen flex flex-col justify-between selection:bg-wtpRed selection:text-white">
 
     <div id="bus-overlay">
-        <img src="https://liw-roblox.vercel.app/liw-content/liw_zakoch.svg" alt="Life in Warsaw Logo" class="w-28 h-28 object-contain mb-2">
-        <h2 class="text-xl font-bold tracking-widest text-zinc-800 dark:text-zinc-200 mt-2 uppercase text-xs">Life in Warsaw</h2>
-        <div class="jump-bars">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <img src="https://liw-roblox.vercel.app/liw-content/logo_liw-szerokie_nowe_biale.svg" 
+             alt="Life in Warsaw Logo" 
+             class="h-16 w-auto filter drop-shadow-sm brightness-0"
+             onerror="this.src='https://placehold.co/220x60/d91e18/ffffff?text=Life+in+Warsaw'">
+        <div class="loader-bars">
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
         </div>
-        <p class="text-xs text-zinc-500 mt-4 tracking-wider uppercase font-semibold">Ładowanie...</p>
+        <div class="text-xs font-bold uppercase tracking-widest text-zinc-500 animate-pulse">Ładowanie...</div>
     </div>
 
     <header class="w-full bg-wtpRed text-white sticky top-0 z-50 shadow-md">
-        <div class="bg-black/10 py-1.5 px-4 flex justify-between items-center max-w-[1300px] mx-auto text-xs">
-            <button id="theme-toggle" onclick="toggleTheme()" class="flex items-center gap-1.5 bg-black/20 hover:bg-black/30 text-white font-semibold px-2.5 py-1 text-[11px] uppercase tracking-wider transition border border-white/20 rounded-sm cursor-pointer">
-                <i id="theme-icon" class="fa-solid fa-moon"></i>
-                <span id="theme-text">Motyw Ciemny</span>
-            </button>
-        </div>
-
-        <div class="max-w-[1300px] mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="nav-link flex items-center gap-3 group">
-                <img src="https://liw-roblox.vercel.app/liw-content/liw_zakoch_white.svg" alt="Life in Warsaw Logo" class="h-12 w-12 object-contain group-hover:scale-105 transition">
-                <div class="flex flex-col">
-                    <span class="font-black text-lg md:text-xl tracking-tight leading-none">LIFE IN WARSAW</span>
-                </div>
+        <div class="max-w-[1300px] mx-auto px-4 py-4 flex justify-center items-center">
+            <a href="#" class="nav-link flex items-center justify-center group">
+                <img src="https://liw-roblox.vercel.app/liw-content/logo_liw-szerokie_nowe_biale.svg" 
+                     alt="Life in Warsaw Logo" 
+                     class="h-16 md:h-20 w-auto transition-transform duration-300 group-hover:scale-105">
             </a>
-            <nav class="hidden md:flex items-center gap-6 font-semibold text-sm">
-                <a href="#o-grze" class="hover:underline opacity-90 hover:opacity-100 transition">O grze</a>
-                <a href="#funkcje" class="hover:underline opacity-90 hover:opacity-100 transition">Komunikacja</a>
-                <a href="#partnerzy" class="hover:underline opacity-90 hover:opacity-100 transition">Partnerzy</a>
-                <a href="https://www.roblox.com" target="_blank" class="nav-link bg-white text-wtpRed px-4 py-2 text-xs font-bold uppercase rounded-sm shadow hover:bg-zinc-100 transition">Zagraj teraz</a>
-            </nav>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <section class="relative bg-zinc-900 text-white overflow-hidden">
-            <!-- Slider container -->
-            <div id="hero-slider" class="relative w-full h-[450px] md:h-[520px]">
-                <!-- Slide 1 -->
-                <div class="slide absolute inset-0 opacity-100 transition-opacity duration-1000 flex items-center" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com/o5k4rsolutions/liw/e148f091442cabfabb6d8b17fab3d5882b9e8543/liw-content/warsawpanorama.png') center/cover no-repeat;">
-                    <div class="max-w-[1300px] mx-auto px-6 md:px-12 w-full z-10">
-                        <span class="bg-wtpRed text-white text-[11px] font-bold px-3 py-1 uppercase tracking-widest inline-block mb-3">Witaj w stolicy</span>
-                        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 max-w-2xl leading-tight">Life in Warsaw na Roblox – Poczuj klimat prawdziwego miasta!</h1>
-                        <p class="text-zinc-200 text-sm md:text-base max-w-xl mb-6 font-light leading-relaxed">Rozbudowany symulator warszawskiej komunikacji miejskiej. Prowadź autobusy, tramwaje, zwiedzaj wiernie odwzorowane ulice Warszawy.</p>
-                        <div class="flex flex-wrap gap-4">
-                            <a href="https://www.roblox.com" target="_blank" class="nav-link wtp-btn bg-wtpRed hover:bg-wtpRedHover btn-fill-hover px-6 py-3 font-bold text-xs uppercase tracking-wider rounded shadow transition inline-flex items-center gap-2">
-                                <span class="relative z-10">Zagraj na Roblox &raquo;</span>
-                            </a>
-                            <a href="https://discord.gg/jrpxW8W7Qa" target="_blank" class="nav-link wtp-btn bg-[#5865F2] hover:bg-[#4752C4] btn-fill-hover px-6 py-3 font-bold text-xs uppercase tracking-wider rounded shadow transition inline-flex items-center gap-2">
-                                <span class="relative z-10">Dołącz na Discord &raquo;</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Slide 2 -->
-                <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 flex items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
-                    <div class="max-w-[1300px] mx-auto px-6 md:px-12 w-full z-10">
-                        <span class="bg-blue-600 text-white text-[11px] font-bold px-3 py-1 uppercase tracking-widest inline-block mb-3">Linie Autobusowe i Tramwajowe</span>
-                        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 max-w-2xl leading-tight">Punktualność, bilety i rozkłady jazdy jak w ZTM</h2>
-                        <p class="text-zinc-200 text-sm md:text-base max-w-xl mb-6 font-light leading-relaxed">Pilnuj rozkładu, kasuj bilety i dbaj o bezpieczny przewóz pasażerów po lewej i prawej stronie Wisły.</p>
-                        <div class="flex flex-wrap gap-4">
-                            <a href="https://discord.gg/jrpxW8W7Qa" target="_blank" class="nav-link wtp-btn bg-wtpRed hover:bg-wtpRedHover btn-fill-hover px-6 py-3 font-bold text-xs uppercase tracking-wider rounded shadow transition inline-flex items-center gap-2">
-                                <span class="relative z-10">Sprawdź rozkłady &raquo;</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 flex items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
-                    <div class="max-w-[1300px] mx-auto px-6 md:px-12 w-full z-10">
-                        <span class="bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 uppercase tracking-widest inline-block mb-3">Aktywna Społeczność</span>
-                        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 max-w-2xl leading-tight">Dołącz do setek pasjonatów transportu</h2>
-                        <p class="text-zinc-200 text-sm md:text-base max-w-xl mb-6 font-light leading-relaxed">Czekają na Ciebie eventy, rekrutacje na kierowców oraz wyjątkowa atmosfera polskiej społeczności Roblox.</p>
-                        <div class="flex flex-wrap gap-4">
-                            <a href="https://discord.gg/jrpxW8W7Qa" target="_blank" class="nav-link wtp-btn bg-[#5865F2] hover:bg-[#4752C4] btn-fill-hover px-6 py-3 font-bold text-xs uppercase tracking-wider rounded shadow transition inline-flex items-center gap-2">
-                                <span class="relative z-10">Serwer Discord &raquo;</span>
-                            </a>
-                        </div>
-                    </div>
+    <main class="flex-grow" id="features">
+        <section class="relative bg-zinc-900 text-white overflow-hidden reveal-on-scroll">
+            <div class="absolute inset-0 opacity-40 bg-cover bg-center transform hover:scale-105 transition-transform duration-1000" style="background-image: url('https://raw.githubusercontent.com/o5k4rsolutions/liw/e148f091442cabfabb6d8b17fab3d5882b9e8543/liw-content/warsawpanorama.png');"></div>
+            
+            <div class="max-w-[1300px] mx-auto px-4 py-20 md:py-32 relative z-10 text-center">
+                <h1 class="text-3xl md:text-6xl font-extrabold tracking-tight mb-6 drop-shadow-md">Wirtualny Transport Publiczny w Warszawie</h1>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="https://www.roblox.com" target="_blank" class="nav-link wtp-btn group">
+                        <span class="flex items-center gap-2">Zagraj na Roblox <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+                    </a>
+                    <a href="discord.html" target="_blank" class="nav-link wtp-btn wtp-btn-discord group">
+                        <span class="flex items-center gap-2"><i class="fa-brands fa-discord"></i> Serwer Discord <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+                    </a>
                 </div>
             </div>
-
-            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-sm z-20 transition cursor-pointer" aria-label="Poprzedni slajd">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-sm z-20 transition cursor-pointer" aria-label="Następny slajd">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
         </section>
 
-        <section id="funkcje" class="max-w-[1300px] mx-auto px-4 -mt-10 relative z-20 mb-16 reveal-on-scroll">
-            <div class="bg-white dark:bg-[#1e1e1e] rounded-sm shadow-xl p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 gap-8 text-center max-w-2xl mx-auto border border-zinc-200 dark:border-zinc-800">
+        <section class="max-w-[1300px] mx-auto px-4 -mt-10 relative z-20 mb-20 reveal-on-scroll">
+            <div class="bg-white rounded-none wtp-shadow p-8 md:p-12 grid grid-cols-1 sm:grid-cols-2 gap-8 text-center max-w-2xl mx-auto border border-zinc-200">
                 
-                <a href="#rozkklady" class="nav-link wtp-circle-item flex flex-col items-center group p-4 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
+                <a href="rozklad-jazdy.html" class="nav-link wtp-circle-item flex flex-col items-center group">
                     <div class="wtp-circle-icon mb-4 mx-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" role="img" aria-label="Rozkłady jazdy">
                             <path class="i-bg" d="M42,0c23.195,0,42,18.805,42,42c0,23.195-18.805,42-42,42C18.806,84,0,65.195,0,42 C0,18.805,18.806,0,42,0"></path>
                             <path class="i-fg" d="M59.119,54.492h3.293v5.195c0,1.104-0.907,2.016-2.014,2.016h-2.016c0.014,1.602,0.016,2.691,0.016,4.293 c-2.953,0-5.904,0-8.856,0v-4.293h-16.01c0,1.602,0,2.691,0,4.293h-8.869c0-1.613,0.015-2.688,0.025-4.293h-2.014 c-1.105,0-2.014-0.908-2.014-2.016v-5.195h3.293c0.299,1.484,1.613,2.57,3.144,2.57c1.531,0,2.845-1.088,3.144-2.57h22.593 c0.297,1.484,1.611,2.57,3.141,2.57C57.507,57.063,58.82,55.977,59.119,54.492z M73.813,25.125c0,7.179-5.82,13-13,13 c-7.179,0-13-5.821-13-13s5.821-13,13-13C67.992,12.125,73.813,17.946,73.813,25.125z M67.293,29.833L62,25.25l-0.479-10.332 h-0.979l-0.5,11.458l6.583,4.374L67.293,29.833z M59.096,40.764c-0.004-0.001-0.008-0.001-0.012-0.001l-0.453,5.687 c-11.398,0.002-22.788,0.002-34.188,0l-1.338-17.447h22.446c-0.109-0.417-0.203-0.84-0.279-1.27c-7.271,0-14.894,0-22.165,0V21.98 h22.228c0.005-0.025,0.015-0.05,0.021-0.076c0.16-0.848,0.396-1.667,0.685-2.462H22.62c-1.075,0-1.957,0.962-1.957,2.014v7.547 c-1.586,0-3.174,0-4.762,0c0,2.979,0,5.961,0,8.939c1.588,0,3.176,0,4.762,0v15.281h3.293c0.299-1.486,1.613-2.572,3.144-2.572 c1.532,0,2.845,1.086,3.144,2.572h22.591c0.297-1.486,1.613-2.572,3.142-2.572c1.533,0,2.848,1.086,3.145,2.572h3.295V40.828 c-0.445,0.037-0.895,0.068-1.35,0.068C60.396,40.896,59.742,40.843,59.096,40.764z"></path>
                         </svg>
                     </div>
-                    <span class="text-sm md:text-base font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-wtpRed transition">Rozkłady jazdy</span>
+                    <span class="text-sm md:text-base font-bold text-zinc-800 group-hover:text-wtpRed transition">Rozkłady jazdy</span>
                 </a>
 
-                <a href="#bilety" class="nav-link wtp-circle-item flex flex-col items-center group p-4 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
+                <a href="bilety.html" class="nav-link wtp-circle-item flex flex-col items-center group">
                     <div class="wtp-circle-icon mb-4 mx-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" role="img" aria-label="Ceny i rodzaje biletów">
                             <path class="i-bg" d="M42,0.16c23.107,0,41.84,18.733,41.84,41.84c0,23.106-18.732,41.84-41.84,41.84 C18.895,83.84,0.16,65.106,0.16,42C0.16,18.893,18.895,0.16,42,0.16"></path>
@@ -259,87 +271,53 @@
                             <path class="i-fg" d="M51.805,39.271c-0.721,0.101-1.224,0.77-1.121,1.49c0.101,0.719,0.768,1.223,1.488,1.119 c0.721-0.1,1.224-0.766,1.122-1.486S52.524,39.17,51.805,39.271z"></path>
                         </svg>
                     </div>
-                    <span class="text-sm md:text-base font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-wtpRed transition">Ceny i rodzaje biletów</span>
+                    <span class="text-sm md:text-base font-bold text-zinc-800 group-hover:text-wtpRed transition">Ceny i rodzaje biletów</span>
                 </a>
 
             </div>
         </section>
 
-        <section id="o-grze" class="max-w-[1300px] mx-auto px-4 mb-16 reveal-on-scroll">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white dark:bg-[#1e1e1e] p-8 md:p-12 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white mt-2 mb-4">Warszawa w Roblox jak żywa</h2>
-                    <p class="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-4">
-                        Life in Warsaw to wyjątkowa gra na platformie Roblox, która odwzorowuje realia stołecznej komunikacji. Prowadzimy linie autobusowe, tramwajowe, dbamy o pasażerów i rozkłady.
-                    </p>
-                    <p class="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6">
-                        Niezależnie od tego, czy jesteś pasjonatem transportu miejskiego, czy szukasz świetnej zabawy ze znajomymi – u nas znajdziesz coś dla siebie.
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="flex flex-col">
-                            <span class="text-2xl font-black text-wtpRed">100%</span>
-                            <span class="text-xs text-zinc-500 uppercase font-semibold">Klimatu stolicy</span>
-                        </div>
-                        <div class="h-10 w-px bg-zinc-300 dark:bg-zinc-700 mx-2"></div>
-                        <div class="flex flex-col">
-                            <span class="text-2xl font-black text-wtpRed">24/7</span>
-                            <span class="text-xs text-zinc-500 uppercase font-semibold">Aktywna społeczność</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <img src="https://raw.githubusercontent.com/o5k4rsolutions/liw/e148f091442cabfabb6d8b17fab3d5882b9e8543/liw-content/warsawpanorama.png" alt="Warszawa Panorama" class="w-full h-auto object-cover rounded shadow-md">
-                </div>
-            </div>
-        </section>
-
-        <section class="max-w-[1300px] mx-auto px-4 mb-16 reveal-on-scroll">
-            <div class="bg-gradient-to-r from-[#5865F2] to-[#4752C4] text-white rounded shadow-lg p-8 md:p-12 text-center max-w-4xl mx-auto">
-                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 backdrop-blur-sm">
+        <section class="max-w-[1300px] mx-auto px-4 mb-20 reveal-on-scroll">
+            <div class="bg-white border border-zinc-200 wtp-shadow p-8 md:p-12 text-center max-w-3xl mx-auto rounded-none">
+                <div class="w-16 h-16 bg-[#5865F2] text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-md">
                     <i class="fa-brands fa-discord"></i>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Dołącz do naszego serwera Discord!</h2>
-                <p class="text-white/90 text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
-                    Dołącz do społeczności Life in Warsaw. Znajdziesz tam aktualne rozkłady, zgłoszenia zmian, rekrutację na kierowców oraz informacje o grze na Roblox.
+                <h2 class="text-xl md:text-2xl font-bold text-zinc-900 mb-3">Wszystko na naszym serwerze Discord!</h2>
+                <p class="text-zinc-600 text-sm md:text-base mb-8 leading-relaxed">
+                    Dołącz do społeczności Life in Warsaw. Znajdziesz tam aktualne zmiay, rekrutację oraz informacje o grze.
                 </p>
-                <a href="https://discord.gg/jrpxW8W7Qa" target="_blank" class="nav-link inline-flex items-center gap-2 bg-white text-[#5865F2] font-bold px-8 py-3.5 text-sm uppercase rounded shadow hover:bg-zinc-100 transition transform hover:-translate-y-0.5 btn-fill-hover" style="--hover-bg: #f4f4f4;">
-                    <i class="fa-brands fa-discord text-lg relative z-10"></i>
-                    <span class="relative z-10">Dołącz na Discord &raquo;</span>
+                <a href="https://discord.gg/jrpxW8W7Qa" target="_blank" class="nav-link wtp-btn wtp-btn-discord group">
+                    <span class="flex items-center gap-2"><i class="fa-brands fa-discord"></i> Dołącz na Discord <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
                 </a>
             </div>
         </section>
 
-        <section id="partnerzy" class="max-w-[1300px] mx-auto px-4 mb-20 reveal-on-scroll">
+        <section class="max-w-[1300px] mx-auto px-4 mb-20 reveal-on-scroll">
             <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white mt-1">Nasi Partnerzy</h2>
+                <h2 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Partnerzy naszej gry</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white dark:bg-[#1e1e1e] border border-zinc-200 dark:border-zinc-800 p-8 rounded shadow-sm flex flex-col justify-between hover:border-wtpRed transition group">
-                    <div>
-                        <div class="h-16 mb-6 flex items-center">
-                            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="Wszystko o TRAMsporcie" class="h-12 w-auto object-contain filter grayscale contrast-200 dark:invert group-hover:scale-105 transition">
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">Wszystko o TRAMsporcie</h3>
-                        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
-                            Portal poświęcony w całości komunikacji, nowinkom taborowym oraz infrastrukturze miejskiej.
-                        </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/" target="_blank" class="partner-card bg-white border border-zinc-200 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 group">
+                    <div class="flex items-center gap-4">
+                        <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" 
+                             alt="Wszystko o TRAMsporcie" 
+                             class="h-12 w-auto filter brightness-0 object-contain">
                     </div>
-                    <a href="https://wszystko-o-tramsporcie.vercel.app/" target="_blank" class="nav-link inline-flex items-center gap-2 text-xs font-bold uppercase text-wtpRed hover:underline">
-                        <span>Odwiedź stronę partnera</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+                    <div class="text-center sm:text-right">
+                        <span class="block font-bold text-zinc-900 group-hover:text-wtpRed transition">Wszystko o TRAMsporcie</span>
+                        <span class="text-xs text-zinc-500 flex items-center justify-center sm:justify-end gap-1 mt-1">Odwiedź stronę <i class="fa-solid fa-external-link-alt text-[10px]"></i></span>
+                    </div>
+                </a>
 
-                <div class="bg-white dark:bg-[#1e1e1e] border border-zinc-200 dark:border-zinc-800 p-8 rounded shadow-sm flex flex-col justify-between hover:border-wtpRed transition group">
-                    <div>
-                        <div class="h-16 mb-6 flex items-center">
-                            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_rakso_szerokie.svg" alt="RAKSO Web Development" class="h-10 w-auto object-contain filter grayscale contrast-200 dark:invert group-hover:scale-105 transition">
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">RAKSO Web Development</h3>
-                        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
-                            Niezawodny partner technologiczny wspierający nowoczesne rozwiązania webowe oraz rozwój oprogramowania.
-                        </p>
+                <div class="partner-card bg-white border border-zinc-200 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_rakso_szerokie.svg" 
+                             alt="RAKSO Web Development" 
+                             class="h-10 w-auto object-contain">
+                    </div>
+                    <div class="text-center sm:text-right">
+                        <span class="block font-bold text-zinc-900">RAKSO Web Development</span>
                     </div>
                 </div>
             </div>
@@ -349,8 +327,8 @@
    <div class="bg-white border-t border-b border-zinc-200 py-6 reveal-on-scroll">
         <div class="max-w-[1300px] mx-auto px-4 flex flex-col lg:flex-row items-stretch bg-white shadow-sm border border-zinc-200 overflow-hidden">
             <div class="bg-white px-8 py-6 flex items-center justify-start lg:w-1/3 border-b lg:border-b-0 lg:border-r border-zinc-200">
-                <img src="liw-content/liw_zakoch-2.svg" 
-                     alt="Life in Warsaw logo" 
+                <img src="liw-content/liw_zakoch.svg" 
+                     alt="Logo LiW" 
                      class="h-14 w-auto object-contain">
             </div>
             
@@ -427,127 +405,58 @@
             </div>
         </div>
     </div>
-    <footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-800 py-8 text-xs">
+
+    <footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-800 py-8 text-xs reveal-on-scroll">
         <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
-            <p>&copy; 2026 Life in Warsaw &bull; Wszelkie prawa zastrzeżone.</p>
+            <p>&copy; 2026 Life in Warsaw</p>
             <p class="text-zinc-500">UWAGA! Ta strona nie jest oficjalną stroną WTP ani ZTM.</p>
         </div>
     </footer>
 
-    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[99999] bg-zinc-900/95 backdrop-blur-md border-t border-zinc-800 text-white p-4 md:p-6 shadow-2xl transition-transform duration-500 translate-y-full">
-        <div class="max-w-[1300px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-start gap-4">
-                <div class="p-3 bg-wtpRed rounded text-white text-lg shrink-0 mt-0.5">
-                    <i class="fa-solid fa-cookie-bite"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-sm md:text-base mb-1">Pliki cookies i prywatność</h3>
-                    <p class="text-zinc-400 text-xs md:text-sm leading-relaxed">
-                        Nasza strona używa plików cookies w celu zapewnienia prawidłowego działania serwisu oraz analizy ruchu. Korzystając ze strony, wyrażasz zgodę na ich użycie.
-                    </p>
-                </div>
+    <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md bg-white border border-zinc-200 shadow-2xl z-[99999] p-6 rounded-none transition-all duration-500 translate-y-32 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-wtpRed text-2xl mt-1">
+                <i class="fa-solid fa-cookie-bite"></i>
             </div>
-            <div class="flex items-center gap-3 shrink-0">
-                <button onclick="acceptCookies()" class="wtp-btn bg-wtpRed hover:bg-wtpRedHover text-xs px-5 py-2.5 btn-fill-hover font-bold uppercase rounded shadow">
-                    <span class="relative z-10">Akceptuję wszystkie</span>
-                </button>
-                <button onclick="rejectCookies()" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs uppercase px-4 py-2.5 transition rounded-none">
-                    Odrzuć
-                </button>
+            <div>
+                <h3 class="font-bold text-zinc-900 text-base mb-1">Dbamy o Twoją prywatność</h3>
+                <p class="text-xs text-zinc-600 leading-relaxed mb-4">
+                    Nasza strona korzysta z plików cookies w celu zapewnienia prawidłowego działania oraz poprawy jakości usług. Korzystając ze strony, wyrażasz na to zgodę.
+                </p>
+                <div class="flex gap-3">
+                    <button id="accept-cookies" class="wtp-btn !py-2 !px-4 !text-xs">Akceptuję</button>
+                    <button id="decline-cookies" class="bg-zinc-200 hover:bg-zinc-300 text-zinc-800 font-semibold text-xs py-2 px-4 transition">Odrzuć</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        function toggleTheme() {
-            const htmlRoot = document.getElementById('html-root');
-            const themeText = document.getElementById('theme-text');
-            const themeIcon = document.getElementById('theme-icon');
-
-            if (htmlRoot.classList.contains('dark')) {
-                htmlRoot.classList.remove('dark');
-                themeText.textContent = 'Motyw Ciemny';
-                themeIcon.className = 'fa-solid fa-moon';
-                localStorage.setItem('theme', 'light');
-            } else {
-                htmlRoot.classList.add('dark');
-                themeText.textContent = 'Motyw Jasny';
-                themeIcon.className = 'fa-solid fa-sun';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = (i === index) ? '1' : '0';
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        let slideInterval = setInterval(nextSlide, 5000);
-
-        function acceptCookies() {
-            localStorage.setItem('cookies_accepted', 'true');
-            hideCookieBanner();
-        }
-
-        function rejectCookies() {
-            localStorage.setItem('cookies_accepted', 'false');
-            hideCookieBanner();
-        }
-
-        function hideCookieBanner() {
-            const banner = document.getElementById('cookie-banner');
-            if (banner) {
-                banner.style.transform = 'translateY(100%)';
-            }
-        }
-
         window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            const htmlRoot = document.getElementById('html-root');
-            const themeText = document.getElementById('theme-text');
-            const themeIcon = document.getElementById('theme-icon');
-
-            if (savedTheme === 'dark') {
-                htmlRoot.classList.add('dark');
-                themeText.textContent = 'Motyw Jasny';
-                themeIcon.className = 'fa-solid fa-sun';
-            } else {
-                htmlRoot.classList.remove('dark');
-                themeText.textContent = 'Motyw Ciemny';
-                themeIcon.className = 'fa-solid fa-moon';
-            }
-
-            setTimeout(() => {
-                const cookiesAccepted = localStorage.getItem('cookies_accepted');
-                if (!cookiesAccepted) {
-                    const banner = document.getElementById('cookie-banner');
-                    if (banner) {
-                        banner.style.transform = 'translateY(0)';
-                    }
-                }
-            }, 1500);
-
             setTimeout(() => {
                 const overlay = document.getElementById('bus-overlay');
                 if (overlay) {
                     overlay.classList.add('fade-out');
                 }
-            }, 2400);
+            }, 1800);
+
+            const cookieBanner = document.getElementById('cookie-banner');
+            if (!localStorage.getItem('cookies_accepted')) {
+                setTimeout(() => {
+                    cookieBanner.classList.remove('translate-y-32', 'opacity-0');
+                }, 2200);
+            }
+
+            document.getElementById('accept-cookies').addEventListener('click', () => {
+                localStorage.setItem('cookies_accepted', 'true');
+                cookieBanner.classList.add('translate-y-32', 'opacity-0');
+                setTimeout(() => cookieBanner.remove(), 500);
+            });
+
+            document.getElementById('decline-cookies').addEventListener('click', () => {
+                cookieBanner.classList.add('translate-y-32', 'opacity-0');
+                setTimeout(() => cookieBanner.remove(), 500);
+            });
 
             const observerOptions = {
                 root: null,
@@ -565,6 +474,31 @@
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => {
                 observer.observe(el);
+            });
+
+            const links = document.querySelectorAll('a.nav-link');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    const targetAttr = this.getAttribute('target');
+                    
+                    if (href && href !== '#' && !href.startsWith('#')) {
+                        e.preventDefault();
+                        const overlay = document.getElementById('bus-overlay');
+                        if (overlay) {
+                            overlay.classList.remove('fade-out');
+                        }
+                        
+                        setTimeout(() => {
+                            if (targetAttr === '_blank') {
+                                window.open(href, '_blank');
+                                if (overlay) overlay.classList.add('fade-out');
+                            } else {
+                                window.location.href = href;
+                            }
+                        }, 1600);
+                    }
+                });
             });
         });
     </script>
