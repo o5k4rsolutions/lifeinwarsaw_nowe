@@ -1,9 +1,8 @@
 // rekrutacje.js - Konfiguracja rekrutacji Life in Warsaw
 window.LIW_CONFIG = {
-    // Podzielone API Brevo (zabezpieczone przed prostym skanerem)
-    brevoKeyPart1: "xkeysib-6400cab66dd6822a5517b5c3e3007a65ab101f64234f8083529558fdf6c60910-",
-    brevoKeyPart2: "zq6LBpdHlntK1mrA",
-    brevoTemplateId: 3,
+    brevoKeyPart1: "xkeysib-d3f0482eb68403a4f04c24e531b115173882738ec403f75",
+    brevoKeyPart2: "6560ac14e81ca1e62-4ENQ89QyKoqYkmdd",
+    brevoTemplateId: 15,
 
     // Podzielony Webhook Discord
     discordPart1: "https://discord.com/api/webhooks/1551313634184003674/",
