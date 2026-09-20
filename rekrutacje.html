@@ -19,138 +19,52 @@
                         brandRedHover: '#e61e38',
                         brandDark: '#0a0b10',
                         brandCard: '#13151f',
-                        brandBorder: 'rgba(255, 255, 255, 0.08)'
+                        brandBorder: 'rgba(255, 255, 255, 0.08)',
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            overflow-x: hidden;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
+        body { font-family: 'Outfit', sans-serif; background-color: #f8fafc; color: #0f172a; overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease; }
         .dark body { background-color: #0a0b10; color: #f8fafc; }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        }
-        .dark .glass-panel {
-            background: rgba(19, 21, 31, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .dark .glass-card {
-            background: rgba(19, 21, 31, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        .glass-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 51, 75, 0.4);
-            box-shadow: 0 20px 40px rgba(255, 51, 75, 0.12);
-        }
-        .cyber-button {
-            position: relative;
-            background: linear-gradient(135deg, #ff334b 0%, #c91830 100%);
-            color: #ffffff;
-            font-weight: 600;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            font-size: 15px;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(255, 51, 75, 0.3);
-            transition: all 0.3s ease;
-        }
-        .cyber-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 51, 75, 0.5);
-        }
-        .glow-orb {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(255, 51, 75, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
+        .glass-panel { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05); }
+        .dark .glass-panel { background: rgba(19, 21, 31, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.06); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .dark .glass-card { background: rgba(19, 21, 31, 0.9); border: 1px solid rgba(255, 255, 255, 0.07); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .glass-card:hover { transform: translateY(-4px); border-color: rgba(255, 51, 75, 0.4); box-shadow: 0 20px 40px rgba(255, 51, 75, 0.12); }
+        .cyber-button { position: relative; background: linear-gradient(135deg, #ff334b 0%, #c91830 100%); color: #ffffff; font-weight: 600; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; font-size: 15px; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.2); cursor: pointer; overflow: hidden; box-shadow: 0 10px 25px rgba(255, 51, 75, 0.3); transition: all 0.3s ease; }
+        .cyber-button:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(255, 51, 75, 0.5); }
+        .glow-orb { position: absolute; width: 450px; height: 450px; background: radial-gradient(circle, rgba(255, 51, 75, 0.08) 0%, rgba(248, 250, 252, 0) 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
         .dark .glow-orb { background: radial-gradient(circle, rgba(255, 51, 75, 0.12) 0%, rgba(10, 11, 16, 0) 70%); }
-        #bus-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background-color: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            transition: opacity 0.8s ease;
-        }
+        #bus-overlay { position: fixed; inset: 0; z-index: 99999; background-color: #f8fafc; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transition: opacity 0.8s ease; }
         .dark #bus-overlay { background-color: #0a0b10; }
         #bus-overlay.fade-out { opacity: 0; pointer-events: none; }
-        .loader-rings {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            border-top: 3px solid #ff334b;
-            border-radius: 50%;
-            animation: spinRing 1s linear infinite;
-        }
-        .dark .loader-rings {
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid #ff334b;
-        }
-        @keyframes spinRing {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Animacje pytań */
-        .step-slide {
-            animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .loader-rings { width: 60px; height: 60px; border: 3px solid rgba(0, 0, 0, 0.1); border-top: 3px solid #ff334b; border-radius: 50%; animation: spinRing 1s linear infinite; }
+        .dark .loader-rings { border: 3px solid rgba(255, 255, 255, 0.1); border-top: 3px solid #ff334b; }
+        @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* Animacje przejść formularza */
+        .fade-slide { animation: fadeInSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeInSlide { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-brandRed selection:text-white">
 
     <div id="bus-overlay">
-        <img id="overlay-logo" src="https://liw-roblox.vercel.app/liw-content/image-3.svg" alt="Life in Warsaw Logo" class="h-16 w-auto filter brightness-0 contrast-200" onerror="this.src='https://placehold.co/220x60/000000/ffffff?text=Life+in+Warsaw'">
+        <img id="overlay-logo" src="https://liw-roblox.vercel.app/liw-content/image-3.svg" alt="Life in Warsaw Logo" class="h-16 w-auto filter brightness-0 contrast-200">
         <div class="loader-rings"></div>
         <div class="text-xs font-semibold uppercase tracking-widest text-zinc-500 animate-pulse">Ładowanie rekrutacji...</div>
     </div>
 
-    <!-- Własny komunkat Modal zamiast alert() -->
-    <div id="custom-modal" class="fixed inset-0 z-[100000] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="glass-card max-w-md w-full p-6 rounded-2xl text-center space-y-4">
-            <div id="modal-icon" class="text-4xl text-brandRed"><i class="fa-solid fa-circle-exclamation"></i></div>
-            <h3 id="modal-title" class="text-xl font-bold">Powiadomienie</h3>
-            <p id="modal-msg" class="text-sm text-zinc-600 dark:text-zinc-300"></p>
-            <button onclick="closeModal()" class="cyber-button w-full">Zrozumiałem</button>
+    <!-- Własny system modali (brak natywnego alertu) -->
+    <div id="custom-modal" class="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-2xl text-center space-y-4 fade-slide">
+            <div id="modal-icon" class="w-12 h-12 rounded-full bg-brandRed/20 text-brandRed flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-info"></i>
+            </div>
+            <h3 id="modal-title" class="text-xl font-bold">Komunikat</h3>
+            <p id="modal-desc" class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed"></p>
+            <button onclick="closeModal()" class="cyber-button w-full">Rozumiem</button>
         </div>
     </div>
 
@@ -169,330 +83,342 @@
         <div class="glow-orb top-10 left-10"></div>
         <div class="glow-orb bottom-10 right-10"></div>
 
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            
-            <!-- Lista rekrutacji -->
-            <div id="view-list" class="space-y-8">
-                <div class="text-center mb-12">
-                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Aktualne Rekrutacje</h1>
-                    <p class="text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                        Wybierz interesującą Cię rolę i zgłoś swoją kandydaturę do zespołu Life in Warsaw.
-                    </p>
-                </div>
-                <div id="recruitment-cards-container" class="space-y-6"></div>
-            </div>
-
-            <!-- Interaktywny Formularz z animowanymi pytaniami -->
-            <div id="view-form" class="hidden space-y-6">
-                <div class="flex justify-between items-center mb-6">
-                    <button onclick="returnToList()" class="text-sm font-semibold text-zinc-500 hover:text-brandRed transition flex items-center gap-2">
-                        <i class="fa-solid fa-arrow-left"></i> Powrót do listy rekrutacji
-                    </button>
-                    <span id="form-progress" class="text-xs font-bold uppercase tracking-wider text-brandRed bg-brandRed/10 px-3 py-1 rounded-full">Krok 1/1</span>
-                </div>
-
-                <div class="glass-card rounded-2xl p-6 md:p-8">
-                    <h2 id="form-title" class="text-2xl font-bold mb-2"></h2>
-                    <p id="form-desc" class="text-sm text-zinc-500 dark:text-zinc-400 mb-8 pb-4 border-b border-zinc-200 dark:border-zinc-800"></p>
-
-                    <form id="active-recruitment-form" onsubmit="submitRecruitment(event)" class="space-y-6">
-                        
-                        <!-- Dane osobowe -->
-                        <div id="user-info-fields" class="space-y-4"></div>
-
-                        <!-- Kontener na pytania -->
-                        <div id="questions-container" class="space-y-6"></div>
-
-                        <div class="pt-6 border-t border-zinc-200 dark:border-zinc-800 flex justify-end">
-                            <button type="submit" id="submit-btn" class="cyber-button w-full md:w-auto">
-                                <span class="flex items-center gap-2"><i class="fa-solid fa-paper-plane"></i> Wyślij aplikację</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
+        <div class="max-w-4xl mx-auto px-6 relative z-10" id="main-container">
+            <!-- Dynamiczna zawartość ładowana przez skrypt -->
         </div>
     </main>
 
     <div class="glass-panel border-t border-black/10 py-8">
         <div class="max-w-[1300px] mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
             <div class="flex items-center">
-                <img id="footer-logo" src="https://liw-roblox.vercel.app/liw-content/image-3.svg" alt="Logo LiW" class="h-12 w-auto object-contain transition filter brightness-0 dark:brightness-200">
+                <img src="liw-content/liw_zakoch_black-2.png" alt="Logo LiW" class="h-12 w-auto object-contain transition">
             </div>
             <div class="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm font-semibold text-zinc-600">
-                <a href="https://lifeinwarsaw.vercel.app/rekrutacje.html" class="nav-link hover:text-brandRed transition"><u>Aktualne Rekrutacje</u></a>
+                <a href="https://lifeinwarsaw.vercel.app/regulamin.html" class="nav-link hover:text-brandRed transition">Regulamin gry i Serwera</a>
                 <a href="https://lifeinwarsaw.vercel.app/kontakt.html" class="nav-link hover:text-brandRed transition">Kontakt</a>
             </div>
-            <div class="text-xs text-zinc-500">
-                &copy; 2026 Life in Warsaw. Wszelkie prawa zastrzeżone.
+            <div class="flex items-center shrink-0">
+                <span class="text-xs text-zinc-500 font-semibold">Life in Warsaw &copy; 2026</span>
             </div>
         </div>
     </div>
 
-    <!-- Ukryty odnośnik do zewnętrznej konfiguracji (zakodowana nazwa) -->
+    <!-- Skrypt danych -->
     <script src="rekrutacje.js"></script>
-
     <script>
-        let currentRecruitment = null;
+        function showModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            const modal = document.getElementById('custom-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
 
+        function closeModal() {
+            const modal = document.getElementById('custom-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Renderowanie listy rekrutacji lub formularza na podstawie URL /id/datautworzenia/tytuł
+        function renderView() {
+            const container = document.getElementById('main-container');
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            
+            // Sprawdzenie czy mamy parametry w ścieżce
+            // np. /rekrutacja/support/2026-06-01/tytul lub prościej sprawdzamy hasz lub query / segmenty
+            const hash = window.location.hash.substring(1); // np. id=support
+            let targetId = null;
+
+            if (hash) {
+                targetId = hash;
+            } else if (pathParts.length >= 2 && pathParts[pathParts.length - 3]) {
+                targetId = pathParts[pathParts.length - 3];
+            }
+
+            const recData = window.RECRUITMENTS_DATA || [];
+
+            if (!targetId) {
+                // Widok listy rekrutacji
+                let html = `
+                    <div class="text-center mb-12 fade-slide">
+                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Aktualne Rekrutacje</h1>
+                        <p class="text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                            Wybierz interesujące Cię stanowisko, wypełnij formularz zgłoszeniowy i dołącz do naszego zespołu!
+                        </p>
+                    </div>
+                    <div class="grid gap-6">
+                `;
+
+                if (recData.length === 0) {
+                    html += `<p class="text-center text-zinc-500 py-8">Brak aktywnych rekrutacji w tej chwili.</p>`;
+                } else {
+                    recData.forEach(item => {
+                        const urlSlug = `#${item.id}`;
+                        html += `
+                            <div class="glass-card rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 fade-slide">
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-3">
+                                        <span class="px-3 py-1 rounded-full bg-brandRed/10 text-brandRed text-xs font-bold">Aktywna</span>
+                                        <span class="text-xs text-zinc-500">Dodano: ${item.createdAt}</span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold">${item.title}</h2>
+                                    <p class="text-sm md:text-base text-zinc-600 dark:text-zinc-400 max-w-xl">${item.description}</p>
+                                </div>
+                                <button onclick="selectRecruitment('${item.id}')" class="cyber-button shrink-0">
+                                    <span class="flex items-center gap-2">Aplikuj teraz <i class="fa-solid fa-arrow-right"></i></span>
+                                </button>
+                            </div>
+                        `;
+                    });
+                }
+                html += `</div>`;
+                container.innerHTML = html;
+            } else {
+                // Widok konkretnego formularza
+                const rec = recData.find(r => r.id === targetId);
+                if (!rec) {
+                    container.innerHTML = `
+                        <div class="text-center py-16 space-y-4 fade-slide">
+                            <h2 class="text-2xl font-bold">Nie znaleziono rekrutacji</h2>
+                            <p class="text-zinc-500">Szukana rekrutacja nie istnieje lub została zamknięta.</p>
+                            <a href="rekrutacje.html" class="cyber-button">Powrót do listy</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Aktualizacja historii przeglądarki na żądany styl /id/datautworzenia/tytuł
+                const slugTitle = rec.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                const fakePath = `/rekrutacje/${rec.id}/${rec.createdAt}/${slugTitle}`;
+                window.history.replaceState({}, '', fakePath);
+
+                let formHtml = `
+                    <div class="mb-8 flex items-center justify-between fade-slide">
+                        <button onclick="goBackToList()" class="text-xs md:text-sm font-semibold text-zinc-600 dark:text-zinc-400 hover:text-brandRed transition flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i> Powrót do listy rekrutacji
+                        </button>
+                        <span class="text-xs text-zinc-500 font-mono">ID: ${rec.id}</span>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 md:p-10 fade-slide space-y-8">
+                        <div>
+                            <h1 class="text-3xl font-extrabold mb-2">${rec.title}</h1>
+                            <p class="text-zinc-600 dark:text-zinc-400 text-sm md:text-base">${rec.description}</p>
+                        </div>
+
+                        <form id="recruitmentForm" onsubmit="submitApplication(event, '${rec.id}')" class="space-y-6">
+                `;
+
+                // Pola bazowe
+                if (rec.collectEmail) {
+                    formHtml += `
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold">Adres E-mail <span class="text-brandRed">*</span></label>
+                            <input type="email" required id="f-email" placeholder="twoj@email.com" class="w-full bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition">
+                        </div>
+                    `;
+                }
+                if (rec.collectDiscord) {
+                    formHtml += `
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold">Nick Discord <span class="text-brandRed">*</span></label>
+                            <input type="text" required id="f-discord" placeholder="np. username#0000 lub nazwa" class="w-full bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition">
+                        </div>
+                    `;
+                }
+                if (rec.collectRoblox) {
+                    formHtml += `
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold">Nick Roblox <span class="text-brandRed">*</span></label>
+                            <input type="text" required id="f-roblox" placeholder="Twój dokładny nick z gry" class="w-full bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition">
+                        </div>
+                    `;
+                }
+
+                // Pytania dynamiczne
+                rec.questions.forEach((q, idx) => {
+                    formHtml += `<div class="space-y-2 pt-4 border-t border-zinc-200 dark:border-zinc-800">`;
+                    formHtml += `<label class="block text-sm font-semibold">${idx + 1}. ${q.label}</label>`;
+
+                    if (q.type === 'short') {
+                        formHtml += `<input type="text" required name="${q.id}" class="w-full bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition">`;
+                    } else if (q.type === 'long') {
+                        formHtml += `<textarea required rows="4" name="${q.id}" class="w-full bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition"></textarea>`;
+                    } else if (q.type === 'choice') {
+                        formHtml += `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">`;
+                        q.options.forEach((opt, oIdx) => {
+                            formHtml += `
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-black/5 dark:bg-white/5 cursor-pointer hover:border-brandRed transition">
+                                    <input type="radio" required name="${q.id}" value="${opt}" class="accent-brandRed">
+                                    <span class="text-sm">${opt}</span>
+                                </label>
+                            `;
+                        });
+                        formHtml += `</div>`;
+                    } else if (q.type === 'range') {
+                        formHtml += `
+                            <div class="space-y-2 pt-2">
+                                <input type="range" min="${q.min}" max="${q.max}" value="${q.min}" name="${q.id}" oninput="document.getElementById('val_${q.id}').innerText = this.value" class="w-full accent-brandRed cursor-pointer">
+                                <div class="text-center font-bold text-brandRed text-lg" id="val_${q.id}">${q.min}</div>
+                            </div>
+                        `;
+                    } else if (q.type === 'file') {
+                        formHtml += `
+                            <input type="file" name="${q.id}" accept=".jpg,.jpeg,.png,.webp,.pdf,.lua,.rbxm" class="w-full text-sm text-zinc-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-brandRed file:text-white hover:file:bg-brandRedHover cursor-pointer">
+                        `;
+                    }
+
+                    formHtml += `</div>`;
+                });
+
+                formHtml += `
+                            <div class="pt-6">
+                                <button type="submit" id="submitBtn" class="cyber-button w-full">Wyślij zgłoszenie</button>
+                            </div>
+                        </form>
+                    </div>
+                `;
+                container.innerHTML = formHtml;
+            }
+        }
+
+        function selectRecruitment(id) {
+            window.location.hash = id;
+            renderView();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBackToList() {
+            window.location.href = 'https://lifeinwarsaw.vercel.app/rekrutacje.html';
+        }
+
+        // Obsługa wysyłania zgłoszenia (Brevo + Discord Webhook z obsługą plików)
+        async function submitApplication(event, recId) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Wysyłanie zgłoszenia...';
+
+            const config = window.APP_CONFIG;
+            const recData = window.RECRUITMENTS_DATA.find(r => r.id === recId);
+
+            const randomNum = Math.floor(10000000 + Math.random() * 90000000);
+            const ticketNumber = `WOTS-${randomNum}`;
+            const now = new Date();
+            const dateStr = now.toLocaleString('pl-PL', { dateStyle: 'full', timeStyle: 'medium' });
+
+            const email = document.getElementById('f-email') ? document.getElementById('f-email').value : 'Brak';
+            const discordNick = document.getElementById('f-discord') ? document.getElementById('f-discord').value : 'Brak';
+            const robloxUser = document.getElementById('f-roblox') ? document.getElementById('f-roblox').value : 'Brak';
+
+            // Zbieranie odpowiedzi na pytania oraz plików
+            const formElement = document.getElementById('recruitmentForm');
+            const formDataObj = new FormData(formElement);
+            
+            let answersSummary = "";
+            let uploadedFiles = [];
+
+            for (let [key, value] of formDataObj.entries()) {
+                const questionObj = recData.questions.find(q => q.id === key);
+                const labelText = questionObj ? questionObj.label : key;
+
+                if (value instanceof File && value.size > 0) {
+                    uploadedFiles.push(value);
+                    answersSummary += `• **${labelText}**: [Załączony plik: ${value.name}]\n`;
+                } else if (!(value instanceof File)) {
+                    answersSummary += `• **${labelText}**: ${value}\n`;
+                }
+            }
+
+            try {
+                // 1. Wysyłka emaila przez Brevo (jeśli skonfigurowane)
+                if (email !== 'Brak' && config && config.BREVO_API_KEY) {
+                    const emailParams = {
+                        ROBLOX_USER: robloxUser,
+                        RECRUITMENT_TITLE: recData.title,
+                        TICKET_ID: ticketNumber,
+                        email: email,
+                        data: dateStr,
+                        discord_nick: discordNick,
+                        odpowiedzi: answersSummary
+                    };
+
+                    const userEmailPayload = {
+                        templateId: Number(config.BREVO_TEMPLATE_ID),
+                        to: [{ email: email, name: discordNick }],
+                        params: emailParams
+                    };
+
+                    await fetch('https://api.brevo.com/v3/smtp/email', {
+                        method: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'api-key': config.BREVO_API_KEY,
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(userEmailPayload)
+                    });
+                }
+
+                // 2. Wysyłka danych na Discord Webhook wraz z załącznikami
+                if (config && config.DISCORD_WEBHOOK_URL) {
+                    const discordPayload = new FormData();
+                    const embedContent = {
+                        embeds: [{
+                            title: `Nowe zgłoszenie rekrutacyjne: ${recData.title}`,
+                            color: 16724555,
+                            fields: [
+                                { name: "Numer Zgłoszenia", value: ticketNumber, inline: true },
+                                { name: "Data", value: dateStr, inline: true },
+                                { name: "Nick Roblox", value: robloxUser, inline: true },
+                                { name: "Discord", value: discordNick, inline: true },
+                                { name: "E-mail", value: email, inline: true },
+                                { name: "Odpowiedzi", value: answersSummary || "Brak odpowiedzi" }
+                            ],
+                            footer: { text: "Life in Warsaw - System Rekrutacji" }
+                        }]
+                    };
+
+                    discordPayload.append('payload_json', JSON.stringify(embedContent));
+                    
+                    // Dodanie fizycznych plików do wiadomości webhook Discord
+                    uploadedFiles.forEach((file, index) => {
+                        discordPayload.append(`file${index}`, file, file.name);
+                    });
+
+                    await fetch(config.DISCORD_WEBHOOK_URL, {
+                        method: 'POST',
+                        body: discordPayload
+                    });
+                }
+
+                showModal('Sukces!', `Twoje zgłoszenie zostało pomyślnie wysłane!\nNumer zgłoszenia: ${ticketNumber}`);
+                setTimeout(() => {
+                    window.location.href = 'https://lifeinwarsaw.vercel.app/rekrutacje.html';
+                }, 3500);
+
+            } catch (error) {
+                console.error(error);
+                showModal('Błąd', 'Wystąpił nieoczekiwany błąd podczas wysyłania zgłoszenia. Spróbuj ponownie.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Wyślij zgłoszenie';
+            }
+        }
+
+        // Inicjalizacja ładowania i routingu
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const overlay = document.getElementById('bus-overlay');
                 if (overlay) overlay.classList.add('fade-out');
-            }, 600);
+            }, 700);
 
-            renderRecruitmentList();
-            handleUrlRouting();
+            renderView();
         });
 
-        function showModal(title, message, iconClass = "fa-circle-exclamation") {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-msg').innerText = message;
-            document.getElementById('modal-icon').innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
-            document.getElementById('custom-modal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('custom-modal').classList.add('hidden');
-        }
-
-        function renderRecruitmentList() {
-            const container = document.getElementById('recruitment-cards-container');
-            container.innerHTML = '';
-
-            if (typeof REKRUTACJE_DATA === 'undefined' || REKRUTACJE_DATA.length === 0) {
-                container.innerHTML = `<div class="text-center text-zinc-500 py-12">Brak aktywnych rekrutacji w tym momencie.</div>`;
-                return;
-            }
-
-            REKRUTACJE_DATA.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "glass-card rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6";
-                card.innerHTML = `
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-brandRed/10 text-brandRed">Otwarte</span>
-                            <span class="text-xs text-zinc-500"><i class="fa-regular fa-calendar"></i> ${item.dataUtworzenia}</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-1">${item.tytul}</h3>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400">${item.opis}</p>
-                    </div>
-                    <button onclick="openRecruitmentForm('${item.id}')" class="cyber-button shrink-0 w-full md:w-auto">
-                        Aplikuj teraz <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                    </button>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function openRecruitmentForm(id) {
-            currentRecruitment = REKRUTACJE_DATA.find(r => r.id === id);
-            if (!currentRecruitment) return;
-
-            // Zmiana URL bez przeładowania strony z podaniem ID, Daty oraz Tytułu
-            const encodedTitle = encodeURIComponent(currentRecruitment.tytul.toLowerCase().replace(/[^a-z0-9]/g, '-'));
-            const customPath = `/rekrutacje/${currentRecruitment.id}/${currentRecruitment.dataUtworzenia}/${encodedTitle}`;
-            window.history.pushState({ id: id }, '', customPath);
-
-            document.getElementById('view-list').classList.add('hidden');
-            document.getElementById('view-form').classList.remove('hidden');
-
-            document.getElementById('form-title').innerText = currentRecruitment.tytul;
-            document.getElementById('form-desc').innerText = currentRecruitment.opis;
-
-            renderFormFields();
-        }
-
-        function returnToList() {
-            window.history.pushState({}, '', "https://lifeinwarsaw.vercel.app/rekrutacje.html");
-            document.getElementById('view-form').classList.add('hidden');
-            document.getElementById('view-list').classList.remove('hidden');
-            currentRecruitment = null;
-        }
-
-        function handleUrlRouting() {
-            const path = window.location.pathname;
-            const parts = path.split('/').filter(p => p);
-            if (parts.length >= 2 && parts[0] === 'rekrutacje') {
-                const recId = parts[1];
-                openRecruitmentForm(recId);
-            }
-        }
-
-        function renderFormFields() {
-            const userInfoContainer = document.getElementById('user-info-fields');
-            const questionsContainer = document.getElementById('questions-container');
-            userInfoContainer.innerHTML = '';
-            questionsContainer.innerHTML = '';
-
-            // Pola podstawowe zależne od parametrów w rekrutacje.js
-            if (currentRecruitment.zbierajEmail) {
-                userInfoContainer.innerHTML += `
-                    <div class="space-y-1">
-                        <label class="text-xs font-bold uppercase tracking-wider text-zinc-500">Adres E-mail *</label>
-                        <input type="email" name="user_email" required placeholder="twoj@email.com" class="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed">
-                    </div>`;
-            }
-            if (currentRecruitment.zbierajDiscord) {
-                userInfoContainer.innerHTML += `
-                    <div class="space-y-1">
-                        <label class="text-xs font-bold uppercase tracking-wider text-zinc-500">Nazwa użytkownika Discord *</label>
-                        <input type="text" name="user_discord" required placeholder="np. jan_kowalski" class="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed">
-                    </div>`;
-            }
-            if (currentRecruitment.zbierajRoblox) {
-                userInfoContainer.innerHTML += `
-                    <div class="space-y-1">
-                        <label class="text-xs font-bold uppercase tracking-wider text-zinc-500">Nick z Roblox *</label>
-                        <input type="text" name="user_roblox" required placeholder="np. Player123" class="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed">
-                    </div>`;
-            }
-
-            // Pytania z animowanym wejściem
-            currentRecruitment.pytania.forEach((q, index) => {
-                const wrapper = document.createElement('div');
-                wrapper.className = "space-y-2 step-slide";
-                wrapper.style.animationDelay = `${index * 0.08}s`;
-
-                let inputHtml = '';
-                const reqAttr = q.wymagane ? 'required' : '';
-
-                if (q.typ === 'krotka') {
-                    inputHtml = `<input type="text" name="q_${q.id}" ${reqAttr} class="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed">`;
-                } else if (q.typ === 'dluga') {
-                    inputHtml = `<textarea name="q_${q.id}" rows="4" ${reqAttr} class="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed"></textarea>`;
-                } else if (q.typ === 'abc') {
-                    const options = q.opcje.map(op => `
-                        <label class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl cursor-pointer hover:border-brandRed/50 transition">
-                            <input type="radio" name="q_${q.id}" value="${op}" ${reqAttr} class="accent-brandRed">
-                            <span class="text-sm font-medium">${op}</span>
-                        </label>
-                    `).join('');
-                    inputHtml = `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">${options}</div>`;
-                } else if (q.typ === 'suwak') {
-                    inputHtml = `
-                        <div class="space-y-2">
-                            <input type="range" min="${q.min}" max="${q.max}" name="q_${q.id}" value="${q.min}" oninput="this.nextElementSibling.value = this.value" class="w-full accent-brandRed">
-                            <output class="block text-center font-bold text-brandRed text-sm">${q.min}</output>
-                        </div>`;
-                } else if (q.typ === 'file') {
-                    inputHtml = `<input type="file" name="q_${q.id}" ${reqAttr} accept="${(q.akceptowaneRozszerzenia || []).join(',')}" class="w-full text-sm text-zinc-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandRed file:text-white hover:file:bg-brandRedHover cursor-pointer">`;
-                }
-
-                wrapper.innerHTML = `
-                    <label class="text-sm font-bold block">${index + 1}. ${q.tresc} ${q.wymagane ? '<span class="text-brandRed">*</span>' : ''}</label>
-                    ${inputHtml}
-                `;
-                questionsContainer.appendChild(wrapper);
-            });
-        }
-
-        async function submitRecruitment(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Wysyłanie...`;
-
-            const formData = new FormData(e.target);
-            const ticketId = 'LIW-' + Math.floor(100000 + Math.random() * 900000);
-            const robloxUser = formData.get('user_roblox') || "N/A";
-            const userEmail = formData.get('user_email') || null;
-            const userDiscord = formData.get('user_discord') || "N/A";
-
-            // Przygotowanie payload do Discord Webhook
-            const discordFormData = new FormData();
-            let answersFields = [];
-
-            answersFields.push({ name: "ID Aplikacji", value: ticketId, inline: true });
-            answersFields.push({ name: "Discord", value: userDiscord, inline: true });
-            answersFields.push({ name: "Roblox", value: robloxUser, inline: true });
-
-            let fileIndex = 0;
-
-            for (let q of currentRecruitment.pytania) {
-                const fieldName = `q_${q.id}`;
-                if (q.typ === 'file') {
-                    const fileInput = e.target.querySelector(`[name="${fieldName}"]`);
-                    if (fileInput && fileInput.files.length > 0) {
-                        const file = fileInput.files[0];
-                        discordFormData.append(`file_${fileIndex}`, file, file.name);
-                        answersFields.push({ name: q.tresc, value: `📎 Załączono plik: ${file.name}` });
-                        fileIndex++;
-                    } else {
-                        answersFields.push({ name: q.tresc, value: "Brak pliku" });
-                    }
-                } else {
-                    const val = formData.get(fieldName) || "Brak odpowiedzi";
-                    answersFields.push({ name: q.tresc, value: val.toString() });
-                }
-            }
-
-            const embedPayload = {
-                embeds: [{
-                    title: `📄 Nowa Aplikacja: ${currentRecruitment.tytul}`,
-                    color: 16724811,
-                    fields: answersFields,
-                    footer: { text: `System Rekrutacji Life in Warsaw • ID: ${ticketId}` },
-                    timestamp: new Date().toISOString()
-                }]
-            };
-
-            discordFormData.append('payload_json', JSON.stringify(embedPayload));
-
-            try {
-                // 1. Wysyłka do Discord Webhook (razem z plikami)
-                await fetch(DISCORD_WEBHOOK_URL, {
-                    method: 'POST',
-                    body: discordFormData
-                });
-// 2. Wysyłka E-mail przez Brevo API
-if (currentRecruitment.zbierajEmail && userEmail) {
-    try {
-        const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
-            method: 'POST',
-            headers: {
-                'accept': 'application/json',
-                'api-key': BREVO_CONFIG.apiKey,
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                sender: {
-                    name: BREVO_CONFIG.senderName,
-                    email: BREVO_CONFIG.senderEmail
-                },
-                to: [{ email: userEmail }],
-                templateId: BREVO_CONFIG.templateId,
-                params: {
-                    ROBLOX_USER: robloxUser,
-                    RECRUITMENT_TITLE: currentRecruitment.tytul,
-                    TICKET_ID: ticketId
-                }
-            })
+        window.addEventListener('popstate', () => {
+            renderView();
         });
-
-        if (!brevoResponse.ok) {
-            const errorData = await brevoResponse.json();
-            console.error("Błąd Brevo API:", errorData);
-        }
-    } catch (eError) {
-        console.error("Błąd połączenia z Brevo:", eError);
-    }
-}
-                        })
-                    });
-                }
-
-                showModal("Sukces!", "Twoja aplikacja została pomyślnie wysłana i przekazana do weryfikacji.", "fa-circle-check");
-                returnToList();
-
-            } catch (err) {
-                showModal("Błąd", "Wystąpił problem podczas przesyłania formularza. Spróbuj ponownie później.");
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = `<span class="flex items-center gap-2"><i class="fa-solid fa-paper-plane"></i> Wyślij aplikację</span>`;
-            }
-        }
     </script>
 </body>
 </html>
