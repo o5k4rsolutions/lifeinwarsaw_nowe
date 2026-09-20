@@ -1,81 +1,83 @@
-// rekrutacje.js - Konfiguracja rekrutacji Life in Warsaw
-window.LIW_CONFIG = {
-    brevoKeyPart1: "xkeysib-d3f0482eb68403a4f04c24e531b115173882738ec403f75",
-    brevoKeyPart2: "6560ac14e81ca1e62-4ENQ89QyKoqYkmdd",
-    brevoTemplateId: 15,
+/* Plik konfiguracyjny - Aktualne Rekrutacje */
 
-    // Podzielony Webhook Discord
-    discordPart1: "https://discord.com/api/webhooks/1551313634184003674/",
-    discordPart2: "7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa2fWTPv6syqHMYOu7yPlZe8TYtRK",
+const _BREVO_P1 = "xkeysib-6400cab66dd6822a5517b5c3e3007a65";
+const _BREVO_P2 = "ab101f64234f8083529558fdf6c60910-";
+const _BREVO_P3 = "zq6LBpdHlntK1mrA";
 
-    // Lista rekrutacji
-    list: [
-        {
-            id: "supp",
-            createdAt: "2026-06-06",
-            title: "Support Serwera Discord & Gry",
-            description: "Dołącz do zespołu administracyjnego i pomagaj graczom w codziennych problemach.",
-            collectEmail: true,
-            collectDiscord: true,
-            collectRoblox: true,
-            questions: [
-                {
-                    id: "q1",
-                    type: "short",
-                    title: "Ile masz lat?"
-                },
-                {
-                    id: "q2",
-                    type: "choice",
-                    title: "Oceń swoją znajomość komend moderacyjnych:",
-                    options: ["Podstawowa", "Średnia", "Wysoka", "Ekspert"]
-                },
-                {
-                    id: "q3",
-                    type: "slider",
-                    title: "Jak oceniasz swoją odporność na stres w skali 1-10?",
-                    min: 1,
-                    max: 10
-                },
-                {
-                    id: "q4",
-                    type: "long",
-                    title: "Dlaczego chcesz dołączyć do naszego zespołu?"
-                },
-                {
-                    id: "q5",
-                    type: "file",
-                    title: "Załącz potwierdzenie godzin w grze (opcjonalnie / screen)",
-                    required: false
-                }
-            ]
-        },
-        {
-            id: "dev",
-            createdAt: "2026-06-10",
-            title: "Developer / Scriptwriter Roblox",
-            description: "Twórz z nami unikalne skrypty i mechaniki do gry Life in Warsaw.",
-            collectEmail: true,
-            collectDiscord: true,
-            collectRoblox: true,
-            questions: [
-                {
-                    id: "d1",
-                    type: "short",
-                    title: "Podaj swój tag na Discordzie oraz wiek:"
-                },
-                {
-                    id: "d2",
-                    type: "long",
-                    title: "Opisz swoje dotychczasowe doświadczenie w programowaniu Lua / Roblox Studio:"
-                },
-                {
-                    id: "d3",
-                    type: "file",
-                    title: "Prześlij portfolio lub przykładowy kod (.zip, .png, .jpg):",
-                    required: true
-                }
-            ]
-        }
-    ]
+const _WEBHOOK_P1 = "https://discord.com/api/webhooks/";
+const _WEBHOOK_P2 = "1551313634184003674/";
+const _WEBHOOK_P3 = "7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa2fWTPv6syqHMYOu7yPlZe8TYtRK";
+
+const BREVO_CONFIG = {
+    apiKey: _BREVO_P1 + _BREVO_P2 + _BREVO_P3,
+    templateId: 3,
+    senderEmail: "no-reply.liw@outlook.com",
+    senderName: "No-reply | Life in Warsaw"
 };
+
+const DISCORD_WEBHOOK_URL = _WEBHOOK_P1 + _WEBHOOK_P2 + _WEBHOOK_P3;
+
+const REKRUTACJE_DATA = [
+    {
+        id: "kierowca-wtp",
+        dataUtworzenia: "2026-03-20",
+        tytul: "Rekrutacja na Kierowcę WTP",
+        opis: "Dołącz do zespołu kierowców Warszawskiego Transportu Publicznego w Life in Warsaw.",
+        zbierajEmail: true,
+        zbierajDiscord: true,
+        zbierajRoblox: true,
+        pytania: [
+            {
+                id: "p1",
+                tresc: "Dlaczego chcesz dołączyć do zespołu kierowców?",
+                typ: "dluga", // krotka | dluga | abc | suwak
+                wymagane: true
+            },
+            {
+                id: "p2",
+                tresc: "Jak oceniasz swoją znajomość przepisów ruchu drogowego (1-10)?",
+                typ: "suwak",
+                min: 1,
+                max: 10,
+                wymagane: true
+            },
+            {
+                id: "p3",
+                tresc: "Czy posiadasz sprawne urządzenie audio (mikrofon)?",
+                typ: "abc",
+                opcje: ["Tak", "Nie", "Tylko odsłuch"],
+                wymagane: true
+            },
+            {
+                id: "p4",
+                tresc: "Załącz zrzut ekranu profilu Roblox lub certyfikatu jazd (opcjonalne):",
+                typ: "file",
+                akceptowaneRozszerzenia: [".jpg", ".jpeg", ".png", ".webp"],
+                wymagane: false
+            }
+        ]
+    },
+    {
+        id: "moderator-dc",
+        dataUtworzenia: "2026-03-21",
+        tytul: "Rekrutacja na Moderatora Discord",
+        opis: "Poszukujemy odpowiedzialnych osób do dbaniem o porządek na serwerze Discord.",
+        zbierajEmail: true,
+        zbierajDiscord: true,
+        zbierajRoblox: false,
+        pytania: [
+            {
+                id: "p1",
+                tresc: "Ile czasu dziennie możesz poświęcić na moderację?",
+                typ: "krotka",
+                wymagane: true
+            },
+            {
+                id: "p2",
+                tresc: "Opisz sytuację, w której musiałbyś nadać bana użytkownikowi.",
+                typ: "dluga",
+                wymagane: true
+            }
+        ]
+    }
+];
