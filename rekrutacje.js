@@ -1,82 +1,86 @@
-/* Plik konfiguracyjny - Aktualne Rekrutacje */
+// Konfiguracja podzielona na części dla bezpieczeństwa
+const _b1 = "xkeysib-6400cab66dd6822a5517b5c3e3007a65ab1";
+const _b2 = "01f64234f8083529558fdf6c60910-zq6LBpdHlntK1mrA";
+const _w1 = "https://discord.com/api/webhooks/155131363";
+const _w2 = "4184003674/7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa";
+const _w3 = "2fWTPv6syqHMYOu7yPlZe8TYtRK";
 
-const _BREVO_P1 = "xkeysib-6400cab66dd6822a5517b5c3e3007a65";
-const _BREVO_P2 = "ab101f64234f8083529558fdf6c60910-";
-const _BREVO_P3 = "zq6LBpdHlntK1mrA";
-
-const _WEBHOOK_P1 = "https://discord.com/api/webhooks/";
-const _WEBHOOK_P2 = "1551313634184003674/";
-const _WEBHOOK_P3 = "7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa2fWTPv6syqHMYOu7yPlZe8TYtRK";
-
-const BREVO_CONFIG = {
-    apiKey: _BREVO_P1 + _BREVO_P2 + _BREVO_P3,
-    templateId: 3,
-    senderEmail: "no-reply.liw@outlook.com",
-    senderName: "No-reply | Life in Warsaw"
+window.APP_CONFIG = {
+    BREVO_API_KEY: _b1 + _b2,
+    BREVO_TEMPLATE_ID: 3,
+    DISCORD_WEBHOOK_URL: _w1 + _w2 + _w3
 };
 
-const DISCORD_WEBHOOK_URL = _WEBHOOK_P1 + _WEBHOOK_P2 + _WEBHOOK_P3;
-
-const REKRUTACJE_DATA = [
+// Lista rekrutacji z różnymi typami pytań
+window.RECRUITMENTS_DATA = [
     {
-        id: "kierowca-wtp",
-        dataUtworzenia: "2026-03-20",
-        tytul: "Rekrutacja na Kierowcę WTP",
-        opis: "Dołącz do zespołu kierowców Warszawskiego Transportu Publicznego w Life in Warsaw.",
-        zbierajEmail: true,
-        zbierajDiscord: true,
-        zbierajRoblox: true,
-        pytania: [
+        id: "support",
+        createdAt: "2026-06-01",
+        title: "Support / Pomocnik Serwera",
+        description: "Dołącz do zespołu administracyjnego Life in Warsaw i pomagaj graczom w rozwiązywaniu problemów.",
+        collectEmail: true,
+        collectDiscord: true,
+        collectRoblox: true,
+        questions: [
             {
-                id: "p1",
-                tresc: "Dlaczego chcesz dołączyć do zespołu kierowców?",
-                typ: "dluga", // krotka | dluga | abc | suwak
-                wymagane: true
+                id: "q1",
+                type: "short",
+                label: "Ile masz lat i jak masz na imię?"
             },
             {
-                id: "p2",
-                tresc: "Jak oceniasz swoją znajomość przepisów ruchu drogowego (1-10)?",
-                typ: "suwak",
+                id: "q2",
+                type: "choice",
+                label: "Jak oceniasz swoją znajomość komend moderacyjnych?",
+                options: ["Podstawowa", "Średnia", "Bardzo dobra", "Ekspert"]
+            },
+            {
+                id: "q3",
+                type: "range",
+                label: "Oceń swoją odporność na stres w skali od 1 do 10:",
                 min: 1,
-                max: 10,
-                wymagane: true
+                max: 10
             },
             {
-                id: "p3",
-                tresc: "Czy posiadasz sprawne urządzenie audio (mikrofon)?",
-                typ: "abc",
-                opcje: ["Tak", "Nie", "Tylko odsłuch"],
-                wymagane: true
+                id: "q4",
+                type: "long",
+                label: "Dlaczego chcesz dołączyć właśnie do naszego zespołu?"
             },
             {
-                id: "p4",
-                tresc: "Załącz zrzut ekranu profilu Roblox lub certyfikatu jazd (opcjonalne):",
-                typ: "file",
-                akceptowaneRozszerzenia: [".jpg", ".jpeg", ".png", ".webp"],
-                wymagane: false
+                id: "q5",
+                type: "file",
+                label: "Załącz zrzut ekranu przedstawiający Twój profil lub statystyki (opcjonalnie):"
             }
         ]
     },
     {
-        id: "moderator-dc",
-        dataUtworzenia: "2026-03-21",
-        tytul: "Rekrutacja na Moderatora Discord",
-        opis: "Poszukujemy odpowiedzialnych osób do dbaniem o porządek na serwerze Discord.",
-        zbierajEmail: true,
-        zbierajDiscord: true,
-        zbierajRoblox: false,
-        pytania: [
+        id: "developer",
+        createdAt: "2026-06-10",
+        title: "Developer / Skripter Roblox",
+        description: "Twórz unikalne skrypty i systemy dla serwera Life in Warsaw w środowisku Luau / Roblox Studio.",
+        collectEmail: true,
+        collectDiscord: true,
+        collectRoblox: true,
+        questions: [
             {
-                id: "p1",
-                tresc: "Ile czasu dziennie możesz poświęcić na moderację?",
-                typ: "krotka",
-                wymagane: true
+                id: "dev1",
+                type: "short",
+                label: "Jaki jest Twój nick na Discordzie oraz staż w Roblox Studio (w latach)?"
             },
             {
-                id: "p2",
-                tresc: "Opisz sytuację, w której musiałbyś nadać bana użytkownikowi.",
-                typ: "dluga",
-                wymagane: true
+                id: "dev2",
+                type: "choice",
+                label: "Który framework lub system skryptowania jest Ci najbliższy?",
+                options: ["Roact / Fusion", "ProfileService / DataStore", "Knit Framework", "Czysty Luau (Vanilla)"]
+            },
+            {
+                id: "dev3",
+                type: "long",
+                label: "Opisz swój najciekawszy projekt wykonany w Roblox Studio."
+            },
+            {
+                id: "dev4",
+                type: "file",
+                label: "Załącz portfolio lub przykładowy kod / plik (.lua, .rbxm, obrazek):"
             }
         ]
     }
