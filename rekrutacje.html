@@ -447,23 +447,38 @@
                     body: discordFormData
                 });
 
-                // 2. opcjonalna wysyłka E-mail przez Brevo API
-                if (currentRecruitment.zbierajEmail && userEmail) {
-                    await fetch('https://api.brevo.com/v3/smtp/email', {
-                        method: 'POST',
-                        headers: {
-                            'accept': 'application/json',
-                            'api-key': BREVO_CONFIG.apiKey,
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            to: [{ email: userEmail }],
-                            templateId: BREVO_CONFIG.templateId,
-                            params: {
-                                ROBLOX_USER: robloxUser,
-                                RECRUITMENT_TITLE: currentRecruitment.tytul,
-                                TICKET_ID: ticketId
-                            }
+// 2. Wysyłka E-mail przez Brevo API
+if (currentRecruitment.zbierajEmail && userEmail) {
+    try {
+        const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'api-key': BREVO_CONFIG.apiKey,
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                sender: {
+                    name: BREVO_CONFIG.senderName,
+                    email: BREVO_CONFIG.senderEmail
+                },
+                to: [{ email: userEmail }],
+                templateId: BREVO_CONFIG.templateId,
+                params: {
+                    ROBLOX_USER: robloxUser,
+                    RECRUITMENT_TITLE: currentRecruitment.tytul,
+                    TICKET_ID: ticketId
+                }
+            })
+        });
+
+        if (!brevoResponse.ok) {
+            const errorData = await brevoResponse.json();
+            console.error("Błąd Brevo API:", errorData);
+        }
+    } catch (eError) {
+        console.error("Błąd połączenia z Brevo:", eError);
+    }
                         })
                     });
                 }
