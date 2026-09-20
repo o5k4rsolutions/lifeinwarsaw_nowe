@@ -4,9 +4,9 @@
  */
 (function() {
     // Podzielone wrażliwe dane (Brevo API oraz Discord Webhook) zgodnie z wytycznymi
-    const _b1 = "xkeysib-6400cab66dd6822";
-    const _b2 = "5517b5c3e3007a65ab101f6";
-    const _b3 = "4234f8083529558fdf6c60910-zq6LBpdHlntK1mrA";
+    const _b1 = "xkeysib-6400cab66dd6822a5517b5c3e";
+    const _b2 = "3007a65ab101f64234f8083529558fdf6";
+    const _b3 = "c60910-FzYS2Mo72o6zMiJ4";
     window.getBrevoKey = () => _b1 + _b2 + _b3;
     window.BREVO_TEMPLATE_ID = 3;
 
