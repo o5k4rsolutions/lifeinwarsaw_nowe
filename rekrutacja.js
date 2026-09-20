@@ -9,7 +9,6 @@ const _cfg = {
     wh3: "7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa2fWTPv6syqHMYOu7yPlZe8TYtRK"
 };
 
-// Lista rekrutacji
 const rekrutacjeData = [
     {
         id: "support",
@@ -40,29 +39,8 @@ const rekrutacjeData = [
             },
             {
                 id: "q4",
-                tresc: "Załącz zrzut ekranu potwierdzający brak kar na koncie (opcjonalnie lub wymagane):",
+                tresc: "Załącz zrzut ekranu potwierdzający brak kar na koncie:",
                 typ: "plik"
-            }
-        ]
-    },
-    {
-        id: "developer",
-        dataUtworzenia: "2026-06-10",
-        tytul: "Rekrutacja na Developera / Programistę",
-        opis: "Twórz nowe skrypty, systemy transportu miejskiego oraz dbaj o optymalizację gry.",
-        zbierajEmail: true,
-        zbierajDiscord: true,
-        zbierajRoblox: false,
-        pytania: [
-            {
-                id: "dev1",
-                tresc: "Opisz swoje doświadczenie z językiem Luau / Roblox Studio:",
-                typ: "dluga"
-            },
-            {
-                id: "dev2",
-                tresc: "Podaj link do swojego portfolio lub przykładowego kodu:",
-                typ: "krotka"
             }
         ]
     }
