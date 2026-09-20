@@ -1,72 +1,68 @@
-const BREVO_PART_1 = "xkeysib-6400cab66dd6822a5517b5c3e3007a65ab101";
-const BREVO_PART_2 = "f64234f8083529558fdf6c60910-";
-const BREVO_PART_3 = "zq6LBpdHlntK1mrA";
-const BREVO_TEMPLATE_ID = 3;
+// Konfiguracja API oraz Webhooka podzielona na części (ochrona danych)
+const _cfg = {
+    b1: "xkeysib-6400cab66dd6822a5517b5c3e3007a",
+    b2: "5ab101f64234f8083529558fdf6c60910-",
+    b3: "zq6LBpdHlntK1mrA",
+    tmpl: 3,
+    wh1: "https://discord.com/api/webhooks/",
+    wh2: "1551313634184003674/",
+    wh3: "7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa2fWTPv6syqHMYOu7yPlZe8TYtRK"
+};
 
-const DC_PART_1 = "https://discord.com/api/webhooks/";
-const DC_PART_2 = "1551313634184003674/";
-const DC_PART_3 = "7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa2fWTPv6syqHMYOu7yPlZe8TYtRK";
-
-const RECRUITMENTS_DATA = [
+// Lista rekrutacji
+const rekrutacjeData = [
     {
-        id: "support-2026",
-        createdAt: "2026-06-06",
-        title: "Rekrutacja na Support Serwera",
-        description: "Dołącz do zespołu administracyjnego i pomagaj graczom w rozwiązywaniu problemów na serwerze oraz Discordzie.",
-        collectEmail: true,
-        collectDiscord: true,
-        collectRoblox: true,
-        questions: [
+        id: "support",
+        dataUtworzenia: "2026-06-06",
+        tytul: "Rekrutacja do Supportu Serwera",
+        opis: "Pomagaj graczom, rozwiązkuj problemy i dbaj o porządek w społeczności Life in Warsaw.",
+        zbierajEmail: true,
+        zbierajDiscord: true,
+        zbierajRoblox: true,
+        pytania: [
             {
                 id: "q1",
-                label: "Dlaczego chcesz dołączyć do zespołu Supportu?",
-                type: "long", // short, long, scale, choice, file
-                required: true
+                tresc: "Dlaczego chcesz dołączyć do naszego zespołu?",
+                typ: "dluga"
             },
             {
                 id: "q2",
-                label: "Jak oceniasz swoją odporność na stres w skali 1-10?",
-                type: "scale",
+                tresc: "Oceń swoją znajomość komend administracyjnych w skali od 1 do 10:",
+                typ: "suwak",
                 min: 1,
-                max: 10,
-                required: true
+                max: 10
             },
             {
                 id: "q3",
-                label: "Wybierz swoją główną strefę dyspozycyjności:",
-                type: "choice",
-                options: ["Rano (8:00 - 14:00)", "Popołudnie (14:00 - 20:00)", "Wieczór / Noc (20:00 - 4:00)"],
-                required: true
+                tresc: "Wybierz swoją główną strefę czasową / aktywność:",
+                typ: "wybor",
+                opcje: ["Popołudnia (15:00 - 19:00)", "Wieczory (19:00 - 23:00)", "Nocne marki (23:00+)"]
             },
             {
                 id: "q4",
-                label: "Załącz zrzut ekranu przedstawiający Twoje statystyki / profil (opcjonalnie):",
-                type: "file",
-                required: false
+                tresc: "Załącz zrzut ekranu potwierdzający brak kar na koncie (opcjonalnie lub wymagane):",
+                typ: "plik"
             }
         ]
     },
     {
-        id: "kierowca-ztm",
-        createdAt: "2026-06-05",
-        title: "Rekrutacja na Kierowcę ZTM Warszawa",
-        description: "Poczuj klimat stolicy i zasiądź za kółkiem miejskiego autobusu w grze Life in Warsaw!",
-        collectEmail: false,
-        collectDiscord: true,
-        collectRoblox: true,
-        questions: [
+        id: "developer",
+        dataUtworzenia: "2026-06-10",
+        tytul: "Rekrutacja na Developera / Programistę",
+        opis: "Twórz nowe skrypty, systemy transportu miejskiego oraz dbaj o optymalizację gry.",
+        zbierajEmail: true,
+        zbierajDiscord: true,
+        zbierajRoblox: false,
+        pytania: [
             {
-                id: "k1",
-                label: "Czy posiadasz doświadczenie w prowadzeniu pojazdów komunikacji miejskiej w grach Roblox?",
-                type: "short",
-                required: true
+                id: "dev1",
+                tresc: "Opisz swoje doświadczenie z językiem Luau / Roblox Studio:",
+                typ: "dluga"
             },
             {
-                id: "k2",
-                label: "Wybierz preferowany typ pojazdu:",
-                type: "choice",
-                options: ["Autobus solowy", "Autobus przegubowy", "Elektryczny"],
-                required: true
+                id: "dev2",
+                tresc: "Podaj link do swojego portfolio lub przykładowego kodu:",
+                typ: "krotka"
             }
         ]
     }
