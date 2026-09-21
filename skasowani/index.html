@@ -1,376 +1,632 @@
 <!DOCTYPE html>
 <html lang="pl" id="html-root" class="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKASOWANI | Sklep</title>
-    <link rel="icon" type="image/x-icon" href="liw-content/liw_zakoch-2.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        brandRed: '#ff334b',
-                        brandRedHover: '#e61e38',
-                        brandDark: '#0a0b10',
-                        brandCard: '#13151f',
-                        brandBorder: 'rgba(255, 255, 255, 0.08)',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            overflow-x: hidden;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep - SKASOWANI | Life in Warsaw</title>
+    <link rel="icon" type="image/x-icon" href="liw-content/liw_zakoch-2.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brandRed: '#ff334b',
+                        brandRedHover: '#e61e38',
+                        brandDark: '#0a0b10',
+                        brandCard: '#13151f',
+                        brandBorder: 'rgba(255, 255, 255, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
 
-        .dark body {
-            background-color: #0a0b10;
-            color: #f8fafc;
-        }
+        .dark body {
+            background-color: #0a0b10;
+            color: #f8fafc;
+        }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
 
-        .dark .glass-panel {
-            background: rgba(19, 21, 31, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
+        .dark .glass-panel {
+            background: rgba(19, 21, 31, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-        .dark .glass-card {
-            background: rgba(19, 21, 31, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+        .dark .glass-card {
+            background: rgba(19, 21, 31, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-        .glass-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 51, 75, 0.4);
-            box-shadow: 0 20px 40px rgba(255, 51, 75, 0.12);
-        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 51, 75, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 51, 75, 0.12);
+        }
 
-        .cyber-button {
-            position: relative;
-            background: linear-gradient(135deg, #ff334b 0%, #c91830 100%);
-            color: #ffffff;
-            font-weight: 600;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            font-size: 15px;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(255, 51, 75, 0.3);
-            transition: all 0.3s ease;
-        }
+        .cyber-button {
+            position: relative;
+            background: linear-gradient(135deg, #ff334b 0%, #c91830 100%);
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-size: 15px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(255, 51, 75, 0.3);
+            transition: all 0.3s ease;
+        }
 
-        .cyber-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 51, 75, 0.5);
-        }
+        .cyber-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 51, 75, 0.5);
+        }
 
-        .glow-orb {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(255, 51, 75, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
+        .glow-orb {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 51, 75, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-        .dark .glow-orb {
-            background: radial-gradient(circle, rgba(255, 51, 75, 0.12) 0%, rgba(10, 11, 16, 0) 70%);
-        }
+        .dark .glow-orb {
+            background: radial-gradient(circle, rgba(255, 51, 75, 0.12) 0%, rgba(10, 11, 16, 0) 70%);
+        }
 
-        #bus-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background-color: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            transition: opacity 0.8s ease;
-        }
-        .dark #bus-overlay {
-            background-color: #0a0b10;
-        }
-        #bus-overlay.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
+        #bus-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: opacity 0.8s ease;
+        }
+        .dark #bus-overlay {
+            background-color: #0a0b10;
+        }
+        #bus-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-        .loader-rings {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            border-top: 3px solid #ff334b;
-            border-radius: 50%;
-            animation: spinRing 1s linear infinite;
-        }
-        .dark .loader-rings {
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid #ff334b;
-        }
+        .loader-rings {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #ff334b;
+            border-radius: 50%;
+            animation: spinRing 1s linear infinite;
+        }
+        .dark .loader-rings {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #ff334b;
+        }
 
-        @keyframes spinRing {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .bouncing-loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+        .bouncing-loader span {
+            width: 8px;
+            height: 28px;
+            background-color: #ff334b;
+            border-radius: 4px;
+            animation: bounceLine 0.6s infinite alternate;
+        }
+        .bouncing-loader span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .bouncing-loader span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounceLine {
+            to {
+                transform: translateY(-12px);
+                opacity: 0.5;
+            }
+        }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-brandRed selection:text-white">
 
-        <div id="bus-overlay">
-        <img id="overlay-logo" src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
-             alt="Life in Warsaw Logo" 
-             class="h-16 w-auto filter brightness-0 contrast-200"
-             onerror="this.src='https://placehold.co/220x60/000000/ffffff?text=Life+in+Warsaw'">
-        <div class="loader-rings"></div>
-        <div class="text-xs font-semibold uppercase tracking-widest text-zinc-500 animate-pulse">Ładowanie...</div>
-    </div>
+    <div id="bus-overlay">
+        <img id="overlay-logo" src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
+             alt="Life in Warsaw Logo" 
+             class="h-16 w-auto filter brightness-0 contrast-200"
+             onerror="this.src='https://placehold.co/220x60/000000/ffffff?text=Life+in+Warsaw'">
+        <div class="loader-rings"></div>
+        <div class="text-xs font-semibold uppercase tracking-widest text-zinc-500 animate-pulse">Ładowanie...</div>
+    </div>
 
-    <header class="w-full sticky top-0 z-50 bg-gradient-to-r from-red-600 via-brandRed to-rose-600 shadow-lg border-b border-red-500/30">
-        <div class="max-w-[1300px] mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="nav-link flex items-center group">
-                <img src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
-                     alt="Life in Warsaw Logo" 
-                     class="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105 filter brightness-200">
-            </a>
-            <div class="flex items-center gap-3 md:gap-4">
-                <a href="https://lifeinwarsaw.vercel.app" class="nav-link text-xs md:text-sm font-semibold text-white/90 hover:text-white transition py-2 px-4 rounded-lg hover:bg-white/15">Strona główna</a>
-            </div>
-        </div>
-    </header>
+    <header class="w-full sticky top-0 z-50 bg-gradient-to-r from-red-600 via-brandRed to-rose-600 shadow-lg border-b border-red-500/30">
+        <div class="max-w-[1300px] mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="nav-link flex items-center group">
+                <img src="https://liw-roblox.vercel.app/liw-content/image-3.svg" 
+                     alt="Life in Warsaw Logo" 
+                     class="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105 filter brightness-200">
+            </a>
+            <div class="flex items-center gap-3 md:gap-4">
+                <a href="https://lifeinwarsaw.vercel.app" class="nav-link text-xs md:text-sm font-semibold text-white/90 hover:text-white transition py-2 px-4 rounded-lg hover:bg-white/15">Strona główna</a>
+            </div>
+        </div>
+    </header>
 
-        <main class="flex-grow relative py-10 md:py-16 shop-shell">
+    <main class="flex-grow relative py-12 md:py-16">
         <div class="glow-orb top-10 left-10"></div>
         <div class="glow-orb bottom-10 right-10"></div>
 
-        <div class="max-w-[1300px] mx-auto px-6 relative z-10">
-            <div class="text-center mb-10 shop-transition">
-                <img src="https://lifeinwarsaw.vercel.app/liw-content/skasowani_NEW_logo.svg"
-                     alt="SKASOWANI"
-                     class="shop-logo">
-                <p class="text-zinc-600 text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed">
-                    Oficjalny sklep SKASOWANI. Wybierz produkt, aby zobaczyć pełne informacje i przejść do płatności.
-                </p>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+            <div class="text-center mb-10 flex flex-col items-center justify-center">
+                <img src="https://lifeinwarsaw.vercel.app/liw-content/skasowani_NEW_logo.svg" 
+                     alt="SKASOWANI Logo" 
+                     class="h-24 md:h-32 w-auto mb-6 transition-transform duration-500 hover:scale-105 drop-shadow-xl"
+                     onerror="this.src='https://placehold.co/320x100/ff334b/ffffff?text=SKASOWANI'">
             </div>
 
-            <div id="product-list" class="shop-grid" aria-live="polite"></div>
+            <div class="mb-8 flex flex-col sm:flex-row justify-between items-center gap-4 bg-white/50 dark:bg-zinc-900/50 p-4 rounded-2xl glass-card">
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <div id="shop-status-loader" class="hidden items-center gap-3 px-3 py-1.5 bg-brandRed/10 text-brandRed rounded-xl text-sm font-medium">
+                        <div class="bouncing-loader">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span>Aktualizowanie oferty...</span>
+                    </div>
+                    <span class="text-sm font-semibold text-zinc-500" id="product-count-label">Wszystkie produkty</span>
+                </div>
+                <div class="w-full sm:w-72 relative">
+                    <input type="text" id="product-search" placeholder="Szukaj produktu..." class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:border-brandRed transition">
+                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-3.5 text-zinc-400 text-sm"></i>
+                </div>
+            </div>
+
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+
         </div>
     </main>
 
-    <div id="product-view" class="product-view" aria-hidden="true">
-        <div class="product-panel" role="dialog" aria-modal="true" aria-labelledby="product-title">
-            <button id="product-close" type="button"
-                    class="absolute top-5 right-5 z-10 w-11 h-11 rounded-full bg-white/90 border border-zinc-200 shadow-lg text-zinc-700 hover:text-brandRed transition"
-                    aria-label="Zamknij produkt">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="product-detail-grid">
+    <div id="product-modal" class="fixed inset-0 z-[99999] bg-black/70 backdrop-blur-md hidden items-center justify-center p-4 md:p-6 opacity-0 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl relative transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
+            <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center bg-white/50 dark:bg-zinc-900/50">
+                <div class="flex items-center gap-2">
+                    <span id="modal-id-badge" class="px-3 py-1 bg-brandRed/10 text-brandRed font-bold rounded-lg text-xs">ID: -------</span>
+                    <span id="modal-discount-badge" class="hidden px-2.5 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-lg text-xs">-0%</span>
+                </div>
+                <button id="close-modal-btn" class="w-9 h-9 rounded-xl bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-brandRed hover:text-white transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 h-64 flex items-center justify-center relative shadow-inner">
+                        <img id="modal-img" src="" alt="Produkt" class="w-full h-full object-cover">
+                        <div id="modal-availability-tag" class="absolute bottom-3 left-3 px-3 py-1 rounded-lg text-xs font-bold bg-black/60 text-white backdrop-blur-sm">
+                            Dostępność: --
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h2 id="modal-title" class="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white">Tytuł Produktu</h2>
+                        <div class="flex items-baseline gap-3">
+                            <span id="modal-price" class="text-3xl font-extrabold text-brandRed">0,00 zł</span>
+                            <span id="modal-old-price" class="text-base text-zinc-400 line-through hidden">0,00 zł</span>
+                        </div>
+                        <div class="text-xs text-zinc-500 dark:text-zinc-400 space-y-1 bg-zinc-50 dark:bg-zinc-800/50 p-3 rounded-xl border border-zinc-200 dark:border-zinc-700/50">
+                            <div><i class="fa-regular fa-calendar text-brandRed mr-1.5"></i> <span id="modal-date-range">Oferta aktywna: --</span></div>
+                            <div><i class="fa-solid fa-fingerprint text-brandRed mr-1.5"></i> Unikalny kod ID: <span id="modal-id-text" class="font-mono font-bold select-all">--------</span></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div>
-                    <img id="product-detail-image" class="product-detail-image" src="" alt="">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-400 mb-2">Opis produktu</h3>
+                    <p id="modal-desc" class="text-zinc-700 dark:text-zinc-300 leading-relaxed text-sm md:text-base">
+                        Szczegółowy opis produktu pojawi się w tym miejscu...
+                    </p>
                 </div>
-                <div class="product-detail-copy">
-                    <div id="product-meta" class="product-meta mb-5"></div>
-                    <h2 id="product-title" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4"></h2>
-                    <p id="product-description" class="text-zinc-600 text-base md:text-lg leading-relaxed mb-7"></p>
+            </div>
 
-                    <div class="flex items-end gap-3 mb-5">
-                        <span id="product-price" class="text-4xl font-extrabold text-brandRed"></span>
-                        <span id="product-old-price" class="text-lg text-zinc-400 line-through"></span>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-7">
-                        <div class="rounded-2xl bg-zinc-50 border border-zinc-200 p-4">
-                            <div class="text-xs uppercase tracking-wider text-zinc-400 font-bold">Promocja</div>
-                            <div id="product-discount" class="font-bold mt-1"></div>
-                        </div>
-                        <div class="rounded-2xl bg-zinc-50 border border-zinc-200 p-4">
-                            <div class="text-xs uppercase tracking-wider text-zinc-400 font-bold">Dostępność</div>
-                            <div id="product-stock" class="font-bold mt-1"></div>
-                        </div>
-                        <div class="rounded-2xl bg-zinc-50 border border-zinc-200 p-4">
-                            <div class="text-xs uppercase tracking-wider text-zinc-400 font-bold">Promocja od</div>
-                            <div id="product-from" class="font-bold mt-1"></div>
-                        </div>
-                        <div class="rounded-2xl bg-zinc-50 border border-zinc-200 p-4">
-                            <div class="text-xs uppercase tracking-wider text-zinc-400 font-bold">Promocja do</div>
-                            <div id="product-to" class="font-bold mt-1"></div>
-                        </div>
-                    </div>
-
-                    <div class="text-xs text-zinc-400 mb-5">
-                        ID produktu: <span id="product-id" class="font-bold text-zinc-600"></span>
-                    </div>
-
-                    <div class="flex flex-wrap gap-3">
-                        <a id="payment-link" href="#" target="_blank" rel="noopener noreferrer" class="cyber-button">
-                            <span class="flex items-center gap-2"><i class="fa-solid fa-credit-card"></i> Kup teraz</span>
-                        </a>
-                        <button id="copy-url" type="button" class="px-6 py-3 rounded-[14px] border border-zinc-200 bg-white font-semibold text-zinc-700 hover:border-brandRed hover:text-brandRed transition copy-url">
-                            <i class="fa-solid fa-link mr-2"></i> Kopiuj link
-                        </button>
-                    </div>
-                </div>
+            <div class="px-6 py-4 border-t border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 flex flex-wrap justify-between items-center gap-4">
+                <button id="copy-link-btn" class="px-4 py-2.5 rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-sm font-semibold transition flex items-center gap-2">
+                    <i class="fa-solid fa-link"></i> Kopiuj link do produktu
+                </button>
+                <a id="modal-buy-link" href="#" target="_blank" class="cyber-button">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> Kup teraz</span>
+                </a>
             </div>
         </div>
     </div>
 
-<div class="glass-panel border-t border-black/10 py-8 reveal-on-scroll">
-        <div class="max-w-[1300px] mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div class="flex items-center">
-                <img id="footer-logo" src="liw-content/liw_zakoch_black-2.png" 
-                     alt="Logo LiW" 
-                     class="h-12 w-auto object-contain transition">
-            </div>
+    <div class="glass-panel border-t border-black/10 py-8 reveal-on-scroll">
+        <div class="max-w-[1300px] mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="flex items-center">
+                <img id="footer-logo" src="liw-content/liw_zakoch_black-2.png" 
+                     alt="Logo LiW" 
+                     class="h-12 w-auto object-contain transition"
+                     onerror="this.src='https://placehold.co/120x40/000000/ffffff?text=LiW'">
+            </div>
 
-            <div class="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm font-semibold text-zinc-600">
-                <a class="nav-link hover:text-brandRed transition"><u>Regulamin gry i Serwera</u></a>
-                <a href="https://lifeinwarsaw.vercel.app/kontakt.html" class="nav-link hover:text-brandRed transition">Kontakt</a>
-            </div>
+            <div class="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm font-semibold text-zinc-600">
+                <a href="regulamin.html" class="nav-link hover:text-brandRed transition">Regulamin gry i Serwera</a>
+                <a href="https://lifeinwarsaw.vercel.app/kontakt.html" class="nav-link hover:text-brandRed transition">Kontakt</a>
+            </div>
 
-            <div class="flex items-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 34" role="img" aria-label="Informacja Warszawa 19 115" class="h-9 w-auto fill-slate-800 transition-colors">
-                    <path d="M51.838,10.073l0.228-0.009l0.227-0.026l0.429-1.453h2.395l0.438,1.453l0.222,0.026l0.232,0.009
-                        l0.256-0.009l0.235-0.026L54.456,3.74l-0.253-0.027l-0.252-0.008l-0.275,0.008L53.433,3.74l-2.051,6.299l0.212,0.026L51.838,10.073z
-                        M53.916,4.589l0.963,3.217h-1.921L53.916,4.589z M85.301,10.073l0.229-0.009l0.229-0.026l0.428-1.453h2.393l0.437,1.453
-                        l0.227,0.026l0.229,0.009l0.254-0.009l0.238-0.026L87.918,3.74l-0.252-0.027l-0.253-0.008L87.14,3.713L86.897,3.74l-2.053,6.299
-                        l0.215,0.026L85.301,10.073z M87.377,4.589l0.966,3.217h-1.921L87.377,4.589z M62.641,9.987l-0.359-0.115l0.081-0.394l0.129-0.393
-                        c0.193,0.07,0.396,0.128,0.605,0.182c0.211,0.055,0.469,0.081,0.771,0.081c0.479,0,0.837-0.098,1.071-0.294
-                        c0.239-0.196,0.355-0.46,0.355-0.79c0-0.169-0.023-0.306-0.072-0.423l-0.225-0.301l-0.371-0.233
-                        c-0.149-0.072-0.324-0.147-0.521-0.229l-0.501-0.201c-0.169-0.071-0.324-0.15-0.464-0.233l-0.364-0.313l-0.241-0.423
-                        c-0.058-0.162-0.085-0.353-0.085-0.574c0-0.532,0.179-0.95,0.541-1.249c0.363-0.302,0.871-0.452,1.525-0.452
-                        c0.281,0,0.545,0.024,0.798,0.072c0.25,0.045,0.473,0.105,0.663,0.175c-0.027,0.244-0.091,0.486-0.19,0.725
-                        c-0.158-0.056-0.341-0.109-0.547-0.157c-0.209-0.045-0.442-0.071-0.708-0.071c-0.365,0-0.648,0.075-0.85,0.224
-                        c-0.196,0.148-0.297,0.373-0.297,0.669L63.461,5.6l0.196,0.255l0.291,0.197l0.351,0.159l0.489,0.193
-                        c0.233,0.091,0.442,0.19,0.623,0.293c0.179,0.103,0.336,0.222,0.464,0.359c0.128,0.136,0.227,0.3,0.295,0.487
-                        c0.065,0.187,0.099,0.406,0.099,0.657c0,0.602-0.209,1.075-0.621,1.424c-0.415,0.346-0.997,0.52-1.744,0.52
-                        c-0.179,0-0.342-0.006-0.489-0.018l-0.409-0.053L62.641,9.987z M66.864,9.962l3.171-5.444h-2.778l-0.023-0.183l-0.01-0.203
-                        l0.01-0.203l0.023-0.19h4.096l0.059,0.078L68.23,9.26h2.953l0.029,0.186l0.006,0.208l-0.006,0.202l-0.029,0.183h-4.269L66.864,9.962
-                        z M78.579,10.039L77.063,3.74l0.24-0.027l0.27-0.008l0.249,0.008l0.232,0.027l1.077,5.248L80.43,3.74l0.229-0.027l0.244-0.008
-                        l0.236,0.008l0.228,0.027l1.304,5.3l1.097-5.3l0.205-0.027l0.216-0.008l0.248,0.008L84.66,3.74l-1.514,6.299l-0.248,0.026
-                        l-0.251,0.009l-0.275-0.009l-0.268-0.026L80.86,5.107l-1.265,4.932l-0.266,0.026l-0.269,0.009l-0.24-0.009L78.579,10.039z
-                        M90,25.654c0,1.213-0.206,2.276-0.617,3.196c-0.409,0.919-1.003,1.689-1.773,2.316s-1.709,1.095-2.8,1.407
-                        c-1.093,0.313-2.317,0.469-3.666,0.469c-0.258,0-0.572-0.019-0.956-0.056c-0.379-0.039-0.806-0.096-1.273-0.163
-                        c-0.471-0.066-0.964-0.165-1.479-0.291c-0.521-0.128-1.024-0.281-1.512-0.456c0.02-0.371,0.07-0.759,0.163-1.158
-                        c0.086-0.4,0.187-0.792,0.305-1.174c0.117-0.381,0.237-0.743,0.367-1.085c0.124-0.344,0.26-0.65,0.397-0.924
-                        c0.763,0.273,1.455,0.483,2.08,0.631c0.627,0.147,1.232,0.221,1.818,0.221c0.704,0,1.302-0.079,1.789-0.236s0.881-0.355,1.174-0.6
-                        c0.291-0.246,0.503-0.528,0.629-0.854c0.128-0.32,0.19-0.656,0.19-1.01c0-0.743-0.263-1.341-0.792-1.791
-                        c-0.527-0.446-1.366-0.673-2.522-0.673c-0.468,0-0.969,0.055-1.508,0.161c-0.541,0.108-1.101,0.297-1.688,0.572l-0.763-0.499
-                        l0.439-11.673h10.705c0.178,0.824,0.266,1.534,0.266,2.142c0,0.684-0.088,1.437-0.266,2.259h-6.187l-0.06,3.05
-                        c0.178-0.041,0.343-0.058,0.5-0.058h0.556c0.96,0,1.839,0.136,2.641,0.41c0.801,0.272,1.484,0.675,2.053,1.204
-                        c0.566,0.524,1.005,1.182,1.317,1.964C89.845,23.737,90,24.636,90,25.654z M74.543,26.739c0.179,0.763,0.264,1.486,0.264,2.171
-                        c0,0.722-0.085,1.467-0.264,2.229H61.992c-0.177-0.763-0.264-1.508-0.264-2.229c0-0.685,0.087-1.408,0.264-2.171h3.813V18.41
-                        l-3.168,1.232c-0.177-0.254-0.354-0.547-0.528-0.879c-0.173-0.334-0.34-0.675-0.498-1.028c-0.157-0.352-0.295-0.708-0.41-1.07
-                        c-0.118-0.363-0.205-0.708-0.264-1.042l8.594-3.665h1.26v14.78H74.543z M19.366,24.612c0.25,1.083,0.375,2.111,0.375,3.087
-                        c0,1.028-0.126,2.088-0.375,3.171H1.501c-0.25-1.083-0.375-2.143-0.375-3.171c0-0.976,0.125-2.004,0.375-3.087h5.428V12.758
-                        L2.42,14.509c-0.25-0.36-0.5-0.777-0.752-1.249c-0.247-0.475-0.485-0.962-0.708-1.464c-0.222-0.499-0.418-1.008-0.585-1.521
-                        C0.209,9.759,0.084,9.265,0,8.793l12.229-5.22h1.792v21.039H19.366z M61.179,10.064l-0.475-0.026l-2.015-2.917V7.087l0.07-0.019
-                        c0.159-0.042,0.32-0.096,0.502-0.166c0.173-0.07,0.334-0.165,0.481-0.276l0.375-0.412c0.099-0.161,0.149-0.354,0.149-0.583
-                        c0-0.42-0.125-0.734-0.375-0.938c-0.246-0.204-0.58-0.306-1.001-0.306l-0.277,0.01l-0.287,0.024v5.617l-0.21,0.018l-0.224,0.008
-                        l-0.227-0.003l-0.23-0.023V3.73l0.351-0.034l0.311-0.032l0.32-0.021l0.368-0.01c0.294,0,0.591,0.029,0.884,0.087
-                        c0.293,0.061,0.551,0.163,0.779,0.308c0.228,0.148,0.414,0.342,0.556,0.594c0.146,0.248,0.217,0.561,0.217,0.942
-                        c0,0.226-0.039,0.434-0.114,0.621c-0.076,0.188-0.173,0.353-0.291,0.498l-0.397,0.382l-0.434,0.266l-0.104,0.054l1.832,2.654
-                        C61.554,10.057,61.379,10.064,61.179,10.064z M76.147,10.064l0.232,0.009l0.255-0.009l0.236-0.026L74.828,3.74l-0.254-0.027
-                        l-0.253-0.008L74.05,3.713L73.806,3.74l-2.05,6.299l0.214,0.026l0.242,0.009l0.226-0.009l0.229-0.026l0.431-1.453h2.391l0.438,1.453
-                        L76.147,10.064z M73.332,7.806l0.954-3.217l0.965,3.217H73.332z M31.175,3.201c-1.444,0-2.808,0.223-4.088,0.667
-                        c-1.282,0.445-2.4,1.106-3.362,1.98c-0.957,0.879-1.717,1.962-2.273,3.257c-0.556,1.292-0.836,2.788-0.836,4.487
-                        c0,1.695,0.231,3.143,0.69,4.34c0.458,1.196,1.085,2.178,1.879,2.942c0.792,0.767,1.711,1.327,2.754,1.69
-                        c1.042,0.362,2.162,0.541,3.359,0.541c1.169,0,2.165-0.165,2.983-0.499c0.821-0.335,1.386-0.694,1.691-1.086l0.125,0.083
-                        c-0.305,0.865-0.758,1.649-1.357,2.359c-0.596,0.709-1.3,1.321-2.106,1.836c-0.808,0.515-1.697,0.934-2.672,1.252
-                        c-0.973,0.319-2.001,0.521-3.088,0.605c-0.138,0.335-0.252,0.764-0.334,1.294c-0.083,0.531-0.125,1.127-0.125,1.795
-                        c0,0.809,0.099,1.494,0.293,2.064c0.196,0.57,0.404,0.968,0.627,1.189c2.894-0.248,5.391-0.932,7.493-2.045
-                        c2.098-1.112,3.825-2.511,5.173-4.193c1.35-1.683,2.346-3.598,2.983-5.738c0.641-2.143,0.961-4.383,0.961-6.719
-                        c0-4.064-0.919-7.095-2.755-9.099S34.68,3.201,31.175,3.201z M33.721,16.515c-0.667,0.695-1.532,1.043-2.587,1.043
-                        c-0.973,0-1.786-0.343-2.44-1.023c-0.655-0.683-0.982-1.774-0.982-3.276c0-1.447,0.346-2.517,1.043-3.212
-                        C29.451,9.348,30.3,9.001,31.3,9.001c1.004,0,1.824,0.377,2.464,1.128c0.638,0.75,0.958,1.863,0.958,3.338
-                        C34.723,14.802,34.391,15.819,33.721,16.515z M58.827,26.739c0.175,0.763,0.262,1.486,0.262,2.171
-                        c0,0.722-0.087,1.467-0.262,2.229H46.273c-0.177-0.763-0.266-1.508-0.266-2.229c0-0.685,0.089-1.408,0.266-2.171h3.813V18.41
-                        l-3.169,1.232c-0.175-0.254-0.35-0.547-0.529-0.879c-0.174-0.334-0.34-0.675-0.497-1.028c-0.154-0.352-0.293-0.708-0.41-1.07
-                        c-0.117-0.363-0.203-0.708-0.263-1.042l8.592-3.665h1.263v14.78H58.827z M45.356,10.064l-0.24-0.026L43.599,3.74l0.242-0.027
-                        l0.269-0.008l0.248,0.008L44.59,3.74l1.08,5.248l1.294-5.248l0.232-0.027l0.241-0.008l0.236,0.008l0.228,0.027l1.308,5.3l1.094-5.3
-                        l0.206-0.027l0.214-0.008l0.25,0.008l0.227,0.027l-1.519,6.299l-0.243,0.026l-0.254,0.009l-0.273-0.009l-0.271-0.026l-1.244-4.932
-                        l-1.264,4.932l-0.266,0.026l-0.268,0.009L45.356,10.064z"/>
-                </svg>
-            </div>
-        </div>
-    </div>
+            <div class="flex items-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 34" role="img" aria-label="Informacja Warszawa 19 115" class="h-9 w-auto fill-slate-800 dark:fill-slate-200 transition-colors">
+                    <path d="M51.838,10.073l0.228-0.009l0.227-0.026l0.429-1.453h2.395l0.438,1.453l0.222,0.026l0.232,0.009
+                        l0.256-0.009l0.235-0.026L54.456,3.74l-0.253-0.027l-0.252-0.008l-0.275,0.008L53.433,3.74l-2.051,6.299l0.212,0.026L51.838,10.073z
+                        M53.916,4.589l0.963,3.217h-1.921L53.916,4.589z M85.301,10.073l0.229-0.009l0.229-0.026l0.428-1.453h2.393l0.437,1.453
+                        l0.227,0.026l0.229,0.009l0.254-0.009l0.238-0.026L87.918,3.74l-0.252-0.027l-0.253-0.008L87.14,3.713L86.897,3.74l-2.053,6.299
+                        l0.215,0.026L85.301,10.073z M87.377,4.589l0.966,3.217h-1.921L87.377,4.589z M62.641,9.987l-0.359-0.115l0.081-0.394l0.129-0.393
+                        c0.193,0.07,0.396,0.128,0.605,0.182c0.211,0.055,0.469,0.081,0.771,0.081c0.479,0,0.837-0.098,1.071-0.294
+                        c0.239-0.196,0.355-0.46,0.355-0.79c0-0.169-0.023-0.306-0.072-0.423l-0.225-0.301l-0.371-0.233
+                        c-0.149-0.072-0.324-0.147-0.521-0.229l-0.501-0.201c-0.169-0.071-0.324-0.15-0.464-0.233l-0.364-0.313l-0.241-0.423
+                        c-0.058-0.162-0.085-0.353-0.085-0.574c0-0.532,0.179-0.95,0.541-1.249c0.363-0.302,0.871-0.452,1.525-0.452
+                        c0.281,0,0.545,0.024,0.798,0.072c0.25,0.045,0.473,0.105,0.663,0.175c-0.027,0.244-0.091,0.486-0.19,0.725
+                        c-0.158-0.056-0.341-0.109-0.547-0.157c-0.209-0.045-0.442-0.071-0.708-0.071c-0.365,0-0.648,0.075-0.85,0.224
+                        c-0.196,0.148-0.297,0.373-0.297,0.669L63.461,5.6l0.196,0.255l0.291,0.197l0.351,0.159l0.489,0.193
+                        c0.233,0.091,0.442,0.19,0.623,0.293c0.179,0.103,0.336,0.222,0.464,0.359c0.128,0.136,0.227,0.3,0.295,0.487
+                        c0.065,0.187,0.099,0.406,0.099,0.657c0,0.602-0.209,1.075-0.621,1.424c-0.415,0.346-0.997,0.52-1.744,0.52
+                        c-0.179,0-0.342-0.006-0.489-0.018l-0.409-0.053L62.641,9.987z M66.864,9.962l3.171-5.444h-2.778l-0.023-0.183l-0.01-0.203
+                        l0.01-0.203l0.023-0.19h4.096l0.059,0.078L68.23,9.26h2.953l0.029,0.186l0.006,0.208l-0.006,0.202l-0.029,0.183h-4.269L66.864,9.962
+                        z M78.579,10.039L77.063,3.74l0.24-0.027l0.27-0.008l0.249,0.008l0.232,0.027l1.077,5.248L80.43,3.74l0.229-0.027l0.244-0.008
+                        l0.236,0.008l0.228,0.027l1.304,5.3l1.097-5.3l0.205-0.027l0.216-0.008l0.248,0.008L84.66,3.74l-1.514,6.299l-0.248,0.026
+                        l-0.251,0.009l-0.275-0.009l-0.268-0.026L80.86,5.107l-1.265,4.932l-0.266,0.026l-0.269,0.009l-0.24-0.009L78.579,10.039z
+                        M90,25.654c0,1.213-0.206,2.276-0.617,3.196c-0.409,0.919-1.003,1.689-1.773,2.316s-1.709,1.095-2.8,1.407
+                        c-1.093,0.313-2.317,0.469-3.666,0.469c-0.258,0-0.572-0.019-0.956-0.056c-0.379-0.039-0.806-0.096-1.273-0.163
+                        c-0.471-0.066-0.964-0.165-1.479-0.291c-0.521-0.128-1.024-0.281-1.512-0.456c0.02-0.371,0.07-0.759,0.163-1.158
+                        c0.086-0.4,0.187-0.792,0.305-1.174c0.117-0.381,0.237-0.743,0.367-1.085c0.124-0.344,0.26-0.65,0.397-0.924
+                        c0.763,0.273,1.455,0.483,2.08,0.631c0.627,0.147,1.232,0.221,1.818,0.221c0.704,0,1.302-0.079,1.789-0.236s0.881-0.355,1.174-0.6
+                        c0.291-0.246,0.503-0.528,0.629-0.854c0.128-0.32,0.19-0.656,0.19-1.01c0-0.743-0.263-1.341-0.792-1.791
+                        c-0.527-0.446-1.366-0.673-2.522-0.673c-0.468,0-0.969,0.055-1.508,0.161c-0.541,0.108-1.101,0.297-1.688,0.572l-0.763-0.499
+                        l0.439-11.673h10.705c0.178,0.824,0.266,1.534,0.266,2.142c0,0.684-0.088,1.437-0.266,2.259h-6.187l-0.06,3.05
+                        c0.178-0.041,0.343-0.058,0.5-0.058h0.556c0.96,0,1.839,0.136,2.641,0.41c0.801,0.272,1.484,0.675,2.053,1.204
+                        c0.566,0.524,1.005,1.182,1.317,1.964C89.845,23.737,90,24.636,90,25.654z M74.543,26.739c0.179,0.763,0.264,1.486,0.264,2.171
+                        c0,0.722-0.085,1.467-0.264,2.229H61.992c-0.177-0.763-0.264-1.508-0.264-2.229c0-0.685,0.087-1.408,0.264-2.171h3.813V18.41
+                        l-3.168,1.232c-0.177-0.254-0.354-0.547-0.528-0.879c-0.173-0.334-0.34-0.675-0.498-1.028c-0.157-0.352-0.295-0.708-0.41-1.07
+                        c-0.118-0.363-0.205-0.708-0.264-1.042l8.594-3.665h1.26v14.78H74.543z M19.366,24.612c0.25,1.083,0.375,2.111,0.375,3.087
+                        c0,1.028-0.126,2.088-0.375,3.171H1.501c-0.25-1.083-0.375-2.143-0.375-3.171c0-0.976,0.125-2.004,0.375-3.087h5.428V12.758
+                        L2.42,14.509c-0.25-0.36-0.5-0.777-0.752-1.249c-0.247-0.475-0.485-0.962-0.708-1.464c-0.222-0.499-0.418-1.008-0.585-1.521
+                        C0.209,9.759,0.084,9.265,0,8.793l12.229-5.22h1.792v21.039H19.366z M61.179,10.064l-0.475-0.026l-2.015-2.917V7.087l0.07-0.019
+                        c0.159-0.042,0.32-0.096,0.502-0.166c0.173-0.07,0.334-0.165,0.481-0.276l0.375-0.412c0.099-0.161,0.149-0.354,0.149-0.583
+                        c0-0.42-0.125-0.734-0.375-0.938c-0.246-0.204-0.58-0.306-1.001-0.306l-0.277,0.01l-0.287,0.024v5.617l-0.21,0.018l-0.224,0.008
+                        l-0.227-0.003l-0.23-0.023V3.73l0.351-0.034l0.311-0.032l0.32-0.021l0.368-0.01c0.294,0,0.591,0.029,0.884,0.087
+                        c0.293,0.061,0.551,0.163,0.779,0.308c0.228,0.148,0.414,0.342,0.556,0.594c0.146,0.248,0.217,0.561,0.217,0.942
+                        c0,0.226-0.039,0.434-0.114,0.621c-0.076,0.188-0.173,0.353-0.291,0.498l-0.397,0.382l-0.434,0.266l-0.104,0.054l1.832,2.654
+                        C61.554,10.057,61.379,10.064,61.179,10.064z M76.147,10.064l0.232,0.009l0.255-0.009l0.236-0.026L74.828,3.74l-0.254-0.027
+                        l-0.253-0.008L74.05,3.713L73.806,3.74l-2.05,6.299l0.214,0.026l0.242,0.009l0.226-0.009l0.229-0.026l0.431-1.453h2.391l0.438,1.453
+                        L76.147,10.064z M73.332,7.806l0.954-3.217l0.965,3.217H73.332z M31.175,3.201c-1.444,0-2.808,0.223-4.088,0.667
+                        c-1.282,0.445-2.4,1.106-3.362,1.98c-0.957,0.879-1.717,1.962-2.273,3.257c-0.556,1.292-0.836,2.788-0.836,4.487
+                        c0,1.695,0.231,3.143,0.69,4.34c0.458,1.196,1.085,2.178,1.879,2.942c0.792,0.767,1.711,1.327,2.754,1.69
+                        c1.042,0.362,2.162,0.541,3.359,0.541c1.169,0,2.165-0.165,2.983-0.499c0.821-0.335,1.386-0.694,1.691-1.086l0.125,0.083
+                        c-0.305,0.865-0.758,1.649-1.357,2.359c-0.596,0.709-1.3,1.321-2.106,1.836c-0.808,0.515-1.697,0.934-2.672,1.252
+                        c-0.973,0.319-2.001,0.521-3.088,0.605c-0.138,0.335-0.252,0.764-0.334,1.294c-0.083,0.531-0.125,1.127-0.125,1.795
+                        c0,0.809,0.099,1.494,0.293,2.064c0.196,0.57,0.404,0.968,0.627,1.189c2.894-0.248,5.391-0.932,7.493-2.045
+                        c2.098-1.112,3.825-2.511,5.173-4.193c1.35-1.683,2.346-3.598,2.983-5.738c0.641-2.143,0.961-4.383,0.961-6.719
+                        c0-4.064-0.919-7.095-2.755-9.099S34.68,3.201,31.175,3.201z M33.721,16.515c-0.667,0.695-1.532,1.043-2.587,1.043
+                        c-0.973,0-1.786-0.343-2.44-1.023c-0.655-0.683-0.982-1.774-0.982-3.276c0-1.447,0.346-2.517,1.043-3.212
+                        C29.451,9.348,30.3,9.001,31.3,9.001c1.004,0,1.824,0.377,2.464,1.128c0.638,0.75,0.958,1.863,0.958,3.338
+                        C34.723,14.802,34.391,15.819,33.721,16.515z M58.827,26.739c0.175,0.763,0.262,1.486,0.262,2.171
+                        c0,0.722-0.087,1.467-0.262,2.229H46.273c-0.177-0.763-0.266-1.508-0.266-2.229c0-0.685,0.089-1.408,0.266-2.171h3.813V18.41
+                        l-3.169,1.232c-0.175-0.254-0.35-0.547-0.529-0.879c-0.174-0.334-0.34-0.675-0.497-1.028c-0.154-0.352-0.293-0.708-0.41-1.07
+                        c-0.117-0.363-0.203-0.708-0.263-1.042l8.592-3.665h1.263v14.78H58.827z M45.356,10.064l-0.24-0.026L43.599,3.74l0.242-0.027
+                        l0.269-0.008l0.248,0.008L44.59,3.74l1.08,5.248l1.294-5.248l0.232-0.027l0.241-0.008l0.236,0.008l0.228,0.027l1.308,5.3l1.094-5.3
+                        l0.206-0.027l0.214-0.008l0.25,0.008l0.227,0.027l-1.519,6.299l-0.243,0.026l-0.254,0.009l-0.273-0.009l-0.271-0.026l-1.244-4.932
+                        l-1.264,4.932l-0.266,0.026l-0.268,0.009L45.356,10.064z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
 
+    <footer class="bg-slate-100 dark:bg-zinc-900 text-zinc-500 py-6 text-xs border-t border-black/5 dark:border-zinc-800 transition-colors">
+        <div class="max-w-[1300px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
+            <p>&copy; 2026 Life in Warsaw. Wszelkie prawa zastrzeżone.</p>
+            <p class="text-zinc-600 dark:text-zinc-400">UWAGA! Ta strona nie jest oficjalną stroną WTP ani ZTM.</p>
+        </div>
+    </footer>
 
-   <footer class="bg-slate-100 text-zinc-500 py-6 text-xs border-t border-black/5 transition-colors">
-        <div class="max-w-[1300px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
-            <p>&copy; 2026 Life in Warsaw. Wszelkie prawa zastrzeżone.</p>
-            <p class="text-zinc-600">UWAGA! Ta strona nie jest oficjalną stroną WTP ani ZTM.</p>
-        </div>
-    </footer>
-
-    <script>
-        
-        const themeToggleBtn = document.getElementById('theme-toggle');
+    <script>
         const htmlRoot = document.getElementById('html-root');
+        
+        htmlRoot.classList.add('light');
+        htmlRoot.classList.remove('dark');
+        localStorage.setItem('liw_theme', 'light');
 
-        const savedTheme = localStorage.getItem('liw_theme') || 'light';
-        if (savedTheme === 'dark') {
-            htmlRoot.classList.add('dark');
-            htmlRoot.classList.remove('light');
-        } else {
-            htmlRoot.classList.add('light');
-            htmlRoot.classList.remove('dark');
-        }
+        // Produkty
+        const products = [
+            {
+                id: "84920184",
+                title: "Ranga VIP w Grze",
+                price: "19.99 zł",
+                oldPrice: "29.99 zł",
+                discount: "-33%",
+                dateRange: "01.06.2026 - 31.12.2026",
+                availability: "Dostępny (Limit: 500 szt.)",
+                image: "https://placehold.co/600x400/ff334b/ffffff?text=VIP+Life+in+Warsaw",
+                description: "Zdobądź prestiżową rangę VIP w grze Life in Warsaw! Otrzymaj specjalny status na serwerze Roblox, unikalne kolory czatu, dostęp do ekskluzywnych pojazdów miejskich oraz dodatkową gotówkę startową na start.",
+                buyLink: "https://buycoffee.to/lifeinwarsaw"
+            },
+            {
+                id: "39281042",
+                title: "Pakiet Stołeczny Tycoon",
+                price: "49.99 zł",
+                oldPrice: "69.99 zł",
+                discount: "-28%",
+                dateRange: "15.06.2026 - 15.09.2026",
+                availability: "Dostępny od ręki",
+                image: "https://placehold.co/600x400/13151f/ffffff?text=Pakiet+Stoleczny",
+                description: "Najlepszy zestaw dla każdego miłośnika Warszawy! Pakiet zawiera ekskluzywną posiadłość w ścisłym centrum, spersonalizowaną warszawską taksówkę oraz 500 000 waluty w grze.",
+                buyLink: "https://buycoffee.to/lifeinwarsaw"
+            },
+            {
+                id: "72019483",
+                title: "Kierowca ZTM / MZA+",
+                price: "24.99 zł",
+                oldPrice: "",
+                discount: "",
+                dateRange: "Od zawsze w sprzedaży",
+                availability: "Pełna dostępność",
+                image: "https://placehold.co/600x400/e61e38/ffffff?text=Kierowca+ZTM",
+                description: "Odblokuj licencję zawodowego kierowcy komunikacji miejskiej. Prowadź kultowe autobusy Solaris Urbino, tramwaje niskopodłogowe i realizuj oficjalne kursy po wirtualnych liniach Warszawy.",
+                buyLink: "https://buycoffee.to/lifeinwarsaw"
+            },
+            {
+                id: "10928374",
+                title: "Zestaw Pogotowie Ratunkowe",
+                price: "34.99 zł",
+                oldPrice: "44.99 zł",
+                discount: "-22%",
+                dateRange: "01.07.2026 - 31.08.2026",
+                availability: "Ostatnie sztuki",
+                image: "https://placehold.co/600x400/0a0b10/ffffff?text=Pogotowie+Ratunkowe",
+                description: "Zostań ratownikiem medycznym w warszawskim pogotowiu! Zestaw zawiera szybkiego ambulanse ratunkowe z aktywnymi sygnałami świetlnymi i dźwiękowymi oraz specjalny ekwipunek medyczny.",
+                buyLink: "https://buycoffee.to/lifeinwarsaw"
+            },
+            {
+                id: "55829103",
+                title: "Policja Warszawska - Pakiet Służbowy",
+                price: "39.99 zł",
+                oldPrice: "",
+                discount: "",
+                dateRange: "Całoroczny",
+                availability: "Dostępny",
+                image: "https://placehold.co/600x400/2563eb/ffffff?text=Policja+Warszawska",
+                description: "Dołącz do patrolu stołecznej policji! Pakiet odblokowuje oznakowane radiowozy Kia i BMW, specjalne umundurowanie oraz uprawnienia do prowadzenia interwencji na serwerze.",
+                buyLink: "https://buycoffee.to/lifeinwarsaw"
+            },
+            {
+                id: "99182374",
+                title: "Skrzynia Skasowani Mystery",
+                price: "9.99 zł",
+                oldPrice: "14.99 zł",
+                discount: "-33%",
+                dateRange: "Edycja Limitowana",
+                availability: "Dostępny",
+                image: "https://placehold.co/600x400/9333ea/ffffff?text=Skrzynia+Mystery",
+                description: "Losowa skrzynia zawierająca unikalne skiny pojazdów, rzadkie klaksony miejskie oraz dodatkową gotówkę w grze. Co wylosujesz?",
+                buyLink: "https://buycoffee.to/lifeinwarsaw"
+            }
+        ];
 
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', () => {
-                if (htmlRoot.classList.contains('dark')) {
-                    htmlRoot.classList.remove('dark');
-                    htmlRoot.classList.add('light');
-                    localStorage.setItem('liw_theme', 'light');
+        const productsGrid = document.getElementById('products-grid');
+        const productSearchInput = document.getElementById('product-search');
+        const productModal = document.getElementById('product-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const shopStatusLoader = document.getElementById('shop-status-loader');
+
+        function renderProducts(filterText = '') {
+            shopStatusLoader.classList.remove('hidden');
+            shopStatusLoader.classList.add('flex');
+
+            setTimeout(() => {
+                productsGrid.innerHTML = '';
+                const filtered = products.filter(p => 
+                    p.title.toLowerCase().includes(filterText.toLowerCase()) || 
+                    p.id.includes(filterText)
+                );
+
+                document.getElementById('product-count-label').innerText = `Znaleziono produktów: ${filtered.length}`;
+
+                if (filtered.length === 0) {
+                    productsGrid.innerHTML = `
+                        <div class="col-span-full py-12 text-center text-zinc-500">
+                            <i class="fa-solid fa-box-open text-4xl mb-3 text-zinc-400"></i>
+                            <p class="text-lg font-medium">Brak produktów spełniających kryteria wyszukiwania.</p>
+                        </div>
+                    `;
                 } else {
-                    htmlRoot.classList.remove('light');
-                    htmlRoot.classList.add('dark');
-                    localStorage.setItem('liw_theme', 'dark');
+                    filtered.forEach(p => {
+                        const card = document.createElement('div');
+                        card.className = 'glass-card rounded-2xl p-5 flex flex-col justify-between cursor-pointer group';
+                        card.onclick = () => selectProduct(p.id);
+                        
+                        card.innerHTML = `
+                            <div>
+                                <div class="relative h-48 rounded-xl overflow-hidden mb-4 bg-zinc-100 dark:bg-zinc-800">
+                                    <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/ff334b/ffffff?text=SKASOWANI'">
+                                    ${p.discount ? `<span class="absolute top-3 left-3 px-2.5 py-1 bg-brandRed text-white text-xs font-bold rounded-lg shadow">${p.discount}</span>` : ''}
+                                    <span class="absolute bottom-3 right-3 px-2.5 py-1 bg-black/70 text-white text-xs font-mono rounded-md backdrop-blur-sm">ID: ${p.id}</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2 group-hover:text-brandRed transition">${p.title}</h3>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 mb-4">${p.description}</p>
+                            </div>
+                            <div class="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                                <div>
+                                    <div class="text-xl font-extrabold text-brandRed">${p.price}</div>
+                                    ${p.oldPrice ? `<div class="text-xs text-zinc-400 line-through">${p.oldPrice}</div>` : ''}
+                                </div>
+                                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-xl text-xs font-semibold group-hover:bg-brandRed group-hover:text-white transition">
+                                    Szczegóły <i class="fa-solid fa-arrow-right ml-1"></i>
+                                </span>
+                            </div>
+                        `;
+                        productsGrid.appendChild(card);
+                    });
                 }
-            });
+
+                shopStatusLoader.classList.remove('flex');
+                shopStatusLoader.classList.add('hidden');
+            }, 350);
         }
+
+        function selectProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const slug = product.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            window.location.hash = `#/${product.id}/${slug}`;
+
+            document.getElementById('modal-id-badge').innerText = `ID: ${product.id}`;
+            document.getElementById('modal-id-text').innerText = product.id;
+            document.getElementById('modal-title').innerText = product.title;
+            document.getElementById('modal-price').innerText = product.price;
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-desc').innerText = product.description;
+            document.getElementById('modal-date-range').innerText = `Oferta aktywna: ${product.dateRange}`;
+            document.getElementById('modal-availability-tag').innerText = `Dostępność: ${product.availability}`;
+            document.getElementById('modal-buy-link').href = product.buyLink;
+
+            const oldPriceEl = document.getElementById('modal-old-price');
+            const discountBadge = document.getElementById('modal-discount-badge');
+
+            if (product.oldPrice) {
+                oldPriceEl.innerText = product.oldPrice;
+                oldPriceEl.classList.remove('hidden');
+            } else {
+                oldPriceEl.classList.add('hidden');
+            }
+
+            if (product.discount) {
+                discountBadge.innerText = product.discount;
+                discountBadge.classList.remove('hidden');
+            } else {
+                discountBadge.classList.add('hidden');
+            }
+
+            productModal.classList.remove('hidden');
+            productModal.classList.add('flex');
+            setTimeout(() => {
+                productModal.classList.remove('opacity-0');
+                productModal.querySelector('.glass-panel').classList.remove('scale-95');
+                productModal.querySelector('.glass-panel').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            productModal.classList.add('opacity-0');
+            productModal.querySelector('.glass-panel').classList.remove('scale-100');
+            productModal.querySelector('.glass-panel').classList.add('scale-95');
+            setTimeout(() => {
+                productModal.classList.remove('flex');
+                productModal.classList.add('hidden');
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }, 300);
+        }
+
+        closeModalBtn.onclick = closeModal;
+        productModal.onclick = (e) => {
+            if (e.target === productModal) closeModal();
+        };
+
+        document.getElementById('copy-link-btn').onclick = () => {
+            const url = window.location.href;
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = url;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            const btn = document.getElementById('copy-link-btn');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `<i class="fa-solid fa-check text-emerald-500"></i> Skopiowano link!`;
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 2000);
+        };
+
+        productSearchInput.oninput = (e) => {
+            renderProducts(e.target.value);
+        };
+
+        function checkHashRoute() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#/')) {
+                const parts = hash.split('/');
+                if (parts.length >= 2) {
+                    const id = parts[1];
+                    const product = products.find(p => p.id === id);
+                    if (product) {
+                        selectProduct(product.id);
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('hashchange', checkHashRoute);
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const overlay = document.getElementById('bus-overlay');
-                if (overlay) overlay.classList.add('fade-out');
+                if (overlay) {
+                    overlay.classList.add('fade-out');
+                }
+                renderProducts();
+                checkHashRoute();
             }, 700);
 
             const links = document.querySelectorAll('a.nav-link');
@@ -378,10 +634,14 @@
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
                     const targetAttr = this.getAttribute('target');
+
                     if (href && href !== '#' && !href.startsWith('#')) {
                         e.preventDefault();
                         const overlay = document.getElementById('bus-overlay');
-                        if (overlay) overlay.classList.remove('fade-out');
+                        if (overlay) {
+                            overlay.classList.remove('fade-out');
+                        }
+
                         setTimeout(() => {
                             if (targetAttr === '_blank') {
                                 window.open(href, '_blank');
@@ -394,236 +654,6 @@
                 });
             });
         });
-
-
-        const products = [
-            {
-                id: "58310427",
-                slug: "pakiet-premium",
-                title: "Pakiet Premium",
-                image: "https://placehold.co/1200x900/f1f5f9/ff334b?text=SKASOWANI+PREMIUM",
-                price: "39,99 zł",
-                oldPrice: "49,99 zł",
-                discount: "-20%",
-                from: "01.09.2026",
-                to: "30.09.2026",
-                stock: "Dostępny",
-                description: "Pakiet Premium dla osób, które chcą odblokować dodatkową zawartość i korzystać z wyjątkowych możliwości w projekcie SKASOWANI.",
-                payment: "https://example.com/payment"
-            },
-            {
-                id: "74192605",
-                slug: "pakiet-start",
-                title: "Pakiet Start",
-                image: "https://placehold.co/1200x900/f1f5f9/e61e38?text=SKASOWANI+START",
-                price: "19,99 zł",
-                oldPrice: "24,99 zł",
-                discount: "-20%",
-                from: "01.09.2026",
-                to: "30.09.2026",
-                stock: "Dostępny",
-                description: "Podstawowy pakiet na start. Prosty sposób, aby rozpocząć korzystanie z płatnych elementów SKASOWANI.",
-                payment: "https://example.com/payment"
-            },
-            {
-                id: "30681592",
-                slug: "pakiet-pro",
-                title: "Pakiet PRO",
-                image: "https://placehold.co/1200x900/f1f5f9/c91830?text=SKASOWANI+PRO",
-                price: "59,99 zł",
-                oldPrice: "69,99 zł",
-                discount: "-14%",
-                from: "05.09.2026",
-                to: "05.10.2026",
-                stock: "Ostatnie sztuki",
-                description: "Rozszerzony pakiet dla najbardziej aktywnych użytkowników SKASOWANI, zawierający dodatkowe bonusy i zawartość.",
-                payment: "https://example.com/payment"
-            },
-            {
-                id: "92547013",
-                slug: "pakiet-event",
-                title: "Pakiet Event",
-                image: "https://placehold.co/1200x900/f1f5f9/ff334b?text=SKASOWANI+EVENT",
-                price: "29,99 zł",
-                oldPrice: "",
-                discount: "Brak",
-                from: "—",
-                to: "—",
-                stock: "Dostępny",
-                description: "Limitowany pakiet przygotowany z myślą o wydarzeniach i specjalnych akcjach organizowanych przez SKASOWANI.",
-                payment: "https://example.com/payment"
-            },
-            {
-                id: "41826370",
-                slug: "pakiet-elite",
-                title: "Pakiet Elite",
-                image: "https://placehold.co/1200x900/f1f5f9/e61e38?text=SKASOWANI+ELITE",
-                price: "89,99 zł",
-                oldPrice: "109,99 zł",
-                discount: "-18%",
-                from: "10.09.2026",
-                to: "10.10.2026",
-                stock: "Dostępny",
-                description: "Najbardziej rozbudowany pakiet SKASOWANI z szerokim zestawem dodatkowej zawartości.",
-                payment: "https://example.com/payment"
-            },
-            {
-                id: "67035184",
-                slug: "pakiet-limited",
-                title: "Pakiet Limited",
-                image: "https://placehold.co/1200x900/f1f5f9/c91830?text=SKASOWANI+LIMITED",
-                price: "44,99 zł",
-                oldPrice: "54,99 zł",
-                discount: "-18%",
-                from: "15.09.2026",
-                to: "30.09.2026",
-                stock: "Ograniczona dostępność",
-                description: "Edycja limitowana dostępna przez określony czas. Po zakończeniu promocji oferta może zniknąć ze sklepu.",
-                payment: "https://example.com/payment"
-            }
-        ];
-
-        const productList = document.getElementById('product-list');
-        const productView = document.getElementById('product-view');
-        const productClose = document.getElementById('product-close');
-        const copyUrl = document.getElementById('copy-url');
-
-        function showLoader() {
-            productList.innerHTML = `
-                <div class="glass-card rounded-2xl product-loading col-span-full">
-                    <div class="loading-bars flex items-center gap-2" aria-label="Ładowanie produktów">
-                        <span></span><span></span><span></span>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderProducts() {
-            showLoader();
-            setTimeout(() => {
-                productList.innerHTML = products.map(product => `
-                    <article class="product-card glass-card shop-transition" data-id="${product.id}" tabindex="0" role="button" aria-label="Otwórz ${product.title}">
-                        <div class="relative overflow-hidden rounded-t-[24px]">
-                            <img class="product-image" src="${product.image}" alt="${product.title}" loading="lazy">
-                            ${product.discount !== "Brak" ? `<span class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-brandRed text-white text-xs font-bold shadow-lg">${product.discount}</span>` : ""}
-                        </div>
-                        <div class="p-5 md:p-6">
-                            <div class="flex items-start justify-between gap-4">
-                                <div>
-                                    <h3 class="text-xl font-bold">${product.title}</h3>
-                                    <p class="text-sm text-zinc-500 mt-1">${product.stock}</p>
-                                </div>
-                                <div class="text-right shrink-0">
-                                    <div class="font-extrabold text-brandRed">${product.price}</div>
-                                    ${product.oldPrice ? `<div class="text-xs text-zinc-400 line-through">${product.oldPrice}</div>` : ""}
-                                </div>
-                            </div>
-                            <p class="text-sm text-zinc-600 mt-4 line-clamp-2">${product.description}</p>
-                            <div class="mt-5 flex items-center justify-between text-xs font-semibold text-zinc-400">
-                                <span>ID: ${product.id}</span>
-                                <span class="text-brandRed">Zobacz produkt <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                            </div>
-                        </div>
-                    </article>
-                `).join("");
-
-                productList.querySelectorAll('.product-card').forEach(card => {
-                    const open = () => openProduct(card.dataset.id);
-                    card.addEventListener('click', open);
-                    card.addEventListener('keydown', e => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            open();
-                        }
-                    });
-                });
-
-                const pathProduct = getProductFromPath();
-                if (pathProduct) openProduct(pathProduct.id, false);
-            }, 450);
-        }
-
-        function getProductFromPath() {
-            const path = decodeURIComponent(window.location.pathname.replace(/^\/+|\/+$/g, ""));
-            if (!path) return null;
-            const parts = path.split("/");
-            const id = parts[0];
-            const slug = parts.slice(1).join("/");
-            return products.find(p => p.id === id && p.slug === slug) || null;
-        }
-
-        function productUrl(product) {
-            return `${window.location.origin}/${product.id}/${encodeURIComponent(product.slug)}`;
-        }
-
-        function openProduct(id, push = true) {
-            const product = products.find(p => p.id === id);
-            if (!product) return;
-
-            if (push) history.pushState({ productId: product.id }, "", productUrl(product));
-
-            document.getElementById('product-detail-image').src = product.image;
-            document.getElementById('product-detail-image').alt = product.title;
-            document.getElementById('product-title').textContent = product.title;
-            document.getElementById('product-description').textContent = product.description;
-            document.getElementById('product-price').textContent = product.price;
-            document.getElementById('product-old-price').textContent = product.oldPrice;
-            document.getElementById('product-discount').textContent = product.discount;
-            document.getElementById('product-stock').textContent = product.stock;
-            document.getElementById('product-from').textContent = product.from;
-            document.getElementById('product-to').textContent = product.to;
-            document.getElementById('product-id').textContent = product.id;
-            document.getElementById('payment-link').href = product.payment;
-
-            document.getElementById('product-meta').innerHTML = `
-                <span class="meta-pill">SKASOWANI</span>
-                <span class="meta-pill">ID ${product.id}</span>
-                ${product.discount !== "Brak" ? `<span class="meta-pill discount-pill">${product.discount}</span>` : ""}
-            `;
-
-            productView.classList.add('open');
-            productView.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeProduct(updateUrl = true) {
-            productView.classList.remove('open');
-            productView.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = "";
-            if (updateUrl) history.pushState({}, "", "/");
-        }
-
-        productClose.addEventListener('click', () => closeProduct());
-        productView.addEventListener('click', e => {
-            if (e.target === productView) closeProduct();
-        });
-
-        copyUrl.addEventListener('click', async () => {
-            const product = getProductFromPath() || products.find(p => p.id === document.getElementById('product-id').textContent);
-            if (!product) return;
-            try {
-                await navigator.clipboard.writeText(productUrl(product));
-                copyUrl.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Skopiowano';
-                setTimeout(() => {
-                    copyUrl.innerHTML = '<i class="fa-solid fa-link mr-2"></i> Kopiuj link';
-                }, 1800);
-            } catch {
-                window.prompt("Skopiuj link do produktu:", productUrl(product));
-            }
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && productView.classList.contains('open')) closeProduct();
-        });
-
-        window.addEventListener('popstate', () => {
-            const product = getProductFromPath();
-            if (product) openProduct(product.id, false);
-            else closeProduct(false);
-        });
-
-        renderProducts();
-</script>
+    </script>
 </body>
 </html>
-ma być ten sam jasny motyw 
