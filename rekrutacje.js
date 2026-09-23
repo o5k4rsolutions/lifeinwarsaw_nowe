@@ -1,87 +1,49 @@
-// Konfiguracja podzielona na części dla bezpieczeństwa
-const _b1 = "xkeysib-6400cab66dd6822a5517b5c3e3007a65ab1";
-const _b2 = "01f64234f8083529558fdf6c60910-zq6LBpdHlntK1mrA";
-const _w1 = "https://discord.com/api/webhooks/155131363";
-const _w2 = "4184003674/7DslEvY1f33fJJyFYoNCINNpnow5pYCpDauwZ-psa";
-const _w3 = "2fWTPv6syqHMYOu7yPlZe8TYtRK";
+/**
+ * Typy pytań:
+ *   "short"  -> krótka odpowiedź tekstowa (1 linia)
+ *   "long"   -> długa odpowiedź tekstowa (textarea)
+ *   "choice" -> odpowiedź A/B/C/D (pole "options")
+ *   "scale"  -> suwak (pola "min" / "max", domyślnie 1-10)
+ * Każde pytanie może mieć "allowAttachment: true" — wtedy
+ * pod polem odpowiedzi pojawia się możliwość dołączenia pliku
+ * (jpg, jpeg, png, webp).
+ */
 
-window.APP_CONFIG = {
-    BREVO_API_KEY: _b1 + _b2,
-    BREVO_TEMPLATE_ID: 3,
-    DISCORD_WEBHOOK_URL: _w1 + _w2 + _w3
-};
-
-// Lista rekrutacji z różnymi typami pytań
-window.RECRUITMENTS_DATA = [
-    {
-        id: "support",
-        createdAt: "2026-06-01",
-        title: "Support / Pomocnik Serwera",
-        description: "Dołącz do zespołu administracyjnego Life in Warsaw i pomagaj graczom w rozwiązywaniu problemów.",
-        collectEmail: true,
-        collectDiscord: true,
-        collectRoblox: true,
-        questions: [
-            {
-                id: "q1",
-                type: "short",
-                label: "Ile masz lat i jak masz na imię?"
-            },
-            {
-                id: "q2",
-                type: "choice",
-                label: "Jak oceniasz swoją znajomość komend moderacyjnych?",
-                options: ["Podstawowa", "Średnia", "Bardzo dobra", "Ekspert"]
-            },
-            {
-                id: "q3",
-                type: "range",
-                label: "Oceń swoją odporność na stres w skali od 1 do 10:",
-                min: 1,
-                max: 10
-            },
-            {
-                id: "q4",
-                type: "long",
-                label: "Dlaczego chcesz dołączyć właśnie do naszego zespołu?"
-            },
-            {
-                id: "q5",
-                type: "file",
-                label: "Załącz zrzut ekranu przedstawiający Twój profil lub statystyki (opcjonalnie):"
-            }
-        ]
-    },
-    {
-        id: "developer",
-        createdAt: "2026-06-10",
-        title: "Developer / Skripter Roblox",
-        description: "Twórz unikalne skrypty i systemy dla serwera Life in Warsaw w środowisku Luau / Roblox Studio.",
-        collectEmail: true,
-        collectDiscord: true,
-        collectRoblox: true,
-        questions: [
-            {
-                id: "dev1",
-                type: "short",
-                label: "Jaki jest Twój nick na Discordzie oraz staż w Roblox Studio (w latach)?"
-            },
-            {
-                id: "dev2",
-                type: "choice",
-                label: "Który framework lub system skryptowania jest Ci najbliższy?",
-                options: ["Roact / Fusion", "ProfileService / DataStore", "Knit Framework", "Czysty Luau (Vanilla)"]
-            },
-            {
-                id: "dev3",
-                type: "long",
-                label: "Opisz swój najciekawszy projekt wykonany w Roblox Studio."
-            },
-            {
-                id: "dev4",
-                type: "file",
-                label: "Załącz portfolio lub przykładowy kod / plik (.lua, .rbxm, obrazek):"
-            }
-        ]
-    }
+window.RECRUITMENTS = [
+  {
+    id: "moderacja",
+    title: "Zespół Moderacji Discord",
+    dateCreated: "2026-09-20",
+    description: "Dbaj o porządek i kulturę wypowiedzi na serwerze Discord oraz w grze.",
+    collectEmail: true,
+    collectDiscord: true,
+    collectRobloxNick: true,
+    brevoTemplateId: 3,
+    questions: [
+      { id: "q1", type: "short", text: "Ile masz lat?", allowAttachment: false },
+      { id: "q2", type: "long", text: "Dlaczego chcesz dołączyć do zespołu moderacji?", allowAttachment: false },
+      { id: "q3", type: "choice", text: "Ile czasu dziennie możesz poświęcić na moderację?",
+        options: ["Mniej niż 1h", "1-2h", "2-4h", "Więcej niż 4h"], allowAttachment: false },
+      { id: "q4", type: "scale", text: "Oceń swoją znajomość regulaminu serwera.", min: 1, max: 10, allowAttachment: false },
+      { id: "q5", type: "long", text: "Czy posiadasz wcześniejsze doświadczenie w moderacji? Opisz je i (opcjonalnie) załącz zrzut ekranu.", allowAttachment: true }
+    ]
+  },
+  {
+    id: "developer",
+    title: "Zespół Deweloperski (Roblox Studio)",
+    dateCreated: "2026-09-18",
+    description: "Twórz i rozwijaj mechaniki gry Life in Warsaw razem z RAKSO Web Development.",
+    collectEmail: true,
+    collectDiscord: true,
+    collectRobloxNick: true,
+    brevoTemplateId: 3,
+    questions: [
+      { id: "q1", type: "short", text: "Jak długo programujesz w Lua / Luau?", allowAttachment: false },
+      { id: "q2", type: "choice", text: "W czym czujesz się najlepiej?",
+        options: ["Skrypty gameplay", "UI / interfejsy", "Systemy sieciowe (RemoteEvents)", "Optymalizacja"], allowAttachment: false },
+      { id: "q3", type: "long", text: "Podaj link do swojego portfolio lub przykładowych skryptów.", allowAttachment: false },
+      { id: "q4", type: "scale", text: "Oceń swój poziom zaawansowania.", min: 1, max: 10, allowAttachment: false },
+      { id: "q5", type: "long", text: "Załącz zrzut ekranu swojego kodu lub projektu.", allowAttachment: true }
+    ]
+  }
 ];
