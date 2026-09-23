@@ -11,39 +11,23 @@
 
 window.RECRUITMENTS = [
   {
-    id: "moderacja",
-    title: "Zespół Moderacji Discord",
-    dateCreated: "2026-09-20",
-    description: "Dbaj o porządek i kulturę wypowiedzi na serwerze Discord oraz w grze.",
+    id: "23092026/739",
+    title: "Deweloper w Life in Warsaw",
+    dateCreated: "2026-09-23",
+    description: "Twórz wspólnie z nami Life in Warsaw",
     collectEmail: true,
     collectDiscord: true,
     collectRobloxNick: true,
     brevoTemplateId: 3,
     questions: [
       { id: "q1", type: "short", text: "Ile masz lat?", allowAttachment: false },
-      { id: "q2", type: "long", text: "Dlaczego chcesz dołączyć do zespołu moderacji?", allowAttachment: false },
-      { id: "q3", type: "choice", text: "Ile czasu dziennie możesz poświęcić na moderację?",
+      { id: "q2", type: "short", text: "Jak długo tworzysz w Roblox Studio?", allowAttachment: false },
+      { id: "q3", type: "choice", text: "W czym czujesz się najlepiej?",
+        options: ["Skrypty", "Mapa", "Animacje"], allowAttachment: false },
+      { id: "q4", type: "choice", text: "Ile czasu dziennie możesz poświęcić na tworzenie gry?",
         options: ["Mniej niż 1h", "1-2h", "2-4h", "Więcej niż 4h"], allowAttachment: false },
-      { id: "q4", type: "scale", text: "Oceń swoją znajomość regulaminu serwera.", min: 1, max: 10, allowAttachment: false },
-      { id: "q5", type: "long", text: "Czy posiadasz wcześniejsze doświadczenie w moderacji? Opisz je i (opcjonalnie) załącz zrzut ekranu.", allowAttachment: true }
-    ]
-  },
-  {
-    id: "developer",
-    title: "Zespół Deweloperski (Roblox Studio)",
-    dateCreated: "2026-09-18",
-    description: "Twórz i rozwijaj mechaniki gry Life in Warsaw razem z RAKSO Web Development.",
-    collectEmail: true,
-    collectDiscord: true,
-    collectRobloxNick: true,
-    brevoTemplateId: 3,
-    questions: [
-      { id: "q1", type: "short", text: "Jak długo programujesz w Lua / Luau?", allowAttachment: false },
-      { id: "q2", type: "choice", text: "W czym czujesz się najlepiej?",
-        options: ["Skrypty gameplay", "UI / interfejsy", "Systemy sieciowe (RemoteEvents)", "Optymalizacja"], allowAttachment: false },
-      { id: "q3", type: "long", text: "Podaj link do swojego portfolio lub przykładowych skryptów.", allowAttachment: false },
-      { id: "q4", type: "scale", text: "Oceń swój poziom zaawansowania.", min: 1, max: 10, allowAttachment: false },
-      { id: "q5", type: "long", text: "Załącz zrzut ekranu swojego kodu lub projektu.", allowAttachment: true }
+      { id: "q5", type: "scale", text: "Oceń swój poziom zaawansowania.", min: 1, max: 10, allowAttachment: false },
+      { id: "q6", type: "short", text: "Załącz zdjęcia swojego portfolio (WYMAGANE). Możesz też je krótko opisać.", allowAttachment: true }
     ]
   }
 ];
