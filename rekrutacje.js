@@ -11,7 +11,7 @@
 
 window.RECRUITMENTS = [
   {
-    id: "23092026/739",
+    id: "23092026739",
     title: "Deweloper w Life in Warsaw",
     dateCreated: "2026-09-23",
     description: "Twórz wspólnie z nami Life in Warsaw",
