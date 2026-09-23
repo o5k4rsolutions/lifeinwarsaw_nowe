@@ -14,7 +14,7 @@ window.RECRUITMENTS = [
     id: "23092026739",
     title: "Deweloper w Life in Warsaw",
     dateCreated: "2026-09-23",
-    description: "Twórz wspólnie z nami Life in Warsaw",
+    description: "Twórz wspólnie z nami Life in Warsaw!",
     collectEmail: true,
     collectDiscord: true,
     collectRobloxNick: true,
@@ -27,7 +27,7 @@ window.RECRUITMENTS = [
       { id: "q4", type: "choice", text: "Ile czasu dziennie możesz poświęcić na tworzenie gry?",
         options: ["Mniej niż 1h", "1-2h", "2-4h", "Więcej niż 4h"], allowAttachment: false },
       { id: "q5", type: "scale", text: "Oceń swój poziom zaawansowania.", min: 1, max: 10, allowAttachment: false },
-      { id: "q6", type: "short", text: "Załącz zdjęcia swojego portfolio (WYMAGANE). Możesz też je krótko opisać.", allowAttachment: true }
+      { id: "q6", type: "short", text: "Załącz zdjęcia swojego portfolio (WYMAGANE, w przeciwnym wypadku - poprosimy Cię o nie w odpowiedzi zwrotnej). Również opisz je krótko.", allowAttachment: true }
     ]
   }
 ];
